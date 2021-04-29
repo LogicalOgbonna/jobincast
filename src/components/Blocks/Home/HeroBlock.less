@@ -1,0 +1,52 @@
+@import "../../../theme/index.less";
+
+.hero-block {
+  min-height: 80vh;
+  background: url("../../../assets/images/hero.png") no-repeat center right;
+  padding: 220px 80px;
+
+  .hero-heading {
+    font-family: "Montserrat";
+    color: @LIGHT_GREY;
+    font-weight: 600;
+    font-size: 45px;
+  }
+
+  .hero-sub-heading {
+    font-family: "Montserrat";
+    color: @LIGHT_GREY;
+    font-size: 22px;
+    line-height: 29px;
+    padding: 40px 0;
+  }
+
+  .hero-search-container {
+    background: @MILK;
+    padding: 15px;
+    margin: 40px 0;
+    border-radius: @STANDARD_BORDER_RADIUS;
+    display: flex;
+    justify-content: space-between;
+
+    > :not(:first-child) {
+      margin-left: 10px;
+    }
+
+    .ant-select > .ant-select-selector {
+      border-radius: @STANDARD_BORDER_RADIUS;
+      padding: 5px 15px;
+      height: 50px;
+    }
+
+    button {
+      height: 50px;
+      border-radius: @STANDARD_BORDER_RADIUS;
+      color: @WHITE;
+      background: @BLUE;
+    }
+
+    input {
+      border-radius: @STANDARD_BORDER_RADIUS;
+    }
+  }
+}

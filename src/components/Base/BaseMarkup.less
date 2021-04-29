@@ -1,0 +1,52 @@
+@import "../../theme/index.less";
+
+@TOOLBAR_HEIGHT: 65px;
+@TOOLBAR_HEIGHT_MOVILE: 70px;
+
+.tool-bar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: @TOOLBAR_HEIGHT;
+  width: 100% !important;
+  background-color: @WHITE;
+  box-shadow: @STANDARD_BOX_SHADOW;
+  z-index: 2;
+  font-family: "Montserrat";
+  font-weight: 400;
+  padding: 15px 70px;
+  color: @BLACK;
+
+  .tool-bar-links {
+    display: flex;
+    align-items: center;
+  }
+  .tool-bar-links > a:not(:first-child) {
+    padding-left: 50px;
+  }
+
+  .tool-bar-button {
+    background: @LIGHT_BLUE;
+    padding: 7px 10px;
+    border-radius: 20px;
+    color: @WHITE;
+
+    button {
+      background: transparent;
+      color: @WHITE;
+      border-color: transparent;
+    }
+  }
+
+  .tool-bar-search-icon {
+    font-size: 32px;
+    padding: 0 20px;
+  }
+}
+
+.main-content {
+  margin-bottom: 0;
+  // padding-top: 50px;
+  min-height: calc(100vh - @TOOLBAR_HEIGHT);
+  background-color: @WHITE;
+}
