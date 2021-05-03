@@ -9,8 +9,7 @@
   left: 0;
   height: @TOOLBAR_HEIGHT;
   width: 100% !important;
-  background-color: @WHITE;
-  box-shadow: @STANDARD_BOX_SHADOW;
+  background: #fbfbfb;
   z-index: 2;
   font-family: "Montserrat";
   font-weight: 400;
@@ -18,11 +17,14 @@
   color: @BLACK;
 
   .tool-bar-links {
-    display: flex;
-    align-items: center;
+    padding: 10px;
   }
-  .tool-bar-links > a:not(:first-child) {
-    padding-left: 50px;
+  .active-page {
+    background: #ffffff;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.25);
+  }
+  .tool-bar-links > a {
+    padding: 30px 30px 20px 30px;
   }
 
   .tool-bar-button {
@@ -44,9 +46,16 @@
   }
 }
 
+.navbar-shadow {
+  box-shadow: @STANDARD_BOX_SHADOW;
+}
+
 .main-content {
   margin-bottom: 0;
-  // padding-top: 50px;
   min-height: calc(100vh - @TOOLBAR_HEIGHT);
   background-color: @WHITE;
+}
+
+.bg-grey {
+  background-color: #fbfbfb;
 }

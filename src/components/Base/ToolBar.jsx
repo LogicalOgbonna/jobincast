@@ -5,19 +5,23 @@ import { NavLink } from 'react-router-dom';
 
 import { logo } from '../../assets/logo';
 
+const activePage = (name) => window.location.pathname === name ? 'active-page' : '';
+const shadow = () => (window.location.pathname === '/'  || window.location.pathname === '/contact-us' )? 'navbar-shadow' : '';
 const ToolBar = () => {
     return (
-        <div className="tool-bar">
+        <div className={`tool-bar ${shadow()}`}>
             <div className="row">
                 <div className="col-md-2">
-                    <img src={logo} alt="logo" width="158" />
+                    <NavLink to="/">
+                        <img src={logo} alt="logo" width="158" />
+                    </NavLink>
                 </div>
                 <div className="col-md-6 tool-bar-links">
-                    <NavLink to="/jobs">JOBS</NavLink>
-                    <NavLink to="/resume">RESUME</NavLink>
-                    <NavLink to="/companies">COMPANIES</NavLink>
-                    <NavLink to="/blog">BLOG</NavLink>
-                    <NavLink to="/contact-us">CONTACT US</NavLink>
+                    <NavLink className={activePage('/jobs')} to="/jobs">JOBS</NavLink>
+                    <NavLink className={activePage('/resume')} to="/resume">RESUME</NavLink>
+                    <NavLink className={activePage('/companies')} to="/companies">COMPANIES</NavLink>
+                    <NavLink className={activePage('/blog')} to="/blog">BLOG</NavLink>
+                    <NavLink className={activePage('/contact-us')} to="/contact-us">CONTACT US</NavLink>
                 </div>
                 <div className="col-md-4 d-flex align-items-center justify-content-end">
                     <div className="tool-bar-button">

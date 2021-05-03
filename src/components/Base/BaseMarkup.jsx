@@ -3,11 +3,11 @@ import ToolBar from './ToolBar';
 
 import './BaseMarkup.less';
 import Footer from './Footer';
-const BaseMarkup = ({ children }) => {
+const BaseMarkup = ({ children, className }) => {
     return (
         <>
             <ToolBar />
-            <main className="main-content">
+            <main className={`main-content ${className}`}>
                 {children}
             </main>
             <Footer />
