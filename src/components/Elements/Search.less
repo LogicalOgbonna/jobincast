@@ -1,7 +1,38 @@
-@import '../../theme/index.less';
+@import "../../theme/index.less";
 
 .search-element {
-    min-height: 60px;
-    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.25);
-    background: #ffffff;;
+  min-height: 60px;
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+
+  .search-element-padding {
+    padding: 20px 0;
+  }
+
+  .search-element-button {
+    // background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    outline: none;
+    color: @BLUE;
+    border: none;
+    > div {
+      padding: 5px 10px;
+
+      > *:is(:first-child) {
+        padding-right: 5px;
+      }
+    }
+  }
+
+  .ant-input-affix-wrapper {
+    color: @GREY !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(7, 7, 22, 0.4) !important;
+
+    input {
+      padding: 7px !important;
+      font-style: italic !important;
+    }
+  }
 }

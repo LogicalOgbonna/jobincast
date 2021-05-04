@@ -8,6 +8,11 @@ import googlplus from "./googlplus.png";
 import twitter from "./twitter.png";
 import service_type from "./service_type.svg";
 import service_location from "./service_location.svg";
+import brownDropdown from "./brownDropdown.svg";
+import darkgreenDropdown from "./darkgreenDropdown.svg";
+import pinkDropdown from "./pinkDropdown.svg";
+import purpleDropdown from "./purpleDropdown.svg";
+import skyblueDropdown from "./skyblueDropdown.svg";
 
 export {
     addressBook,
@@ -19,5 +24,10 @@ export {
     service_type,
     facebook,
     googlplus,
-    twitter
+    twitter,
+    brownDropdown,
+    darkgreenDropdown,
+    pinkDropdown,
+    skyblueDropdown,
+    purpleDropdown
 }
