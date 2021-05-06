@@ -19,7 +19,7 @@ const RecentJobs = () => {
                         subheading="More than 10,000 trusted jobs are available on the website for candidates to send to their applications and exactly find their expected jobs."
                     />
                     <div className="recent-jobs-card">
-                        <NavLink to="/">
+                        <NavLink to="/job/dajflksdj">
                             <div className="row">
 
 
@@ -42,7 +42,7 @@ const RecentJobs = () => {
                         </NavLink>
                     </div>
                     <div className="recent-jobs-card">
-                        <NavLink to="/">
+                        <NavLink to="/job/dajflksdj">
                             <div className="row">
                                 <div className="col-md-2">
                                     <img src={treehouse} alt="treehouse" />
@@ -63,7 +63,7 @@ const RecentJobs = () => {
                         </NavLink>
                     </div>
                     <div className="recent-jobs-card">
-                        <NavLink to="/">
+                        <NavLink to="/job/dajflksdj">
                             <div className="row">
                                 <div className="col-md-2">
                                     <img src={bridge} alt="bridge" />
