@@ -13,6 +13,7 @@ import darkgreenDropdown from "./darkgreenDropdown.svg";
 import pinkDropdown from "./pinkDropdown.svg";
 import purpleDropdown from "./purpleDropdown.svg";
 import skyblueDropdown from "./skyblueDropdown.svg";
+import people from "./people.svg";
 
 export {
     addressBook,
@@ -29,5 +30,6 @@ export {
     darkgreenDropdown,
     pinkDropdown,
     skyblueDropdown,
-    purpleDropdown
+    purpleDropdown,
+    people
 }

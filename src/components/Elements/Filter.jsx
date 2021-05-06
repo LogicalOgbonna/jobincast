@@ -1,37 +1,49 @@
 import './Filter.less';
 
+import { RedoOutlined } from '@ant-design/icons';
+import PropTypes from 'prop-types';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { brownDropdown, darkgreenDropdown, pinkDropdown, purpleDropdown, skyblueDropdown } from '../../assets/icons';
+import { clearFilterPillAC } from '../../store/filter/actions';
 import Dropdown from './DropDown';
 import FilterPills from './FilterPills';
 
-const FilterElement = () => {
+
+
+const FilterElement = ({ options, extra }) => {
+    const dispatch = useDispatch();
+    const pills = useSelector(({ filterSlice: { pills } }) => pills)
     return (
         <div className="filter-element">
             <div className="filter-section row">
-                <div className="col-md-2 filter-dropdown">
-                    <Dropdown options={[{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }]} label="location" img={brownDropdown} />
-                </div>
-                <div className="col-md-2 filter-dropdown">
-                    <Dropdown options={[{ id: 0, label: "Istanbul, TR (AHL)", type: "category" }, { id: 1, label: "Paris, FR (CDG)", type: "category" }, { id: 2, label: "Paris, FR (CDG)", type: "category" }]} label="job category" img={pinkDropdown} />
-                </div>
-                <div className="col-md-2 filter-dropdown">
-                    <Dropdown options={[{ id: 0, label: "Istanbul, TR (AHL)", type: "salary" }, { id: 1, label: "Paris, FR (CDG)", type: "salary" }, { id: 2, label: "Paris, FR (CDG)", type: "salary" }]} label="salary" img={skyblueDropdown} />
-                </div>
-                <div className="col-md-2 filter-dropdown">
-                    <Dropdown options={[{ id: 0, label: "Istanbul, TR (AHL)", type: "type" }, { id: 1, label: "Paris, FR (CDG)", type: "type" }, { id: 2, label: "Paris, FR (CDG)", type: "type" }]} label="job type" img={darkgreenDropdown} />
-                </div>
-                <div className="col-md-2 filter-dropdown">
-                    <Dropdown options={[{ id: 0, label: "Istanbul, TR (AHL)", type: "experience" }, { id: 1, label: "Paris, FR (CDG)", type: "experience" }]} label="years of experience" img={purpleDropdown} />
+                {options.map(option => <div className="col-md-2 filter-dropdown">
+                    <Dropdown options={option.data} label={option.label} img={option.icon} />
+                </div>)}
+
+                <div className="extra-filter-element">
+                    {extra}
                 </div>
             </div>
 
             <div className="filter-element-pills">
-                <FilterPills />
+                <div className="filter-pills">
+                    <FilterPills />
+                </div>
+                {pills.length > 0 && <button type="default" onClick={() => dispatch(clearFilterPillAC())} className="filter-element-button text-right"><RedoOutlined /> RESET</button>}
             </div>
         </div>
     )
+}
+
+FilterElement.defaultProps = {
+    options: []
+}
+FilterElement.propTypes = {
+    options: PropTypes.shape({
+        map: PropTypes.func,
+        // data: PropTypes.
+    })
 }
 
 export default FilterElement

@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { logo } from '../../assets/logo';
 
 const activePage = (name) => window.location.pathname === name ? 'active-page' : '';
-const shadow = () => (window.location.pathname === '/'  || window.location.pathname === '/contact-us' )? 'navbar-shadow' : '';
+const shadow = () => (window.location.pathname === 'companies'  || window.location.pathname === '/resume' || window.location.pathname === '/jobs' )? '' : 'navbar-shadow';
 const ToolBar = () => {
     return (
         <div className={`tool-bar ${shadow()}`}>

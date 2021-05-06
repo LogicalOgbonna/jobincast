@@ -1,0 +1,49 @@
+@import "../../theme/index.less";
+
+.job-page {
+  background: url("../../assets/images/bubble2.png") no-repeat;
+  padding-top: 91px;
+  padding-bottom: 50px;
+
+  .job-page-company-name {
+    font-family: "Montserrat";
+    font-size: 32px;
+    padding-top: 25px;
+  }
+  .job-details {
+    padding: 80px 60px;
+    background: @WHITE;
+    box-shadow: @STANDARD_BOX_SHADOW;
+    border-radius: @STANDARD_BORDER_RADIUS;
+  }
+  .job-details-title {
+    font-family: "Montserrat";
+    font-size: 25px;
+    line-height: 30px;
+    padding: 20px 0;
+  }
+  .job-details-content {
+    font-size: 16px;
+    line-height: 30px;
+    text-align: justify;
+  }
+  .job-details-button {
+    background: @LIGHT_BLUE;
+    color: @WHITE;
+    border-radius: @STANDARD_BORDER_RADIUS;
+  }
+  .job-success-notification {
+    padding-top: 10px;
+    span {
+      color: @GREEN;
+      padding-right: 5px;
+    }
+  }
+  .job-error-notification {
+    padding-top: 10px;
+    span {
+      color: #FF0000;
+      padding-right: 5px;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import { Input } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const SearchElement = ({ buttonText }) => {
+const SearchElement = ({ buttonText, onClick }) => {
     return (
         <div className="search-element">
             <div className="container">
@@ -14,7 +14,7 @@ const SearchElement = ({ buttonText }) => {
                         <Input prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
                     </div>
                     <div className="col-md-3 text-right">
-                        <button className="search-element-button">{buttonText}</button>
+                        <button onClick={onClick} className="search-element-button">{buttonText}</button>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,8 @@ const SearchElement = ({ buttonText }) => {
 }
 
 SearchElement.propTypes = {
-  buttonText: PropTypes.node
+  buttonText: PropTypes.node,
+  onClick: PropTypes.func,
 }
 
 SearchElement.defaultProps = {

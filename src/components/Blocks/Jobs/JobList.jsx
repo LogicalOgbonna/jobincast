@@ -1,19 +1,19 @@
-import './RecentJobs.less';
+import './JobList.less';
 
 import React from 'react';
 
-import { taletize } from '../../assets/images';
+import { taletize } from '../../../assets/images';
 import { Pagination } from 'antd';
-import RecentJob from './RecentJob';
+import Job from './Job';
 import { NavLink } from 'react-router-dom';
 
-const RecentJobs = () => {
+const JobList = ({ paginated }) => {
     return (
-        <div className="recent-jobs-element">
+        <div className="jobs-list-block">
             <div className="row justify-content-center">
                 <div className="col-md-12">
-                    <NavLink to="/">
-                        <RecentJob
+                    <NavLink to="/job/123qwuryewui">
+                        <Job
                             img={taletize}
                             url="/company/1223432"
                             posted="12th April, 2020"
@@ -21,11 +21,12 @@ const RecentJobs = () => {
                             address="18271 Dayton River Rd Dayton, Minnesota"
                             amount="$2,000"
                             tech="Science & Technology | Full Time"
+                            title="Full Stack Developer"
                         />
 
-                        <div className="text-right">
-                            <Pagination className="recent-job-pagination" defaultCurrent={1} total={50} />
-                        </div>
+                        {paginated && <div className="text-right">
+                            <Pagination className="job-pagination" defaultCurrent={1} total={50} />
+                        </div>}
                     </NavLink>
                 </div>
             </div>
@@ -33,4 +34,4 @@ const RecentJobs = () => {
     )
 }
 
-export default RecentJobs
+export default JobList
