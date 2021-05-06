@@ -1,8 +1,8 @@
-import { Button, Input } from 'antd'
-import { googlplus, twitter, facebook } from '../../assets/icons'
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import './Footer.less'
+import './Footer.less';
+
+import { Button, Input } from 'antd';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (

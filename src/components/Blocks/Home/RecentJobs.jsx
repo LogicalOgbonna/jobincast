@@ -1,11 +1,10 @@
 import './RecentJobs.less';
 
-import { ArrowRightOutlined, FieldTimeOutlined } from '@ant-design/icons';
-import { Button, Divider } from 'antd';
+import { ArrowRightOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
-import { bridge, taletize, treehouse } from '../../../assets/images';
+import { taletize } from '../../../assets/images';
 import BlockHeader from './BlockHeader';
 import RecentJob from './RecentJob';
 
