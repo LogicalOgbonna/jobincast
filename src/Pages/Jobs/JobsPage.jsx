@@ -38,7 +38,7 @@ const JobsPage = () => {
         },
     ]
     return (
-        <BaseMarkup>
+        <BaseMarkup className="background-image-left">
             <div className="desktop-layout">
                 <SearchElement
                     onClick={() => console.log("Hello")}

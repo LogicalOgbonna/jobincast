@@ -10,7 +10,7 @@ import BaseMarkup from '../../components/Base/BaseMarkup';
 const { Step } = Steps;
 const Resume = () => {
     return (
-        <BaseMarkup className="bg-grey">
+        <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout job-page">
                 <div className="container">
                     <div className="row justify-content-center">

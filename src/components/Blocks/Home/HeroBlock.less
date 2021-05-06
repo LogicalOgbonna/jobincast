@@ -1,15 +1,17 @@
 @import "../../../theme/index.less";
 
 .hero-block {
-  min-height: 80vh;
-  background: url("../../../assets/images/hero.png") no-repeat center right;
-  padding: 220px 80px;
+  min-height: 100vh;
+  background: url("../../../assets/images/hero.png") no-repeat 100% 35%;
+  padding: 160px 80px 90px 80px;
 
   .hero-heading {
     font-family: "Montserrat";
     color: @LIGHT_GREY;
     font-weight: 600;
     font-size: 45px;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
   .hero-sub-heading {
@@ -17,13 +19,14 @@
     color: @LIGHT_GREY;
     font-size: 22px;
     line-height: 29px;
-    padding: 40px 0;
+    padding: 25px 0;
+    margin-bottom: 0;
   }
 
   .hero-search-container {
     background: @MILK;
     padding: 15px;
-    margin: 40px 0;
+    margin-bottom: 0;
     border-radius: @STANDARD_BORDER_RADIUS;
     display: flex;
     justify-content: space-between;
@@ -34,8 +37,10 @@
 
     .ant-select > .ant-select-selector {
       border-radius: @STANDARD_BORDER_RADIUS;
-      padding: 5px 15px;
+      padding: 10px 15px;
       height: 50px;
+      font-family: "Montserrat";
+      font-weight: bold;
     }
 
     button {
@@ -43,10 +48,14 @@
       border-radius: @STANDARD_BORDER_RADIUS;
       color: @WHITE;
       background: @BLUE;
+      font-family: "Montserrat";
+      font-weight: bold;
     }
 
     input {
       border-radius: @STANDARD_BORDER_RADIUS;
+      font-family: "Montserrat";
+      font-weight: bold;
     }
   }
 }

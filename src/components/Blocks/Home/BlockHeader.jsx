@@ -1,8 +1,8 @@
 import React from 'react'
 import './BlockHeader.less'
-const BlockHeader = ({ heading, subheading, customPadding }) => {
+const BlockHeader = ({ heading, subheading, featured }) => {
     return (
-        <div className="block-header">
+        <div className={featured ? "block-header-featured-companies" : "block-header"}>
             <h2 className="text-center featured-companies-header">
                 {heading}
             </h2>

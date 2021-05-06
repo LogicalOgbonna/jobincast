@@ -5,6 +5,7 @@ import React from 'react';
 const Resume = ({ img, stack, address, tech, posted, name }) => {
     return (
         <div className="resume-block-card">
+            {/* <Divider style={{ margin: "24px 0 0 0" }} /> */}
             <div className="row">
                 <div className="col-md-2">
                     <img src={img} alt="taletize" />
@@ -19,8 +20,8 @@ const Resume = ({ img, stack, address, tech, posted, name }) => {
                     <FieldTimeOutlined className="resume-block-card-icon" /> <span className="pl-2 text-muted">{posted}</span>
                 </div>
 
-                <Divider style={{ margin: "24px 0 0 0" }} />
             </div>
+            <Divider style={{ margin: "24px 0 0 0" }} />
         </div>
     )
 }

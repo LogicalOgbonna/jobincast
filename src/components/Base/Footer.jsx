@@ -7,25 +7,21 @@ import './Footer.less'
 const Footer = () => {
     return (
         <div className="footer-block">
-            <div className="footer-block-first-row row">
-                <div className="col-md-5">
-                    <h2>Subscribe to our Free Job Alerts</h2>
-                    <p>We’ll never share your email address with a third-party</p>
-                </div>
-                <div className="col-md-4">
-                    <Input placeholder="Enter your email..." className="w-60 footer-block-first-row-subscribe footer-block-first-row-subscribe-input" />
-                    <Button className="w-30 footer-block-first-row-subscribe footer-block-first-row-subscribe-button text-white">Subscribe</Button>
-                </div>
-                <div className="col-md-3">
-                    <a href="/" className="button-round">
-                        <img width="50" src={googlplus} alt="googleplus" />
-                    </a>
-                    <a href="/" className="button-round">
-                        <img width="50" src={twitter} alt="twitter" />
-                    </a>
-                    <a href="/" className="button-round">
-                        <img width="50" src={facebook} alt='facebook' />
-                    </a>
+            <div className="container">
+                <div className="footer-block-first-row row">
+                    <div className="col-md-5 p-0">
+                        <h4 className="footer-su">Subscribe to our Free Job Alerts</h4>
+                        <p>We’ll never share your email address with a third-party</p>
+                    </div>
+                    <div className="col-md-5">
+                        <Input placeholder="Enter your email..." className="w-65 footer-block-first-row-subscribe footer-block-first-row-subscribe-input" />
+                        <Button className="w-25 footer-block-first-row-subscribe footer-block-first-row-subscribe-button text-white">Subscribe</Button>
+                    </div>
+                    <div className="col-md-2">
+                        <a href="/" class="button-round"><i class="fa fa-google-plus"></i></a>
+                        <a href="/" class="button-round"><i class="fa fa-twitter"></i></a>
+                        <a href="/" class="button-round"><i class="fa fa-facebook"></i></a>
+                    </div>
                 </div>
             </div>
             <div className="footer-block-second-row">

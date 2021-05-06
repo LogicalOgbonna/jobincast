@@ -30,7 +30,7 @@ const HeroBlock = () => {
                             <Option value="lucy">Lucy</Option>
                             <Option value="tom">Tom</Option>
                         </Select>
-                        <Button className="w-100">Search</Button>
+                        <Button className="w-50">Search</Button>
                     </div>
                 </div>
             </div>

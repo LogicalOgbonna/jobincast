@@ -11,6 +11,7 @@ const FeaturedCompanies = () => {
             <div className="row justify-content-center">
                 <div className="col-md-10">
                     <BlockHeader
+                        featured
                         heading="Featured Companies"
                         subheading="With more than 12 million employer reviews, Company Pages give people insights into potential employers and help you create a memorable candidate experience."
                     />

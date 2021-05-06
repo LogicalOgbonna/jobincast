@@ -8,7 +8,7 @@ import JobList from '../../components/Blocks/Jobs/JobList';
 
 const CompanyPage = () => {
     return (
-        <BaseMarkup className="bg-grey">
+        <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout company-page">
                 <div className="container">
                     <div className="row justify-content-center">

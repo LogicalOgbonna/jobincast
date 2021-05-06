@@ -6,14 +6,14 @@ import { NavLink } from 'react-router-dom';
 import { logo } from '../../assets/logo';
 
 const activePage = (name) => window.location.pathname === name ? 'active-page' : '';
-const shadow = () => (window.location.pathname === 'companies'  || window.location.pathname === '/resume' || window.location.pathname === '/jobs' )? '' : 'navbar-shadow';
+const shadow = () => (window.location.pathname === 'companies' || window.location.pathname === '/resume' || window.location.pathname === '/jobs') ? '' : 'navbar-shadow';
 const ToolBar = () => {
     return (
         <div className={`tool-bar ${shadow()}`}>
             <div className="row">
                 <div className="col-md-2">
                     <NavLink to="/">
-                        <img src={logo} alt="logo" width="158" />
+                        <img src={logo} alt="logo" className="tool-bar-logo" />
                     </NavLink>
                 </div>
                 <div className="col-md-6 tool-bar-links">
@@ -31,7 +31,8 @@ const ToolBar = () => {
                         <Button size="small">SIGN UP</Button>
                     </div>
 
-                    <SearchOutlined className="tool-bar-search-icon" />
+                    <Button><i className="fa fa-search" /></Button>
+                    {/* <SearchOutlined className="tool-bar-search-icon" /> */}
                 </div>
             </div>
         </div>

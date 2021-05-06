@@ -10,7 +10,7 @@ import './ContaceUsPage.less'
 
 const ContaceUsPage = () => {
     return (
-        <BaseMarkup className="bg-grey">
+        <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout contact-us-page">
                 <Center>
                     <div className="row justify-content-center">

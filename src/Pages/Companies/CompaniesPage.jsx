@@ -27,7 +27,7 @@ const CompaniesPage = () => {
         },
     ]
     return (
-        <BaseMarkup>
+        <BaseMarkup className="background-image-left">
             <div className="desktop-layout">
                 <SearchElement buttonText={<div><i className="fa fa-briefcase" /> CREATE COMPANY</div>} />
                 <div className="companies-page">
@@ -39,7 +39,7 @@ const CompaniesPage = () => {
                                 />
                             </div>
                             <div className="col-md-12">
-                                <p className="text-right text-muted">Showing 1–10 of 30 jobs</p>
+                                <p className="text-right text-muted pagination-search-on-page">Showing 1–10 of 30 jobs</p>
                             </div>
                         </div>
                         <div className="row justify-content-center">

@@ -1,7 +1,7 @@
 @import "../../theme/index.less";
 
-@TOOLBAR_HEIGHT: 65px;
-@TOOLBAR_HEIGHT_MOVILE: 70px;
+@TOOLBAR_HEIGHT: 60px;
+@TOOLBAR_HEIGHT_MOBILE: 70px;
 
 .tool-bar {
   position: sticky;
@@ -13,15 +13,20 @@
   z-index: 2;
   font-family: "Montserrat";
   font-weight: 400;
-  padding: 15px 70px;
+  padding: 10px 70px;
   color: @BLACK;
 
   .tool-bar-links {
-    padding: 10px;
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+  .tool-bar-logo {
+    width: 90%;
+    // padding-top: 10px;
   }
   .active-page {
-    background: #ffffff;
-    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.25);
+    background: #fff;
+    box-shadow: 0px -10px 12px rgba(105, 105, 105, 15%);
   }
   .tool-bar-links > a {
     padding: 30px 30px 20px 30px;
@@ -29,11 +34,13 @@
 
   .tool-bar-button {
     background: @LIGHT_BLUE;
-    padding: 7px 10px;
+    padding: 5px 10px;
     border-radius: 20px;
     color: @WHITE;
+    box-shadow: 0px 2px 10px 0 rgb(0, 0, 0, 20%);
 
     button {
+      font-size: 12px;
       background: transparent;
       color: @WHITE;
       border-color: transparent;
@@ -41,19 +48,22 @@
   }
 
   .tool-bar-search-icon {
-    font-size: 32px;
+    font-size: 23px;
     padding: 0 20px;
   }
 }
 
 .navbar-shadow {
-  box-shadow: @STANDARD_BOX_SHADOW;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0, 10%);
 }
 
 .main-content {
-  margin-bottom: 0;
+  padding-bottom: 150px;
   min-height: calc(100vh - @TOOLBAR_HEIGHT);
   background-color: @WHITE;
+}
+.background-image-left {
+  background: url("../../assets/images/bubble2.png") no-repeat left top;
 }
 
 .bg-grey {
