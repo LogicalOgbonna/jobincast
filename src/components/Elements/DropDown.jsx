@@ -5,14 +5,14 @@ import React, { useState } from 'react';
 import { selectFilterPillAC } from '../../store/filter/actions';
 
 
-const Dropdown = ({ label, options, img }) => {
+const Dropdown = ({ label, options, img, className }) => {
     const dispatch = useDispatch();
     const [isOpen, setOpen] = useState(false);
 
     const toggleDropdown = () => setOpen(!isOpen);
 
     return (
-        <div className='dropdown'>
+        <div className={'dropdown ' + className}>
             <div className='dropdown-header' onClick={toggleDropdown}>
                 {label}
                 <img src={img} alt="drop-down" />

@@ -1,12 +1,14 @@
 import { Button } from 'antd';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 import { logo } from '../../assets/logo';
 
 const activePage = (name) => window.location.pathname === name ? 'active-page' : '';
-const shadow = () => (window.location.pathname === 'companies' || window.location.pathname === '/resume' || window.location.pathname === '/jobs') ? '' : 'navbar-shadow';
+const shadow = () => (window.location.pathname === '/companies' || window.location.pathname === '/resume' || window.location.pathname === '/jobs' || window.location.pathname === '/search') ? '' : 'navbar-shadow';
 const ToolBar = () => {
+
+    const history = useHistory()
     return (
         <div className={`tool-bar ${shadow()}`}>
             <div className="row">
@@ -30,7 +32,7 @@ const ToolBar = () => {
                         <Button size="small">SIGN UP</Button>
                     </div>
 
-                    <Button className="search-button"><i className="fa fa-search" /></Button>
+                    <Button onClick={() => history.push("/search")} className={`${activePage('/search')} search-button`}><i className="fa fa-search" /></Button>
                 </div>
             </div>
         </div>
