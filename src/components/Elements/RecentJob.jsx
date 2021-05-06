@@ -1,7 +1,7 @@
-import { FieldTimeOutlined } from '@ant-design/icons'
-import { Divider } from 'antd'
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { FieldTimeOutlined } from '@ant-design/icons';
+import { Divider } from 'antd';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const RecentJob = ({ img, position, company, address, amount, tech, posted, url}) => {
     return (

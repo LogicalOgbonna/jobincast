@@ -30,8 +30,7 @@ const ToolBar = () => {
                         <Button size="small">SIGN UP</Button>
                     </div>
 
-                    <Button><i className="fa fa-search" /></Button>
-                    {/* <SearchOutlined className="tool-bar-search-icon" /> */}
+                    <Button className="search-button"><i className="fa fa-search" /></Button>
                 </div>
             </div>
         </div>
