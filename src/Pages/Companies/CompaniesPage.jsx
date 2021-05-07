@@ -32,18 +32,18 @@ const CompaniesPage = () => {
                 <SearchElement buttonText={<div><i className="fa fa-briefcase" /> CREATE COMPANY</div>} />
                 <div className="companies-page">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
+                        <div className="row justify-content-center">
+                            <div className="col-md-10">
                                 <FilterElement options={options}
                                     extra={<div><Checkbox className="pr-2" />Show hiring companies only</div>}
                                 />
                             </div>
-                            <div className="col-md-12">
+                            <div className="col-md-10">
                                 <p className="text-right text-muted pagination-search-on-page">Showing 1–10 of 30 jobs</p>
                             </div>
                         </div>
                         <div className="row justify-content-center">
-                            <div className="col-md-11">
+                            <div className="col-md-9">
                                 <CompanyList />
                             </div>
                         </div>
