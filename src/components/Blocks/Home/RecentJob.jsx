@@ -24,7 +24,7 @@ const RecentJob = ({ img, position, companny, address, salary, category }) => {
                         <FieldTimeOutlined className="recent-jobs-card-icon text-muted" /> <span className="pl-2 text-muted recent-jobs-card-icon-text">3 April 2021</span>
                     </div>
 
-                    <Divider style={{ margin: "24px 0 0 0" }} />
+                    <Divider/>
                 </div>
             </NavLink>
         </div>
