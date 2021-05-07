@@ -11,17 +11,17 @@ const Job = ({ img, company, address, amount, tech, posted, url, title}) => {
                     <img src={img} alt="taletize" />
                 </div>
                 <div className="col-md-7 jobs-block-card-text-section">
-                    <h5>{title}</h5>
+                    <h6>{title}</h6>
                     <p><NavLink to={url}>{company}</NavLink></p>
-                    <span className="text-muted">{address}</span>
-                    <p className="text-muted">{amount}</p>
-                    <p>{tech}</p>
+                    <span className="text-muted font13">{address}</span>
+                    <p className="salary">{amount}</p>
+                    <p className="text-muted">{tech}</p>
                 </div>
                 <div className="col-md-3 text-right d-flex justify-content-end jobs-block-card-icon-section">
                     <FieldTimeOutlined className="jobs-block-card-icon" /> <span className="pl-2 text-muted">{posted}</span>
                 </div>
 
-                <Divider style={{ margin: "24px 0 0 0" }} />
+                <Divider/>
             </div>
         </div>
     )
