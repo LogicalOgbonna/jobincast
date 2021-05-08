@@ -30,12 +30,12 @@ const SearchElement = ({ buttonText, onClick }) => {
         <div className="search-element">
             <div className="container">
                 {window.location.pathname === "/search" ?
-                    <div className="row align-items-center">
+                    <div className="row align-items-center search-element-padding">
                         <div className="col-md-5">
                             <Input prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
                         </div>
                         <div className="col-md-5 search-page-filter">
-                            {options.map(option => <Dropdown className="bg-white" options={option.data} label={option.label} img={option.icon} />)}
+                            {options.map(option => <Dropdown className="bg-fb" options={option.data} label={option.label} img={option.icon} />)}
                         </div>
                         <div className="col-md-2 text-right">
                             {/* <div className="col-md-3 text-right"> */}
