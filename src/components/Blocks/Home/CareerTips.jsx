@@ -23,7 +23,7 @@ const CareerTips = () => {
                         <div className="career-tips-card-image" style={{ background: `url(${career_tip_1})` }} />
                         <div className="career-tips-card-text">
 
-                            <h5>Over 1000+ Employers</h5>
+                            <h6>Over 1000+ Employers</h6>
 
                             <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
 
@@ -37,7 +37,7 @@ const CareerTips = () => {
                         <div className="career-tips-card-image" style={{ background: `url(${career_tip_2})` }} />
                         <div className="career-tips-card-text">
 
-                            <h5>Over 1000+ Employers</h5>
+                            <h6>Over 1000+ Employers</h6>
 
                             <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
 
@@ -51,7 +51,7 @@ const CareerTips = () => {
                         <div className="career-tips-card-image" style={{ background: `url(${career_tip_3})` }} />
                         <div className="career-tips-card-text">
 
-                            <h5>Over 1000+ Employers</h5>
+                            <h6>Over 1000+ Employers</h6>
 
                             <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
 
@@ -65,7 +65,7 @@ const CareerTips = () => {
                         <div className="career-tips-card-image" style={{ background: `url(${career_tip_4})` }} />
                         <div className="career-tips-card-text">
 
-                            <h5>Over 1000+ Employers</h5>
+                            <h6>Over 1000+ Employers</h6>
 
                             <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
 

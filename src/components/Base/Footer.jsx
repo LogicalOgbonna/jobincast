@@ -28,38 +28,38 @@ const Footer = () => {
                 <div className="container">
                     <div className="row text-white">
                         <div className="col-md-4">
-                            <h4>FOR EMPLOYERS</h4>
+                            <h6>FOR EMPLOYERS</h6>
                             <NavLink to="/post-job">Post Job</NavLink>
                             <NavLink to="/search-resume">Search Resumes</NavLink>
                             <NavLink to="/privacy">Privacy Policy</NavLink>
                             <NavLink to="/terms">Terms and Conditions</NavLink>
                         </div>
                         <div className="col-md-4">
-                            <h4>FOR CANDIDATES</h4>
+                            <h6>FOR APPLICANTS</h6>
                             <NavLink to="/post-resume">Post Resumes</NavLink>
                             <NavLink to="/search-job">Search Job</NavLink>
                             <NavLink to="/post-job">Privacy Policy</NavLink>
                             <NavLink to="/post-job">Terms and Conditions</NavLink>
                         </div>
                         <div className="col-md-4">
-                            <h4>CONTACT US</h4>
+                            <h6>CONTACT US</h6>
                             <div className="contact-info">
-                                <div>
+                                <div className="ccoo">
                                     Job In Casting Technologies (MA0267233-D)
                                 </div>
-                                <div>
+                                <div className="ccoo">
                                     11-1, Jalan Tasik Utama,
                                 </div>
-                                <div>
+                                <div className="ccoo">
                                     Medan Niaga Tasik Damai,
                                 </div>
-                                <div>
+                                <div className="ccoo">
                                     Sungei Besi,
                                 </div>
-                                <div>
+                                <div className="ccoo">
                                     50470 Kuala Lumpur, Malaysia.
                                 </div>
-                                <div>
+                                <div className="ccoo">
                                     team.support@jobincast.com
                                 </div>
                             </div>
