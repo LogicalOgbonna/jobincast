@@ -39,7 +39,7 @@ const CompaniesPage = () => {
                                 />
                             </div>
                             <div className="col-md-10">
-                                <p className="text-right text-muted pagination-search-on-page">Showing 1–10 of 30 jobs</p>
+                                <p className="text-right text-muted font13">Showing 1–10 of 30 jobs</p>
                             </div>
                         </div>
                         <div className="row justify-content-center">

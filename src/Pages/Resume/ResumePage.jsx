@@ -46,16 +46,16 @@ const ResumePage = () => {
                 />
                 <div className="resume-page">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
+                        <div className="row justify-content-center">
+                            <div className="col-md-10">
                                 <FilterElement options={options} />
                             </div>
-                            <div className="col-md-12">
-                                <p className="text-right text-muted">Showing 1–10 of 30 jobs</p>
+                            <div className="col-md-10">
+                                <p className="text-right text-muted font13">Showing 1–10 of 30 jobs</p>
                             </div>
                         </div>
                         <div className="row justify-content-center">
-                            <div className="col-md-11">
+                            <div className="col-md-9">
                                 <ResumeList />
                             </div>
                         </div>
