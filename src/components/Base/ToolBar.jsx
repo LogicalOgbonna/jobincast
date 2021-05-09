@@ -27,9 +27,9 @@ const ToolBar = () => {
                 <div className="col-md-4 d-flex align-items-center justify-content-end">
                     <div className="tool-bar-button">
                         <i className="fa fa-key" />
-                        <Button size="small">LOG IN</Button>
+                        <Button size="small">Login</Button>
                         <span className="px-2">|</span>
-                        <Button size="small">SIGN UP</Button>
+                        <Button size="small">Register</Button>
                     </div>
 
                     <Button onClick={() => history.push("/search")} className={`${activePage('/search')} search-button`}><i className="fa fa-search" /></Button>
