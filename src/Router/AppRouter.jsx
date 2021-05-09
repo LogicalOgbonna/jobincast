@@ -9,6 +9,8 @@ import ContaceUsPage from "../Pages/ContaceUs/ContaceUsPage";
 import TermsAndConditionPage from "../Pages/TermsAndCondition/TermsAndConditionPage";
 import PrivacyPage from "../Pages/Privacy/PrivacyPage";
 import SearchPage from "../Pages/Search/SearchPage";
+import AuthPage from "../Pages/Auth/AuthPage";
+// import AuthPage from "../Pages/Auth/AuthPage";
 
 import {
     BrowserRouter as Router,
@@ -34,6 +36,7 @@ const AppRouter = () => (
             <Route exact path="/terms" component={TermsAndConditionPage} />
             <Route exact path="/privacy" component={PrivacyPage} />
             <Route exact path="/search" component={SearchPage} />
+            <Route exact path="/auth" component={AuthPage} />
         </Switch>
     </Router>
 );

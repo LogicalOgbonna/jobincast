@@ -38,9 +38,7 @@ const SearchElement = ({ buttonText, onClick }) => {
                             {options.map(option => <Dropdown className="bg-white" options={option.data} label={option.label} img={option.icon} />)}
                         </div>
                         <div className="col-md-2 text-right">
-                            {/* <div className="col-md-3 text-right"> */}
-                                <button onClick={onClick} className="search-element-button">{buttonText}</button>
-                            {/* </div> */}
+                            <button onClick={onClick} className="search-element-button">{buttonText}</button>
                         </div>
                     </div> :
                     <div className="row search-element-padding">
