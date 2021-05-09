@@ -11,18 +11,18 @@ import Dropdown from './DropDown';
 const SearchElement = ({ buttonText, onClick }) => {
     const options = [
         {
+            label: "Search Type",
+            data: [{ id: 0, label: "Job", type: "searchtype" }, { id: 1, label: "Resume", type: "searchtype" }, { id: 2, label: "Company", type: "searchtype" }],
+            icon: search_caret_down
+        },
+        {
+            label: "Location",
+            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
+            icon: search_caret_down
+        },
+        {
             label: "Category",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
-            icon: search_caret_down
-        },
-        {
-            label: "Job Type",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
-            icon: search_caret_down
-        },
-        {
-            label: "Job Location",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
+            data: [{ id: 0, label: "Technology", type: "category" }, { id: 1, label: "Real Estate", type: "category" }, { id: 2, label: "Services", type: "category" }],
             icon: search_caret_down
         },
     ]
