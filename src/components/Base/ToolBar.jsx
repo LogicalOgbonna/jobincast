@@ -21,15 +21,13 @@ const ToolBar = () => {
                     <NavLink className={activePage('/jobs')} to="/jobs">JOBS</NavLink>
                     <NavLink className={activePage('/resume')} to="/resume">RESUME</NavLink>
                     <NavLink className={activePage('/companies')} to="/companies">COMPANIES</NavLink>
-                    <NavLink className={activePage('/blog')} to="/blog">BLOG</NavLink>
+                    <NavLink className={activePage('/blogs')} to="/blogs">BLOG</NavLink>
                     <NavLink className={activePage('/contact-us')} to="/contact-us">CONTACT US</NavLink>
                 </div>
                 <div className="col-md-4 d-flex align-items-center justify-content-end">
                     <div className="tool-bar-button">
-                        <i className="fa fa-key" />
-                        <Button size="small">Login</Button>
-                        <span className="px-2">|</span>
-                        <Button size="small">Register</Button>
+
+                        <Button size="small" onClick={() => history.push('/auth?action=login')}><i className="fa fa-key pr-2" /> Login <span className="px-2">|</span>Register </Button>
                     </div>
 
                     <Button onClick={() => history.push("/search")} className={`${activePage('/search')} search-button`}><i className="fa fa-search" /></Button>

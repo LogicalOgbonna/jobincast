@@ -9,6 +9,10 @@ import ContaceUsPage from "../Pages/ContaceUs/ContaceUsPage";
 import TermsAndConditionPage from "../Pages/TermsAndCondition/TermsAndConditionPage";
 import PrivacyPage from "../Pages/Privacy/PrivacyPage";
 import SearchPage from "../Pages/Search/SearchPage";
+import AuthPage from "../Pages/Auth/AuthPage";
+import BlogsPage from "../Pages/Blogs/BlogsPage";
+import BlogPage from "../Pages/Blogs/BlogPage";
+// import AuthPage from "../Pages/Auth/AuthPage";
 
 import {
     BrowserRouter as Router,
@@ -17,6 +21,7 @@ import {
     // Redirect,
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+
 
 const browserHistory = createBrowserHistory();
 
@@ -34,6 +39,9 @@ const AppRouter = () => (
             <Route exact path="/terms" component={TermsAndConditionPage} />
             <Route exact path="/privacy" component={PrivacyPage} />
             <Route exact path="/search" component={SearchPage} />
+            <Route exact path="/auth" component={AuthPage} />
+            <Route exact path="/blogs" component={BlogsPage} />
+            <Route exact path="/blog/:id" component={BlogPage} />
         </Switch>
     </Router>
 );

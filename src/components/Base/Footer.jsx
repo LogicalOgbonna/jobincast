@@ -18,9 +18,9 @@ const Footer = () => {
                         <Button className="w-25 footer-block-first-row-subscribe footer-block-first-row-subscribe-button text-white">Subscribe</Button>
                     </div>
                     <div className="col-md-2">
-                        <a href="/" class="button-round"><i class="fa fa-google-plus"></i></a>
-                        <a href="/" class="button-round"><i class="fa fa-twitter"></i></a>
-                        <a href="/" class="button-round"><i class="fa fa-facebook"></i></a>
+                        <a href="/" className="button-round"><i className="fa fa-google-plus"></i></a>
+                        <a href="/" className="button-round"><i className="fa fa-twitter"></i></a>
+                        <a href="/" className="button-round"><i className="fa fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
