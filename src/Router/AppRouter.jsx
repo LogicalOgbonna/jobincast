@@ -2,6 +2,7 @@ import { createBrowserHistory } from 'history';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Applicants from '../Pages/Applicants/Applicants';
 
 import AuthPage from '../Pages/Auth/AuthPage';
 import BlogPage from '../Pages/Blogs/BlogPage';
@@ -52,6 +53,7 @@ const AppRouter = () => {
                 <Route exact path="/blog/:id" component={BlogPage} />
                 {localStorage.getItem("jobincast::user:token") && <Route exact path="/profile" component={ProfilePage} />}
                 {authority === "EMPLOYER" && <Route exact path="/employer/jobs" component={EmployerJobsPage} />}
+                {authority === "EMPLOYER" && <Route exact path="/employer/applicants" component={Applicants} />}
             </Switch>
         </Router>
     )

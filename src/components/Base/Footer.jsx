@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className="footer-block">
+        <div className="footer-block desktop-layout">
             <div className="container">
                 <div className="footer-block-first-row row">
                     <div className="col-md-5 p-0">
