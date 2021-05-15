@@ -4,11 +4,11 @@ import React from 'react';
 const Login = ({ loading, history, onFinish, page }) => {
     if (!page || page !== "login") return null;
     return (
-        <Form layout="vertical" onFinish={onFinish}>
-            <Form.Item name="email" required label="Email">
+        <Form layout="vertical" onFinish={onFinish} className="justify-content-center">
+            <Form.Item name="email" required label="Email" className="logininput">
                 <Input className="auth-inputs" placeholder="Email" />
             </Form.Item>
-            <Form.Item name="password" required label="Password">
+            <Form.Item name="password" required label="Password" className="logininput">
                 <Input.Password className="auth-inputs" placeholder="Password" />
             </Form.Item>
             <Form.Item name="check" className="text-center" required>

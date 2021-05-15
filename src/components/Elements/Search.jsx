@@ -11,18 +11,18 @@ import Dropdown from './DropDown';
 const SearchElement = ({ buttonText, onClick }) => {
     const options = [
         {
+            label: "Search Type",
+            data: [{ id: 0, label: "Job", type: "searchtype" }, { id: 1, label: "Resume", type: "searchtype" }, { id: 2, label: "Company", type: "searchtype" }],
+            icon: search_caret_down
+        },
+        {
+            label: "Location",
+            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
+            icon: search_caret_down
+        },
+        {
             label: "Category",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
-            icon: search_caret_down
-        },
-        {
-            label: "Job Type",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
-            icon: search_caret_down
-        },
-        {
-            label: "Job Location",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
+            data: [{ id: 0, label: "Technology", type: "category" }, { id: 1, label: "Real Estate", type: "category" }, { id: 2, label: "Services", type: "category" }],
             icon: search_caret_down
         },
     ]
@@ -30,12 +30,12 @@ const SearchElement = ({ buttonText, onClick }) => {
         <div className="search-element">
             <div className="container">
                 {window.location.pathname === "/search" ?
-                    <div className="row align-items-center">
+                    <div className="row align-items-center search-element-padding">
                         <div className="col-md-5">
                             <Input prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
                         </div>
                         <div className="col-md-5 search-page-filter">
-                            {options.map(option => <Dropdown className="bg-white" options={option.data} label={option.label} img={option.icon} />)}
+                            {options.map(option => <Dropdown className="bg-fb" options={option.data} label={option.label} img={option.icon} />)}
                         </div>
                         <div className="col-md-2 text-right">
                             <button onClick={onClick} className="search-element-button">{buttonText}</button>

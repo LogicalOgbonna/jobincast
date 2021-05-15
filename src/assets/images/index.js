@@ -5,6 +5,9 @@ import career_tip_1 from "./carrer_tip_1.png";
 import career_tip_2 from "./carrer_tip_2.png";
 import career_tip_3 from "./carrer_tip_3.png";
 import career_tip_4 from "./carrer_tip_4.png";
+import veggies from "./veggies.jpg";
+import phone from "./phone.jpg";
+
 
 export {
     treehouse,
@@ -14,4 +17,6 @@ export {
     career_tip_2,
     career_tip_3,
     career_tip_4,
+    veggies,
+    phone,
 }

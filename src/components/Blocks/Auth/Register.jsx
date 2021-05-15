@@ -84,7 +84,7 @@ const Register = ({ onFinish, loading, page }) => {
             <Form.Item
                 name="agreement"
                 valuePropName="checked"
-                className="text-center"
+                className="text-center alertcheck"
                 rules={[
                     {
                         validator: (_, value) =>

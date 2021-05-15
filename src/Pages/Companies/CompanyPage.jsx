@@ -15,12 +15,13 @@ const CompanyPage = () => {
                         <div className="col-md-10 text-center">
                             <Avatar size={100} />
                             <h2 className="company-page-company-name">Bridge IT Solutions</h2>
-                            <p>We Create the Internet</p>
+                            <p className= "slogan">We Create the Internet</p>
                         </div>
                         <div className="col-md-10 company-details">
-                            <p><i class="fa fa-sitemap pr-2" aria-hidden="true"  />Company Category :  input</p>
-                            <p><i class="fa fa-users pr-2" aria-hidden="true"  /> Company Size :  input</p>
-                            <p><i className="fa fa-briefcase pr-2" aria-hidden="true" /> Job Listings : 3 Jobs Available</p>
+                            <h4 className= "lh50">Company Information</h4>
+                            <p className= "text-muted"><i class="fa fa-sitemap pr-2" aria-hidden="true"  />Company Category :  input</p>
+                            <p className= "text-muted"><i class="fa fa-users pr-2" aria-hidden="true"  /> Company Size :  input</p>
+                            <p className= "text-muted"><i className="fa fa-briefcase pr-2" aria-hidden="true" /> Job Listings : 3 Jobs Available</p>
 
                             <p className="company-details-title">Company Description</p>
 
@@ -33,6 +34,8 @@ const CompanyPage = () => {
                             <p>Address : address entered</p>
                             <p>State :  inputed value</p>
                             <p>Country : input</p>
+                            <br></br>
+                            <br></br>
 
                             <JobList />
                         </div>
