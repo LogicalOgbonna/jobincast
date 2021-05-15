@@ -14,9 +14,6 @@ const menu = ({ roles }) => {
     const { authority } = roles[0];
     return (
         <Menu style={{ borderRadius: "10px", padding: "10px" }}>
-            <Menu.Item key="0">
-                <NavLink to="/profile?action=view">My Profile</NavLink>
-            </Menu.Item>
             {authority === "APPLICANT" &&
                 <Menu.Item key="1">
                     <NavLink to="/myApplication">My Applications</NavLink>
@@ -24,14 +21,17 @@ const menu = ({ roles }) => {
             }
             {authority === "EMPLOYER" &&
                 <Menu.Item key="1">
-                    <NavLink to="/myJobs">My Jobs</NavLink>
+                    <NavLink to="/employer/applicants">Applicants</NavLink>
                 </Menu.Item>
             }
             {authority === "EMPLOYER" &&
                 <Menu.Item key="1">
-                    <NavLink to="/myDownloads">My Downloads</NavLink>
+                    <NavLink to="/employer/jobs">My Jobs</NavLink>
                 </Menu.Item>
             }
+            <Menu.Item key="0">
+                <NavLink to="/profile?action=view">My Profile</NavLink>
+            </Menu.Item>
         </Menu>
     )
 };
@@ -45,7 +45,7 @@ const ToolBar = () => {
         window.location.href = "/";
     }
     return (
-        <div className={`tool-bar ${shadow()}`}>
+        <div className={`tool-bar ${shadow()} desktop-layout`}>
             <div className="row">
                 <div className="col-md-2">
                     <NavLink to="/">
@@ -67,7 +67,7 @@ const ToolBar = () => {
 
                     {loggedIn && <div className="user-menu">
                         <Dropdown overlayStyle={{ width: "200px" }} overlay={() => menu(user)} trigger={['click']}>
-                            <div className="">
+                            <div className="user-avatar">
                                 <Avatar src={logo} size={36} /> <span className="px-3">{user?.firstName}</span>
                             </div>
                         </Dropdown>

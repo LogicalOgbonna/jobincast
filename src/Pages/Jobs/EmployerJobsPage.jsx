@@ -1,13 +1,12 @@
 import './EmployerJobsPage.less';
 import 'react-phone-input-2/lib/style.css';
 
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { Table } from 'antd';
 import React from 'react';
 
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import UserHeading from '../../components/Elements/UserHeading';
-import { Table } from 'antd';
-import { NavLink } from 'react-router-dom';
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 const EmployerJobsPage = () => {
 

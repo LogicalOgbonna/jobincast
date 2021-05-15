@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import queryString from 'query-string';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import { registerAction, verifyEmailAction, loginAction } from '../../store/auth/actions';
@@ -22,7 +22,9 @@ const AuthPage = ({ history: { location: { search } } }) => {
     const submitVerifyEmail = (data) => dispatch(verifyEmailAction({ data }))
     const submitLogin = (data) => dispatch(loginAction({ data, history }))
 
+    
     const { loginLoading, registerLoading, resetPasswordLoading, verifyEmailLoading } = useSelector(({ authSlice }) => authSlice);
+    if(localStorage.getItem("jobincast::user:token")) return <Redirect path="/" />;
     return (
         <BaseMarkup className="background-image-left">
             <div className="desktop-layout">
