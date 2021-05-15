@@ -1,7 +1,8 @@
 import { Button, Form, Input, Checkbox } from 'antd';
 import React from 'react';
 
-const Login = ({ loading, history, onFinish }) => {
+const Login = ({ loading, history, onFinish, page }) => {
+    if (!page || page !== "login") return null;
     return (
         <Form layout="vertical" onFinish={onFinish}>
             <Form.Item name="email" required label="Email">

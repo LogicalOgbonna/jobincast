@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 const { Option } = Select;
 
-const Register = ({ onFinish, loading, }) => {
+const Register = ({ onFinish, loading, page }) => {
+    if(page !== "register") return null;
     return (
         <Form layout="vertical" onFinish={onFinish}>
             <div className="row">

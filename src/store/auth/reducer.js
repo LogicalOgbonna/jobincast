@@ -14,13 +14,13 @@ const authSlice = createSlice({
             ...state,
             [action.payload.type]: action.payload.value
         }),
-        setusers: (state, action) => ({
+        setUser: (state, action) => ({
             ...state,
             user: action.payload
         })
     }
 })
 
-export const { setLoading, setusers } = authSlice.actions;
+export const { setLoading, setUser } = authSlice.actions;
 
 export default authSlice.reducer;

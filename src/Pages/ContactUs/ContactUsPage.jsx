@@ -5,10 +5,10 @@ import LeftColumn from '../../components/Base/Columns/LeftColumn'
 import RightColumn from '../../components/Base/Columns/RightColumn'
 import ContactUsCards from '../../components/Blocks/ContactUs/ContactUsCards'
 import ContactUsFormBlock from '../../components/Blocks/ContactUs/ContactUsFormBlock'
-import './ContaceUsPage.less'
+import './ContactUsPage.less'
 
 
-const ContaceUsPage = () => {
+const ContactUsPage = () => {
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout contact-us-page">
@@ -81,4 +81,4 @@ For other country,  send will submit message to the respective country email add
     )
 }
 
-export default ContaceUsPage
+export default ContactUsPage

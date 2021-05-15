@@ -1,7 +1,8 @@
 import { Button, Form, Input } from 'antd';
 import React from 'react';
 
-const ForgotPassword = ({ loading, onFinish }) => {
+const ForgotPassword = ({ loading, onFinish, page }) => {
+    if(page !== "reset-password") return null;
     return (
         <React.Fragment>
             <p>Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.</p>

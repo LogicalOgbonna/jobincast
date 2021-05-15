@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import { registerAction, verifyEmailAction, loginAction } from '../../store/auth/actions';
-import { ForgotPasswordBlock, LoginBlock, RegisterBlock, AcctivateAccountBlock } from './Blocks';
+import { ForgotPasswordBlock, LoginBlock, RegisterBlock, ActivateAccountBlock } from '../../components/Blocks/Auth';
 
 
 
@@ -19,25 +19,10 @@ const AuthPage = ({ history: { location: { search } } }) => {
     const { action, email } = queryString.parse(search)
 
     const submitRegister = (data) => dispatch(registerAction({ data, history }))
-    const submitVeriyEmail = (data) => dispatch(verifyEmailAction({ data, history }))
+    const submitVerifyEmail = (data) => dispatch(verifyEmailAction({ data }))
     const submitLogin = (data) => dispatch(loginAction({ data, history }))
 
     const { loginLoading, registerLoading, resetPasswordLoading, verifyEmailLoading } = useSelector(({ authSlice }) => authSlice);
-
-    const renderDetails = (type) => {
-        switch (type) {
-            case "login":
-                return <LoginBlock history={history} loading={loginLoading} onFinish={submitLogin} />
-            case "register":
-                return <RegisterBlock history={history} loading={registerLoading} onFinish={submitRegister} />
-            case "reset-password":
-                return <ForgotPasswordBlock history={history} loading={resetPasswordLoading} onFinish={(data => console.log(data))} />
-            case "activate-account":
-                return <AcctivateAccountBlock email={email} history={history} loading={verifyEmailLoading} onFinish={submitVeriyEmail} />
-            default:
-                return <LoginBlock history={history} loading={loginLoading} onFinish={submitLogin} />;
-        }
-    }
     return (
         <BaseMarkup className="background-image-left">
             <div className="desktop-layout">
@@ -61,7 +46,30 @@ const AuthPage = ({ history: { location: { search } } }) => {
                             </div>}
                             <div className="row justify-content-center py-5">
                                 <div className="col-md-10">
-                                    {renderDetails(action)}
+                                    <LoginBlock
+                                        history={history}
+                                        loading={loginLoading}
+                                        onFinish={submitLogin}
+                                        page={action}
+                                    />
+                                    <RegisterBlock
+                                        history={history}
+                                        loading={registerLoading}
+                                        onFinish={submitRegister}
+                                        page={action}
+                                    />
+                                    <ForgotPasswordBlock
+                                        history={history}
+                                        loading={resetPasswordLoading}
+                                        onFinish={(data => console.log(data))}
+                                        page={action}
+                                    />
+                                    <ActivateAccountBlock email={email}
+                                        history={history}
+                                        loading={verifyEmailLoading}
+                                        onFinish={submitVerifyEmail}
+                                        page={action}
+                                    />
                                 </div>
                             </div>
                         </div>

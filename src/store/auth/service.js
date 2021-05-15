@@ -24,9 +24,9 @@ export const verifyEmailService = async token => {
         return errorHandler(e)
     }
 }
-export const loginService = async credentials => {
+export const loginService = async ({ email, password }) => {
     try {
-        const { data } = await jobincast.post(`/auth/login`, credentials);
+        const { data } = await jobincast.post(`/auth/login`, { username: email, password });
         return {
             success: true,
             message: data

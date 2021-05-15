@@ -15,6 +15,8 @@ import purpleDropdown from "./purpleDropdown.svg";
 import skyblueDropdown from "./skyblueDropdown.svg";
 import people from "./people.svg";
 import search_caret_down from "./search_caret_down.svg";
+import stepper_active from "./stepper_active.svg";
+import stepper_non_active from "./stepper_non_active.svg";
 
 export {
     addressBook,
@@ -33,5 +35,7 @@ export {
     skyblueDropdown,
     purpleDropdown,
     people,
-    search_caret_down
+    search_caret_down,
+    stepper_active,
+    stepper_non_active
 }

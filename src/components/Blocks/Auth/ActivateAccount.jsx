@@ -1,6 +1,7 @@
 import { Button, Form, Input } from 'antd';
 import React from 'react';
-const AcctivateAccount = ({ loading, onFinish, email }) => {
+const ActivateAccount = ({ loading, onFinish, email, page }) => {
+    if(page !== "activate-account") return null;
     return (
         <React.Fragment>
             <p>Please enter token sent to <span className="text-danger">{email}</span></p>
@@ -20,4 +21,4 @@ const AcctivateAccount = ({ loading, onFinish, email }) => {
     )
 }
 
-export default AcctivateAccount
+export default ActivateAccount

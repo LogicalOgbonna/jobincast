@@ -1,6 +1,14 @@
 import { registerService, verifyEmailService, loginService } from './service'
-import { setLoading, setusers } from './reducer'
+import { setLoading, setUser } from './reducer'
 import { notification } from 'antd';
+import { setDefaultBearer } from '../../axios';
+import jwtDecode from "jwt-decode";
+
+export const decodeToken = (token) => {
+    if (token) return jwtDecode(token);
+    if (localStorage["jobincast::user:token"]) return jwtDecode(localStorage["jobincast::user:token"])
+    return null;
+}
 
 const registerMW = (store) => (next) => async action => {
     if (action.type !== 'user/register') return next(action);
@@ -20,7 +28,7 @@ const registerMW = (store) => (next) => async action => {
         description: 'Activation code has been sent to your email'
     })
 
-    store.dispatch(setusers(message))
+    store.dispatch(setUser(message))
     history.push(`/auth?action=activate-account&email=${message.email}`)
 
 }
@@ -28,7 +36,7 @@ const registerMW = (store) => (next) => async action => {
 const verifyEmailMW = (store) => (next) => async action => {
     if (action.type !== 'user/verify-email') return next(action);
     store.dispatch(setLoading({ type: "verifyEmailLoading", value: true }))
-    const { data: { token }, history } = action.payload
+    const { data: { token } } = action.payload
 
     const { message, success } = await verifyEmailService(token);
     store.dispatch(setLoading({ type: "verifyEmailLoading", value: false }))
@@ -38,13 +46,10 @@ const verifyEmailMW = (store) => (next) => async action => {
             duration: 10
         })
     }
-
-    notification.success({
-        message: 'Email verified',
-        description: 'Welcome to JobInCast'
-    })
-    store.dispatch(setusers(message))
-    history.push('/dashboard')
+    setDefaultBearer(message.loginResponse.token)
+    localStorage.setItem("jobincast::user:token", message.loginResponse.token)
+    store.dispatch(setUser(decodeToken(message.loginResponse.token)))
+    window.location.href = "/profile?action=setup&step=1"
 }
 
 const loginMW = (store) => (next) => async action => {
@@ -63,11 +68,18 @@ const loginMW = (store) => (next) => async action => {
     notification.success({
         description: 'Welcome back'
     })
-    store.dispatch(setusers(message))
-    history.push('/dashboard')
+    localStorage.setItem("jobincast::user:token", message.token)
+    store.dispatch(setUser(decodeToken(message.token)))
+    history.push('/')
 
 }
 
-const authMiddleware = [registerMW, verifyEmailMW, loginMW];
+const setUserFromLocalStorageMW = store => next => action => {
+    if (action.type !== 'app/set-user-from-local-storage') return next(action);
+    store.dispatch(setUser(decodeToken()))
+
+}
+
+const authMiddleware = [registerMW, verifyEmailMW, loginMW, setUserFromLocalStorageMW];
 
 export default authMiddleware
