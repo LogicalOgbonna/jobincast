@@ -16,7 +16,7 @@ const menu = ({ roles }) => {
         <Menu style={{ borderRadius: "10px", padding: "10px" }}>
             {authority === "APPLICANT" &&
                 <Menu.Item key="1">
-                    <NavLink to="/myApplication">My Applications</NavLink>
+                    <NavLink to="/applicant/applications">My Applications</NavLink>
                 </Menu.Item>
             }
             {authority === "EMPLOYER" &&
@@ -38,8 +38,7 @@ const menu = ({ roles }) => {
 const ToolBar = () => {
     const loggedIn = localStorage.getItem("jobincast::user:token")
     const history = useHistory()
-    const user = useSelector(({ authSlice: { user } }) => user)
-
+    const { user, profile } = useSelector(({ authSlice: { user }, profileSlice: { profile } }) => ({ user, profile }))
     const logout = () => {
         localStorage.clear()
         window.location.href = "/";
@@ -68,7 +67,7 @@ const ToolBar = () => {
                     {loggedIn && <div className="user-menu">
                         <Dropdown overlayStyle={{ width: "200px" }} overlay={() => menu(user)} trigger={['click']}>
                             <div className="user-avatar">
-                                <Avatar src={logo} size={36} /> <span className="px-3">{user?.firstName}</span>
+                                <Avatar src={profile ? profile?.imageUrl : logo} size={36} /> <span className="px-3">{user?.firstName}</span>
                             </div>
                         </Dropdown>
                             |

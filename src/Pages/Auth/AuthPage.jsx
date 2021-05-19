@@ -22,9 +22,9 @@ const AuthPage = ({ history: { location: { search } } }) => {
     const submitVerifyEmail = (data) => dispatch(verifyEmailAction({ data }))
     const submitLogin = (data) => dispatch(loginAction({ data, history }))
 
-    
+
     const { loginLoading, registerLoading, resetPasswordLoading, verifyEmailLoading } = useSelector(({ authSlice }) => authSlice);
-    if(localStorage.getItem("jobincast::user:token")) return <Redirect path="/" />;
+    if (localStorage.getItem("jobincast::user:token")) return <Redirect path="/" />;
     return (
         <BaseMarkup className="background-image-left">
             <div className="desktop-layout">
@@ -66,7 +66,8 @@ const AuthPage = ({ history: { location: { search } } }) => {
                                         onFinish={(data => console.log(data))}
                                         page={action}
                                     />
-                                    <ActivateAccountBlock email={email}
+                                    <ActivateAccountBlock
+                                        email={email}
                                         history={history}
                                         loading={verifyEmailLoading}
                                         onFinish={submitVerifyEmail}

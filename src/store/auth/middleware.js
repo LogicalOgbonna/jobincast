@@ -49,7 +49,7 @@ const verifyEmailMW = (store) => (next) => async action => {
     setDefaultBearer(message.loginResponse.token)
     localStorage.setItem("jobincast::user:token", message.loginResponse.token)
     store.dispatch(setUser(decodeToken(message.loginResponse.token)))
-    window.location.href = "/profile?action=setup&step=1"
+    window.location.href = `/profile?action=setup&step=1&accountType=${message.userDTO.userType}`
 }
 
 const loginMW = (store) => (next) => async action => {

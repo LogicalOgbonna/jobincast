@@ -1,93 +1,62 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react'
 
-import { Button, Form, Input } from 'antd';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-import PhoneInput from 'react-phone-input-2';
+import { Button, Form, Input, Select } from 'antd';
+import { useSelector } from 'react-redux';
 
-const GeneralInformation = ({ finishGeneralInfo }) => {
-    return <Form layout="vertical" onFinish={finishGeneralInfo}>
+const { Option } = Select;
+
+const GeneralInformation = ({ finishGeneralInfo, accountType, loading }) => {
+
+    const [form] = Form.useForm()
+
+    const profile = useSelector(({ profileSlice: { profile } }) => profile)
+    useEffect(() => {
+        if(profile) form.setFieldsValue(profile)
+    }, [profile])
+
+    return <Form form={form} layout="vertical" onFinish={finishGeneralInfo}>
         <div className="row">
             <div className="col-12 col-md-6">
-                <Form.Item label="Resume Title" name="resumeTitle" rules={[{ required: true, message: "Title is required" }]}>
-                    <Input placeholder="e.g John Doe Resume" className="profile-inputs" />
+                <Form.Item label="Teaser" name="shortBio" rules={[{ required: true, message: "Title is required" }]}>
+                    <Input placeholder="e.g I'm available for work" className="profile-inputs" />
                 </Form.Item>
             </div>
             <div className="col-12 col-md-6">
-                <Form.Item label="Job Title" name="jobTitle" rules={[{ required: true, message: "Job Title is required" }]}>
-                    <Input placeholder="e.g Senior Frontend Engineer" className="profile-inputs" />
-                </Form.Item>
-            </div>
-            <div className="col-12 col-md-6">
-                <Form.Item label="Languages" name="languages" rules={[{ required: true, message: "Language is required" }]}>
+                <Form.Item label="Languages" name="language" rules={[{ required: true, message: "Language is required" }]}>
                     <Input placeholder="e.g English, French, German, e.t.c" className="profile-inputs" />
                 </Form.Item>
             </div>
             <div className="col-12 col-md-6">
-                <Form.Item label="Highest Degree Level" name="languages" rules={[{ required: true, message: "Degree is required" }]}>
-                    <Input placeholder="e.g English, French, German, e.t.c" className="profile-inputs" />
+                <Form.Item label="Years of Experience" name="yearsOfExperience" rules={[{ required: true, message: "Years of Experience is required" }]}>
+                    <Select placeholder="e.g 0-1 year" className="profile-inputs">
+                        <Option value="0-1"> 0-1 Year </Option>
+                        <Option value="2-5">2-5 Years </Option>
+                        <Option value="6-10">6-10 Years </Option>
+                    </Select>
                 </Form.Item>
             </div>
             <div className="col-12 col-md-6">
-                <Form.Item label="Country" name="country" rules={[{ required: true, message: "Country is required" }]}>
-                    <CountryDropdown
-                        classes="profile-inputs w-100"
-                        onChange={(val) => console.log(val)}
-                    />
+                <Form.Item label="Highest Degree Level" name="degree" rules={[{ required: true, message: "Degree is required" }]}>
+                    <Select placeholder="e.g BSc" className="profile-inputs">
+                        <Option value="BSc"> BSc </Option>
+                        <Option value="Masters">Masters </Option>
+                        <Option value="PhD">PhD </Option>
+                    </Select>
                 </Form.Item>
             </div>
-            <div className="col-12 col-md-6">
-                <Form.Item label="State/Province" name="region" rules={[{ required: true, message: "State/Province is required" }]}>
-                    <RegionDropdown
-                        classes="profile-inputs w-100"
-                        country={"ngn"}
-                        onChange={(val) => console.log(val)}
-                    />
-                </Form.Item>
-            </div>
+
             <div className="col-12">
-                <Form.Item label="Professional Summary" name="bio" rules={[{ required: true, message: "This field is required" }]}>
+                <Form.Item label="Professional Summary" name="fullBio" rules={[{ required: true, message: "This field is required" }]}>
                     <Input.TextArea style={{ borderRadius: "10px" }} rows={6} />
                 </Form.Item>
             </div>
 
-            <div className="col-12">
-                <h3>Contact Information</h3>
-            </div>
-
-            <div className="col-12 col-md-6">
-                <Form.Item label="Phone Number" name="phone" rules={[{ type: "tel", require: true, message: "Phone Number is required" }]}>
-                    <PhoneInput
-                        inputClass="profile-inputs w-100"
-                        country={'us'}
-                        onChange={phone => console.log({ phone })}
-                    />
-                </Form.Item>
-            </div>
-            <div className="col-12 col-md-6">
-                <Form.Item label="Portfolio" name="portfolio" rules={[{ type: "url" }]}>
-                    <Input placeholder="https://" className="profile-inputs" />
-                </Form.Item>
-            </div>
-            <div className="col-12 col-md-6">
-                <Form.Item label="Facebook" name="facebook" rules={[{ type: "url" }]}>
-                    <Input placeholder="https://" className="profile-inputs" />
-                </Form.Item>
-            </div>
-            <div className="col-12 col-md-6">
-                <Form.Item label="Twitter" name="twitter" rules={[{ type: "url" }]}>
-                    <Input placeholder="https://" className="profile-inputs" />
-                </Form.Item>
-            </div>
-            <div className="col-12 col-md-6">
-                <Form.Item label="linkedIn" name="LinkedIn" rules={[{ type: "url" }]}>
-                    <Input placeholder="https://" className="profile-inputs" />
-                </Form.Item>
-            </div>
             <div className="col-12 text-center">
-                <Button htmlType="submit" className="button-blue">Continue</Button>
+                <Button loading={loading} htmlType="submit" className="button-blue">Continue</Button>
             </div>
         </div>
-    </Form>
+    </Form >
 }
 
 export default GeneralInformation

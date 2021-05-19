@@ -7,13 +7,17 @@ import { setDefaultBearer } from './axios';
 import AppRouter from './Router/AppRouter';
 import { store } from './store';
 
+
 setDefaultBearer(localStorage["jobincast::user:token"]);
 function App() {
   
   return (
     <Provider store={store}>
       <HelmetProvider>
-        <AppRouter />
+        
+
+          <AppRouter />
+        
       </HelmetProvider>
     </Provider>
   );

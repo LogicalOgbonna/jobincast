@@ -1,12 +1,14 @@
 import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import authMiddleware from './auth/middleware';
-import filterMiddlerware from './filter/middleware'
+import filterMiddleware from './filter/middleware'
+import profileMiddleware from './profile/middleware'
 
 
 const middleware = [
   ...getDefaultMiddleware(),
-  ...filterMiddlerware,
-  ...authMiddleware
+  ...filterMiddleware,
+  ...authMiddleware,
+  ...profileMiddleware
 ]
 
 export default middleware;

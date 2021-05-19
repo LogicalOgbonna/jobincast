@@ -3,9 +3,11 @@ import { combineReducers } from '@reduxjs/toolkit';
 // import { persistReducer } from 'redux-persist';
 import filterSlice from './filter/reducer'
 import authSlice from './auth/reducer'
+import profileSlice from './profile/reducer'
 const reducers = combineReducers({
     filterSlice,
-    authSlice
+    authSlice,
+    profileSlice
 });
 
 // const persistConfig = {
