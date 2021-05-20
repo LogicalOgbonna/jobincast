@@ -3,6 +3,8 @@ import { setLoading, setUser } from './reducer'
 import { notification } from 'antd';
 import { setDefaultBearer } from '../../axios';
 import jwtDecode from "jwt-decode";
+import { getFullProfileService } from '../profile/service';
+import { setProfile } from '../profile/reducer';
 
 export const decodeToken = (token) => {
     if (token) return jwtDecode(token);
@@ -64,12 +66,22 @@ const loginMW = (store) => (next) => async action => {
             duration: 10
         })
     }
+    setDefaultBearer(message.token)
+    localStorage.setItem("jobincast::user:token", message.token)
 
+    const { message: user, success: userSuccess } = await getFullProfileService();
+    if (!userSuccess) {
+        return notification.error({
+            description: message,
+            duration: 10
+        })
+    }
     notification.success({
         description: 'Welcome back'
     })
-    localStorage.setItem("jobincast::user:token", message.token)
+
     store.dispatch(setUser(decodeToken(message.token)))
+    store.dispatch(setProfile(user))
     history.push('/')
 
 }

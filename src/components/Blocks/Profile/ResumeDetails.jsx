@@ -130,7 +130,7 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                             {
                                 validator: async (_, names) => {
                                     if (!names || names.length < 1) {
-                                        return Promise.reject(new Error('Please add at least one degree'));
+                                        return Promise.reject(new Error('Please add at least one experience'));
                                     }
                                 },
                             },
@@ -240,7 +240,7 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                             {
                                 validator: async (_, names) => {
                                     if (!names || names.length < 1) {
-                                        return Promise.reject(new Error('Please add at least one degree'));
+                                        return Promise.reject(new Error('Please add at least one skill'));
                                     }
                                 },
                             },
@@ -330,7 +330,7 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                             {
                                 validator: async (_, names) => {
                                     if (!names || names.length < 1) {
-                                        return Promise.reject(new Error('Please add at least one degree'));
+                                        return Promise.reject(new Error('Please add at least one award'));
                                     }
                                 },
                             },
@@ -409,9 +409,9 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                                                         validateTrigger={['onChange', 'onBlur']}
                                                         rules={[
                                                             {
-                                                                required: true,
+                                                                // required: true,
                                                                 whitespace: true,
-                                                                message: "Please input Year Awarded or delete this field.",
+                                                                // message: "Please input Year Awarded or delete this field.",
                                                                 type: "url"
                                                             },
                                                         ]}
