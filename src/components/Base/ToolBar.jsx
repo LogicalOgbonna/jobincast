@@ -67,11 +67,11 @@ const ToolBar = () => {
                     {loggedIn && <div className="user-menu">
                         <Dropdown overlayStyle={{ width: "200px" }} overlay={() => menu(user)} trigger={['click']}>
                             <div className="user-avatar">
-                                <Avatar src={profile ? profile?.imageUrl : logo} size={36} /> <span className="px-3">{user?.firstName}</span>
+                                <Avatar src={profile ? profile?.imageUrl : logo} size={36} /> <span className="avatarname px-3">{user?.firstName}</span>
                             </div>
                         </Dropdown>
                             |
-                            <button className="user-menu-button px-3" type="link" onClick={logout}>Logout</button>
+                            <button className="user-menu-button avatarname px-3" type="link" onClick={logout}>Logout</button>
                     </div>}
                     <Button onClick={() => history.push("/search")} className={`${activePage('/search')} search-button`}><i className="fa fa-search" /></Button>
                 </div>

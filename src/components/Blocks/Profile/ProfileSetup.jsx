@@ -42,7 +42,7 @@ const ProfileSetup = ({ action }) => {
             content: <GeneralInformation loading={generalInfoLoading} accountType={accountType} finishGeneralInfo={finishGeneralInfo} />
         },
         {
-            title: "Contact",
+            title: "Contact Information",
             content: <ContactInfo loading={contactInfoLoading} accountType={accountType} onFinish={onFinishContactInfo} />
         },
         {

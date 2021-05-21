@@ -37,7 +37,7 @@ const UserHeading = ({ message, action, subMessage, className }) => {
     return (
         <div className={`col-md-11 user-heading-element ${action === "view" ? "pb-70" : ""}`}>
             <div className="row justify-content-between">
-                <div className="col-md-6 d-flex">
+                <div className="col-md-6 d-flex aphadong">
                     <ImgCrop aspect={1} shape="round" modalOk="Ok">
                         <Upload customRequest={customRequest}>
                             <Avatar style={{ cursor: "pointer" }} src={profile?.imageUrl} size={100}>
@@ -46,7 +46,7 @@ const UserHeading = ({ message, action, subMessage, className }) => {
                         </Upload>
                     </ImgCrop>
                     <div className="profile-page-header-text px-3 pt-2">
-                        <h2 className="profile-page-profile-name mb-0">{`${user?.firstName} ${user?.lastName}`.substr(0, 14)}</h2>
+                        <h4 className="profile-page-profile-name mb-0">{`${user?.firstName} ${user?.lastName}`.substr(0, 14)}</h4>
                         <p className="mb-0">{message}</p>
                         <p className="mb-0">{subMessage}</p>
                     </div>

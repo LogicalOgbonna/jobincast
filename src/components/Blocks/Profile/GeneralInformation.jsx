@@ -16,14 +16,19 @@ const GeneralInformation = ({ finishGeneralInfo, accountType, loading }) => {
     }, [profile])
 
     return <Form form={form} layout="vertical" onFinish={finishGeneralInfo}>
-        <div className="row">
-            <div className="col-12 col-md-6">
-                <Form.Item label="Teaser" name="shortBio" rules={[{ required: true, message: "Title is required" }]}>
-                    <Input placeholder="e.g I'm available for work" className="profile-inputs" />
+        <div className="row col-md-11 mid-position">
+        <div className="col-12 col-md-12">
+                <Form.Item label="Job Title" name="language" rules={[{ required: true, message: "Please enter your job title" }]}>
+                    <Input placeholder="e.g Graphic Designer" className="profile-inputs" />
                 </Form.Item>
             </div>
-            <div className="col-12 col-md-6">
-                <Form.Item label="Languages" name="language" rules={[{ required: true, message: "Language is required" }]}>
+            <div className="col-12 col-md-12">
+                <Form.Item label="Bio" name="shortBio" rules={[{ required: true, message: "Title is required" }]}>
+                    <Input.TextArea placeholder="e.g I'm available for work" style={{ borderRadius: "10px" }} rows={5} />
+                </Form.Item>
+            </div>
+            <div className="col-12 col-md-12">
+                <Form.Item label="Languages" name="language" rules={[{ required: false, message: "Language is required" }]}>
                     <Input placeholder="e.g English, French, German, e.t.c" className="profile-inputs" />
                 </Form.Item>
             </div>
@@ -48,7 +53,7 @@ const GeneralInformation = ({ finishGeneralInfo, accountType, loading }) => {
 
             <div className="col-12">
                 <Form.Item label="Professional Summary" name="fullBio" rules={[{ required: true, message: "This field is required" }]}>
-                    <Input.TextArea style={{ borderRadius: "10px" }} rows={6} />
+                    <Input.TextArea style={{ borderRadius: "10px" }} rows={12} />
                 </Form.Item>
             </div>
 
