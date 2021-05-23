@@ -3,6 +3,7 @@ import authMiddleware from './auth/middleware';
 import filterMiddleware from './filter/middleware'
 import profileMiddleware from './profile/middleware'
 import applicantsMiddleware from './applicants/middleware'
+import jobsMiddleware from './jobs/middleware'
 
 
 const middleware = [
@@ -10,7 +11,8 @@ const middleware = [
     ...filterMiddleware,
     ...authMiddleware,
     ...profileMiddleware,
-    ...applicantsMiddleware
+    ...applicantsMiddleware,
+    ...jobsMiddleware
 ]
 
 export default middleware;

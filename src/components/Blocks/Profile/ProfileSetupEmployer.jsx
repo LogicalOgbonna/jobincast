@@ -4,13 +4,14 @@ import { useHistory } from 'react-router';
 
 
 import Stepper from 'react-stepper-horizontal';
-import GeneralInformation from './Applicants/GeneralInformation';
-import ContactInfo from './Applicants/ContactInfo';
-import ResumeDetails from './Applicants/ResumeDetails';
-import PreviewProfile from './Applicants/PreviewProfile';
+import GeneralInformation from './Employers/GeneralInformation';
+import ContactInfo from './Employers/ContactInfo';
+// import ResumeDetails from './ResumeDetails';
+// import PreviewProfile from './PreviewProfile';
 import { useDispatch, useSelector } from 'react-redux';
 import { profileLoadingAction } from '../../../store/profile/action';
-const ProfileSetup = ({ action }) => {
+import JobDetails from './Employers/JobDetails';
+const ProfileSetupEmployer = ({ action }) => {
     const dispatch = useDispatch();
     const { location: { search }, push } = useHistory()
     const { step, accountType } = queryParams.parse(search)
@@ -22,7 +23,7 @@ const ProfileSetup = ({ action }) => {
     }, [step, accountType])
 
     if (action !== "setup") return null;
-    if (accountType !== "APPLICANT") return null;
+    if (accountType !== "EMPLOYER") return null;
 
     const finishGeneralInfo = async (data) => {
         dispatch(profileLoadingAction({ data, type: "generalInfoLoading", push, accountType }))
@@ -30,7 +31,8 @@ const ProfileSetup = ({ action }) => {
     const onFinishContactInfo = (data) => {
         dispatch(profileLoadingAction({ data, type: "contactInfoLoading", push, accountType }))
     }
-    const onFinishResumeDetails = (data) => {
+    const onJobDetailsFinish = (data) => {
+        console.log("🚀 ~ file: ProfileSetupEmployer.jsx ~ line 35 ~ onJobDetailsFinish ~ data", data)
         dispatch(profileLoadingAction({ data, type: "resumeInfoLoading", push, accountType }))
     }
     const onFinishPreview = () => {
@@ -40,25 +42,25 @@ const ProfileSetup = ({ action }) => {
         { title: "Registration" },
         {
             title: "General Information",
-            content: <GeneralInformation loading={generalInfoLoading} accountType={accountType} finishGeneralInfo={finishGeneralInfo} />
+            content: <GeneralInformation step={activeStep} loading={generalInfoLoading} accountType={accountType} finishGeneralInfo={finishGeneralInfo} />
         },
         {
             title: "Contact",
-            content: <ContactInfo loading={contactInfoLoading} accountType={accountType} onFinish={onFinishContactInfo} />
+            content: <ContactInfo step={activeStep} loading={contactInfoLoading} accountType={accountType} onFinish={onFinishContactInfo} />
         },
         {
-            title: "Resume Details",
-            content: <ResumeDetails loading={resumeInfoLoading} accountType={accountType} onFinish={onFinishResumeDetails} />
+            title: "Job Details",
+            content: <JobDetails step={activeStep} loading={resumeInfoLoading} accountType={accountType} onFinish={onJobDetailsFinish} />
         },
-        {
-            title: "Preview",
-            content: <PreviewProfile action={action} loading={previewSubmitLoading} accountType={accountType} onFinish={onFinishPreview} />
-        },
+        // {
+        //     title: "Preview",
+        //     content: <PreviewProfile action={action} loading={previewSubmitLoading} accountType={accountType} onFinish={onFinishPreview} />
+        // },
     ]
     return (
         <div className="col-md-11 applicant-details">
             <div className="profile-page-steps">
-                <Stepper steps={[{ title: 'Registration', }, { title: 'Personal' }, { title: 'Contact' }, { title: 'Resume Details' }, { title: 'Preview and Submit' }]} activeStep={activeStep} />
+                <Stepper steps={[{ title: 'Registration', }, { title: 'Personal' }, { title: 'Contact' }]} activeStep={activeStep} />
             </div>
 
             <div className="profile-page-step-contents">
@@ -79,4 +81,4 @@ const ProfileSetup = ({ action }) => {
 
 
 
-export default ProfileSetup
+export default ProfileSetupEmployer

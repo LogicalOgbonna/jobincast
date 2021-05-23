@@ -35,7 +35,7 @@ const UserHeading = ({ message, action, subMessage, className }) => {
     const { user, profile } = useSelector(({ authSlice: { user }, profileSlice: { profile } }) => ({ user, profile }))
     const authority = user?.roles[0]?.authority
     return (
-        <div className={`col-md-11 user-heading-element ${action === "view" ? "pb-70" : ""}`}>
+        <div className={`col-md-11 user-heading-element pb-70`}>
             <div className="row justify-content-between">
                 <div className="col-md-6 d-flex">
                     <ImgCrop aspect={1} shape="round" modalOk="Ok">

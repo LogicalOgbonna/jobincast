@@ -2,7 +2,7 @@ import './EmployerJobsPage.less';
 import 'react-phone-input-2/lib/style.css';
 
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Table } from 'antd';
+import { Button, Table } from 'antd';
 import React from 'react';
 
 import BaseMarkup from '../../components/Base/BaseMarkup';
@@ -37,7 +37,7 @@ const EmployerJobsPage = () => {
             key: 'action',
             render: () => <div className="d-flex">
                 <EditOutlined />
-                <DeleteOutlined className="px-3"/>
+                <DeleteOutlined className="px-3" />
             </div>
         },
     ]
@@ -69,7 +69,10 @@ const EmployerJobsPage = () => {
                 <div className="container">
                     <div className="row justify-content-center">
                         <UserHeading message="Manage Jobs" subMessage="Points Balance: 100pts" />
-                        <div className="col-md-11 employer-job-contents px-0">
+                        <div className="col-md-11 px-0 py-2 text-right">
+                            <Button className="post-job-button">Post Job</Button>
+                        </div>
+                        <div className="col-md-11 employer-job-contents p-1">
                             <Table className="w-100" columns={columns} dataSource={data} />
                         </div>
                     </div>

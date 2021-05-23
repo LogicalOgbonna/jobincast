@@ -37,8 +37,13 @@ const generalInformationCreateMW = (store) => (next) => async (action) => {
                     })
                 }
 
-                store.dispatch(setProfile({ ...profile, contact: message }))
-                push(`/profile?action=setup&step=3&accountType=${accountType}`)
+                store.dispatch(setProfile({ ...profile, ...message }))
+                if (accountType !== "EMPLOYER") return push(`/profile?action=setup&step=3&accountType=${accountType}`)
+                notification.success({
+                    description: "Profile Updated Successfully. You can Post Jobs Now"
+                })
+                push("/employer/jobs")
+
             }
             break;
         case 'resumeInfoLoading':

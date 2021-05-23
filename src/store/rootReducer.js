@@ -5,11 +5,13 @@ import filterSlice from './filter/reducer'
 import authSlice from './auth/reducer'
 import profileSlice from './profile/reducer'
 import applicantsSlice from './applicants/reducer'
+import jobsSlice from './applicants/reducer'
 const reducers = combineReducers({
     filterSlice,
     authSlice,
     profileSlice,
-    applicantsSlice
+    applicantsSlice,
+    jobsSlice
 });
 
 // const persistConfig = {

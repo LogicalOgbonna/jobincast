@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
-import PreviewProfile from './PreviewProfile'
+import PreviewProfile from './Applicants/PreviewProfile'
 
 const ViewProfile = ({ action }) => {
     const user = useSelector(({ authSlice: { user } }) => user)
