@@ -3,23 +3,40 @@ import 'react-phone-input-2/lib/style.css';
 
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Button, Table } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import UserHeading from '../../components/Elements/UserHeading';
+import PostJobModal from '../../components/Modals/PostJob';
+import { useDispatch, useSelector } from 'react-redux';
+import { createJobAC, getJobsAC } from '../../store/jobs/action';
 
 const EmployerJobsPage = () => {
+
+    const dispatch = useDispatch()
+
+    const [modal, toggleModal] = useState(false)
+    const onModalToggle = () => toggleModal(!modal)
+
+    useEffect(() => {
+        dispatch(getJobsAC())
+    }, [])
 
     const columns = [
         {
             title: 'Title',
-            dataIndex: 'title',
+            dataIndex: 'jobTitle',
             key: 'title',
         },
         {
-            title: 'Views',
-            dataIndex: 'views',
-            key: 'views',
+            title: 'Category',
+            dataIndex: 'jobCategory',
+            key: 'category',
+        },
+        {
+            title: 'Country',
+            dataIndex: 'jobCountry',
+            key: 'jobCountry',
         },
         {
             title: 'Date Published',
@@ -41,27 +58,11 @@ const EmployerJobsPage = () => {
             </div>
         },
     ]
+    const { jobPostingLoading, recruiterJobsLoading, recruiterJobs } =
+        useSelector(({ jobsSlice: { jobPostingLoading, recruiterJobsLoading, recruiterJobs } }) =>
+            ({ jobPostingLoading, recruiterJobsLoading, recruiterJobs }))
 
-    const data = [
-        {
-            title: "Senior Graphics Designer",
-            views: 10,
-            applicants: 20,
-            date: "2 weeks ago"
-        },
-        {
-            title: "Senior Graphics Designer",
-            views: 10,
-            date: "2 weeks ago",
-            applicants: 20,
-        },
-        {
-            title: "Senior Graphics Designer",
-            views: 10,
-            date: "2 weeks ago",
-            applicants: 20
-        },
-    ]
+    const onPostJob = (data) => dispatch(createJobAC({ data, onModalToggle }))
 
     return (
         <BaseMarkup className="bg-grey background-image-left">
@@ -70,13 +71,15 @@ const EmployerJobsPage = () => {
                     <div className="row justify-content-center">
                         <UserHeading message="Manage Jobs" subMessage="Points Balance: 100pts" />
                         <div className="col-md-11 px-0 py-2 text-right">
-                            <Button className="post-job-button">Post Job</Button>
+                            <Button onClick={onModalToggle} className="post-job-button">Post Job</Button>
                         </div>
                         <div className="col-md-11 employer-job-contents p-1">
-                            <Table className="w-100" columns={columns} dataSource={data} />
+                            <Table loading={recruiterJobsLoading} className="w-100" columns={columns} dataSource={recruiterJobs.content} />
                         </div>
                     </div>
                 </div>
+
+                <PostJobModal loading={jobPostingLoading} toggle={onModalToggle} open={modal} onFinish={onPostJob} />
             </div>
         </BaseMarkup>
     )

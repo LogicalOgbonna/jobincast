@@ -4,12 +4,18 @@ const jobSlice = createSlice({
     name: "jobSlice",
     initialState: {
         job: null,
-        jobs: [],
+        jobs: {
+            content: []
+        },
+        jobsLoading: true,
         jobPostingLoading: false,
-        jobsLoading: true
+        recruiterJobsLoading: true,
+        recruiterJobs: {
+            content: []
+        }
     },
     reducers: {
-        setDate: (state, action) => ({
+        setData: (state, action) => ({
             ...state,
             [action.payload.type]: action.payload.value
         })

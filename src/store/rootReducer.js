@@ -5,7 +5,7 @@ import filterSlice from './filter/reducer'
 import authSlice from './auth/reducer'
 import profileSlice from './profile/reducer'
 import applicantsSlice from './applicants/reducer'
-import jobsSlice from './applicants/reducer'
+import jobsSlice from './jobs/reducer'
 const reducers = combineReducers({
     filterSlice,
     authSlice,
