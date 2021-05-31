@@ -12,7 +12,6 @@ const ApplicationsPage = () => {
     const dispatch = useDispatch()
     const { applications: data, applicationsLoading: loading } = useSelector(({ applicantsSlice: { applications, applicationsLoading } }) =>
         ({ applications, applicationsLoading }))
-        console.log("🚀 ~ file: ApplicationsPage.jsx ~ line 16 ~ ApplicationsPage ~ data", data)
     useEffect(() => {
         dispatch(userGetApplicationsAC())
     }, [])

@@ -19,7 +19,7 @@ const Job = ({ img, company, address, amount, tech, posted, url, title}) => {
                     <p className="text-muted text-capitalize">{tech.replace(/_/g, " ").toLowerCase()}</p>
                 </div>
                 <div className="col-md-3 text-right d-flex justify-content-end jobs-block-card-icon-section">
-                    <FieldTimeOutlined className="jobs-block-card-icon" /> <span className="pl-2 text-muted">{moment(posted).format("YYYY-MM-DD")}</span>
+                    <FieldTimeOutlined className="jobs-block-card-icon" /> <span className="pl-2 text-muted">{moment(posted, "YYYY-MM-DD").fromNow()}</span>
                 </div>
 
                 <Divider/>

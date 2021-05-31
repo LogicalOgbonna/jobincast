@@ -10,7 +10,7 @@ import FilterElement from '../../components/Elements/Filter';
 import SearchElement from '../../components/Elements/Search';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllJobsAC } from '../../store/jobs/action'
-import { Spin } from 'antd';
+import { Skeleton, Spin } from 'antd';
 
 
 const JobsPage = () => {
@@ -72,12 +72,33 @@ const JobsPage = () => {
                         </div>
                         <div className="row justify-content-center">
                             <div className="col-md-9">
-                                {jobsLoading ?
-                                    <div className="row justify-content-center align-items-center">
-                                        <Spin size="large" />
-                                    </div> :
+                                <Skeleton
+                                    avatar={{
+                                        size: 110
+                                    }}
+                                    active
+                                    loading={jobsLoading}
+                                    paragraph={{ rows: 2 }}
+                                >
                                     <JobLists onChange={onPaginationChange} data={jobs} paginated />
-                                }
+                                </Skeleton>
+                                <Skeleton
+                                    className="py-4"
+                                    avatar={{
+                                        size: 110
+                                    }}
+                                    active
+                                    loading={jobsLoading}
+                                    paragraph={{ rows: 2 }}
+                                />
+                                <Skeleton
+                                    avatar={{
+                                        size: 110
+                                    }}
+                                    active
+                                    loading={jobsLoading}
+                                    paragraph={{ rows: 2 }}
+                                />
                             </div>
                         </div>
                     </div>

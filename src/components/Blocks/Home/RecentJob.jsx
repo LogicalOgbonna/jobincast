@@ -22,7 +22,7 @@ const RecentJob = ({ img, position, company, address, amount, category, id, crea
                         <p className="text-muted text-capitalize">{category}</p>
                     </div>
                     <div className="col-md-3 text-right d-flex justify-content-end recent-jobs-card-icon-section">
-                        <FieldTimeOutlined className="recent-jobs-card-icon text-muted" /> <span className="pl-2 text-muted recent-jobs-card-icon-text">{moment(createdAt).format("YYYY-MM-DD")}</span>
+                        <FieldTimeOutlined className="recent-jobs-card-icon text-muted" /> <span className="pl-2 text-muted recent-jobs-card-icon-text">{moment(createdAt, "YYYY-MM-DD").fromNow()}</span>
                     </div>
 
                     <Divider/>

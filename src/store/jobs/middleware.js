@@ -80,7 +80,9 @@ const getAllJobsMW = store => next => async action => {
 
 const getSingleJobMW = store => next => async action => {
     if (action.type !== "user/get-single-job") return next(action);
+    store.dispatch(setData({ type: "jobLoading", value: true }))
     const { message, success } = await getSingleJobService(action.payload)
+    store.dispatch(setData({ type: "jobLoading", value: false }))
     if (!success) return notification.error({
         description: message
     })
