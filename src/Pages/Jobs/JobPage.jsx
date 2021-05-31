@@ -22,14 +22,20 @@ const JobPage = () => {
             <div className="desktop-layout job-page">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <Skeleton paragraph title round style={{ width: "50%"}} rows={6} loading={true} active>
-
-                            <div className="col-md-10 text-center">
-                                <Avatar src={job?.companyInfo?.companyImageURL} size={100} />
-                                <h2 className="job-page-company-name">{job?.companyInfo?.companyName}</h2>
-                                <p className="slogan">{job?.companyInfo?.companyShortBio}</p>
-                            </div>
-                            <div className="col-md-10 job-details">
+                        <div className="col-md-10 text-center">
+                            {jobLoading ?
+                                <Skeleton.Avatar title size={120} loading={jobLoading} active />
+                                :
+                                <>
+                                    <Avatar src={job?.companyInfo?.companyImageURL} size={100} />
+                                    <h2 className="job-page-company-name">{job?.companyInfo?.companyName}</h2>
+                                    <p className="slogan">{job?.companyInfo?.companyShortBio}</p>
+                                </>}
+                        </div>
+                        <div className="col-md-10 job-details">
+                            <Skeleton
+                                paragraph={{ rows: 10 }} loading={jobLoading} active
+                            >
                                 <h4>{job?.jobTitle}</h4>
                                 <span className="lh50 text-muted">Job Type: {job?.jobType}</span> <span className="lh50 mx-2">|</span>
                                 <span className="lh50 text-muted text-capitalize">Job Category: {job?.jobCategory?.replace(/_/g, " ").toLowerCase()}</span>
@@ -51,10 +57,8 @@ const JobPage = () => {
                                 <br></br>
 
                                 {<Apply />}
-                            </div>
-
-
-                        </Skeleton>
+                            </Skeleton>
+                        </div>
                     </div>
                 </div>
             </div>

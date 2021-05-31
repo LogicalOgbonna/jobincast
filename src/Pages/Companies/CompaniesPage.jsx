@@ -1,4 +1,4 @@
-import { Checkbox, Spin } from 'antd';
+import { Checkbox, Skeleton, Spin } from 'antd';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -58,12 +58,33 @@ const CompaniesPage = () => {
                         </div>
                         <div className="row justify-content-center">
                             <div className="col-md-9">
-                                {companiesLoading ?
-                                    <div className="row justify-content-center align-items-center">
-                                        <Spin size="large" />
-                                    </div> :
+                                <Skeleton
+                                    avatar={{
+                                        size: 110,
+                                    }}
+                                    active
+                                    loading={companiesLoading}
+                                    paragraph={{ rows: 2 }}
+                                >
                                     <CompanyList data={companies} paginated />
-                                }
+                                </Skeleton>
+                                <Skeleton
+                                    className="py-5"
+                                    avatar={{
+                                        size: 110
+                                    }}
+                                    active
+                                    loading={companiesLoading}
+                                    paragraph={{ rows: 2 }}
+                                />
+                                <Skeleton
+                                    avatar={{
+                                        size: 110
+                                    }}
+                                    active
+                                    loading={companiesLoading}
+                                    paragraph={{ rows: 2 }}
+                                />
                             </div>
                         </div>
                     </div>

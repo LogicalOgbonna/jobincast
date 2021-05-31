@@ -10,12 +10,12 @@ const CompanyList = ({ paginated, data: { content, totalElements } }) => {
     return (
         <div className="company-list-block">
             <div className="row justify-content-center">
-                {content.map(company =>
-                    <div className="col-md-12">
+                <div className="col-md-12">
+                    {content.map(company =>
                         <NavLink to={`/company/${company.id}`}>
                             <Company
                                 img={company.imageURL}
-                                available={company.numberOfPositions +" jobs available"}
+                                available={company.numberOfPositions + " jobs available"}
                                 company={company.name}
                                 applicants={company.people}
                                 location={company.location}
@@ -23,11 +23,11 @@ const CompanyList = ({ paginated, data: { content, totalElements } }) => {
                             />
 
                         </NavLink>
-                    </div>
-                )}
-                {paginated && <div className="text-right">
-                    <Pagination className="company-pagination" total={totalElements} />
-                </div>}
+                    )}
+                    {paginated && <div className="text-right">
+                        <Pagination className="company-pagination" total={totalElements} />
+                    </div>}
+                </div>
             </div>
         </div>
     )

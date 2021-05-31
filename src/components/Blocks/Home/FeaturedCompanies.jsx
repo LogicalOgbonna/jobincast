@@ -1,4 +1,4 @@
-import { Spin } from 'antd'
+import { Skeleton, Spin } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { service_location, service_type } from '../../../assets/icons'
@@ -10,7 +10,7 @@ import './FeaturedCompanies.less'
 const FeaturedCompanies = () => {
     const dispatch = useDispatch()
     const { featuredCompanies: { content, number, totalPages }, featuredCompaniesLoading } = useSelector(({ homeSlice: { featuredCompanies, featuredCompaniesLoading } }) => ({ featuredCompanies, featuredCompaniesLoading }))
-    
+
     const changePage = page => {
         dispatch(getFeaturedCompaniesAC(`page=${page}&size=4`))
     }
@@ -24,13 +24,26 @@ const FeaturedCompanies = () => {
                         subheading="With more than 12 million employer reviews, Company Pages give people insights into potential employers and help you create a memorable candidate experience."
                     />
                 </div>
-
-                {featuredCompaniesLoading
-
-                    ? <div className="col-md-3 text-center">
-                        <Spin size="large" />
+                {featuredCompaniesLoading && <>
+                    <div className="col-md-3">
+                        <div className="featured-companies-card">
+                            <Skeleton paragraph={{ rows: 2 }} avatar={{ shape: "square", size: 90 }} shape="square" active />
+                        </div>
                     </div>
-                    : content.map(company =>
+                    <div className="col-md-3">
+                        <div className="featured-companies-card">
+                            <Skeleton paragraph={{ rows: 2 }} avatar={{ shape: "square", size: 90 }} shape="square" active />
+                        </div>
+                    </div>
+                    <div className="col-md-3">
+                        <div className="featured-companies-card">
+                            <Skeleton paragraph={{ rows: 2 }} avatar={{ shape: "square", size: 90 }} shape="square" active />
+                        </div>
+                    </div>
+                </>}
+
+                {
+                    !featuredCompaniesLoading && content.map(company =>
                         <div key={company.imageURL} className="col-md-3">
                             <div className="featured-companies-card">
                                 <div className="featured-companies-first-row row pr-3">
