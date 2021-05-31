@@ -1,11 +1,19 @@
+import { Spin } from 'antd'
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { service_location, service_type } from '../../../assets/icons'
-import { treehouse } from '../../../assets/images'
+import { getFeaturedCompaniesAC } from '../../../store/home/action'
 import Dots from '../../Elements/Dots'
 import BlockHeader from './BlockHeader'
 import './FeaturedCompanies.less'
 
 const FeaturedCompanies = () => {
+    const dispatch = useDispatch()
+    const { featuredCompanies: { content, number, totalPages }, featuredCompaniesLoading } = useSelector(({ homeSlice: { featuredCompanies, featuredCompaniesLoading } }) => ({ featuredCompanies, featuredCompaniesLoading }))
+    
+    const changePage = page => {
+        dispatch(getFeaturedCompaniesAC(`page=${page}&size=4`))
+    }
     return (
         <div className="featured-companies-block">
             <div className="row justify-content-center">
@@ -16,99 +24,41 @@ const FeaturedCompanies = () => {
                         subheading="With more than 12 million employer reviews, Company Pages give people insights into potential employers and help you create a memorable candidate experience."
                     />
                 </div>
-                <div className="col-md-3">
-                    <div className="featured-companies-card">
-                        <div className="featured-companies-first-row row pr-3">
-                            <div className="col-md-6">
-                                <img src={treehouse} alt="company-logo" className="featured-companies-logo" width="100" />
-                            </div>
-                            <div className="col-md-6 featured-companies-positions">
-                                11 job positions
-                                    </div>
-                        </div>
-                        <h6 className="featured-companies-second-row">Treehouse Apartments</h6>
-                        <div className="featured-companies-third-row">
-                            <div className="featured-companies-third-row-content">
-                                <img src={service_location} alt="service_location" />
-                                <span className="px-3">Indonesia</span>
-                            </div>
-                            <div className="featured-companies-third-row-content">
-                                <img src={service_type} alt="service_type" />
-                                <span className="px-3">Real Estate</span>
-                            </div>
-                        </div>
+
+                {featuredCompaniesLoading
+
+                    ? <div className="col-md-3 text-center">
+                        <Spin size="large" />
                     </div>
-                </div>
-                <div className="col-md-3">
-                    <div className="featured-companies-card">
-                        <div className="featured-companies-first-row row pr-3">
-                            <div className="col-md-6">
-                                <img src={treehouse} alt="company-logo" className="featured-companies-logo" width="100" />
-                            </div>
-                            <div className="col-md-6 featured-companies-positions">
-                                11 job positions
+                    : content.map(company =>
+                        <div key={company.imageURL} className="col-md-3">
+                            <div className="featured-companies-card">
+                                <div className="featured-companies-first-row row pr-3">
+                                    <div className="col-md-6">
+                                        <img src={company.imageURL} alt="company-logo" className="featured-companies-logo" width="100" />
                                     </div>
-                        </div>
-                        <h6 className="featured-companies-second-row">Treehouse Apartments</h6>
-                        <div className="featured-companies-third-row">
-                            <div className="featured-companies-third-row-content">
-                                <img src={service_location} alt="service_location" />
-                                <span className="px-3">Indonesia</span>
-                            </div>
-                            <div className="featured-companies-third-row-content">
-                                <img src={service_type} alt="service_type" />
-                                <span className="px-3">Real Estate</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-3">
-                    <div className="featured-companies-card">
-                        <div className="featured-companies-first-row row pr-3">
-                            <div className="col-md-6">
-                                <img src={treehouse} alt="company-logo" className="featured-companies-logo" width="100" />
-                            </div>
-                            <div className="col-md-6 featured-companies-positions">
-                                11 job positions
+                                    <div className="col-md-6 featured-companies-positions">
+                                        {company.numberOfPositions} job positions
                                     </div>
-                        </div>
-                        <h6 className="featured-companies-second-row">Treehouse Apartments</h6>
-                        <div className="featured-companies-third-row">
-                            <div className="featured-companies-third-row-content">
-                                <img src={service_location} alt="service_location" />
-                                <span className="px-3">Indonesia</span>
-                            </div>
-                            <div className="featured-companies-third-row-content">
-                                <img src={service_type} alt="service_type" />
-                                <span className="px-3">Real Estate</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-3">
-                    <div className="featured-companies-card">
-                        <div className="featured-companies-first-row row pr-3">
-                            <div className="col-md-6">
-                                <img src={treehouse} alt="company-logo" className="featured-companies-logo" width="100" />
-                            </div>
-                            <div className="col-md-6 featured-companies-positions">
-                                11 job positions
+                                </div>
+                                <h6 className="featured-companies-second-row">{company.name}</h6>
+                                <div className="featured-companies-third-row">
+                                    <div className="featured-companies-third-row-content">
+                                        <img src={service_location} alt="service_location" />
+                                        <span className="px-3">{company.location}</span>
                                     </div>
-                        </div>
-                        <h6 className="featured-companies-second-row">Treehouse Apartments</h6>
-                        <div className="featured-companies-third-row">
-                            <div className="featured-companies-third-row-content">
-                                <img src={service_location} alt="service_location" />
-                                <span className="px-3">Indonesia</span>
-                            </div>
-                            <div className="featured-companies-third-row-content">
-                                <img src={service_type} alt="service_type" />
-                                <span className="px-3">Real Estate</span>
+                                    <div className="featured-companies-third-row-content">
+                                        <img src={service_type} alt="service_type" />
+                                        <span className="px-3">{company.industry}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <Dots first={true} second={false} third={false} />
+                    )
+                }
+            </div>
+            <div className="row justify-content-center">
+                <Dots onClick={changePage} totalPages={totalPages} first={number + 1 === 1} second={number + 1 === 2} third={number + 1 === 3} />
             </div>
         </div>
     )

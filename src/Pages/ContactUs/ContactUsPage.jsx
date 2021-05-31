@@ -60,10 +60,10 @@ For other country,  send will submit message to the respective country email add
                                 <p>Email : <a style= {{color: "#D91694"}} href="mailto:desktop@jobincast.com.sg">desktop@jobincast.com.sg</a></p>
                             </ContactUsCards>
                             <ContactUsCards>
-                                <h6>Philippines</h6>
+                                <h6>Philippine</h6>
                                 <p className= "text-muted">LKG Tower,</p>
                                 <p className= "text-muted">7th Floor, 6801 Ayala Avenue,</p>
-                                <p className= "text-muted">Makati City 1226, Philippines.</p>
+                                <p className= "text-muted">Makati City 1226, Philippine.</p>
                                 <p>Email : <a style= {{color: "#00A651"}} href="mailto:desktop@jobincast.com.ph">desktop@jobincast.com.ph</a></p>
                             </ContactUsCards>
                             <ContactUsCards>

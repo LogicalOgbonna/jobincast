@@ -12,7 +12,7 @@ const Login = ({ loading, history, onFinish, page }) => {
                 <Input.Password className="auth-inputs" placeholder="Password" />
             </Form.Item>
             <Form.Item name="check" className="text-center" required>
-                <Checkbox>Remember Me</Checkbox>
+                <Checkbox checked>Remember Me</Checkbox>
             </Form.Item>
             <Form.Item name="button" className="text-center" required>
                 <Button loading={loading} htmlType="submit" className="button-blue">Login</Button>

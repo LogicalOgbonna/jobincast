@@ -10,7 +10,7 @@
     background: rgba(255, 255, 255, 0.99);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    
+
     .profile-content-header {
       background: rgba(46, 49, 146, 0.8);
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -24,20 +24,47 @@
     }
 
     .profile-inputs {
-        height: 40px !important;
-        border-radius: 10px !important;
-        margin-bottom: 10px !important;
-        border-color: @GREY !important;
-        outline: none !important;
-      }
-      .profile-page-step-contents-body {
-          padding: 20px 0;
-      }
+      height: 40px !important;
+      border-radius: 10px !important;
+      margin-bottom: 10px !important;
+      border-color: @GREY !important;
+      outline: none !important;
+    }
+    .profile-page-step-contents-body {
+      padding: 20px 0;
+    }
   }
 
   .button-blue {
     background: rgba(46, 49, 146, 0.8);
     color: @WHITE;
     border-radius: 5px !important;
+  }
+
+  .ant-select > .ant-select-selector {
+    border-radius: @STANDARD_BORDER_RADIUS !important;
+    padding: 10px 15px !important;
+    height: 40px !important;
+    font-family: "Open Sans" !important;
+    letter-spacing: 0.3px !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    align-items: center !important;
+  }
+  .step-custom-style {
+    .ant-steps-item-container {
+      .ant-steps-item-icon {
+        background: @WHITE !important;
+      }
+      .ant-steps-item-tail::after {
+        background: rgba(46, 49, 146, 0.8) !important;
+      }
+      .ant-steps-icon {
+        color: rgba(46, 49, 146, 0.8) !important;
+      }
+    }
+  }
+  .color-purple {
+    color: rgba(46, 49, 146, 0.8);
   }
 }

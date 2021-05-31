@@ -2,8 +2,10 @@ import { createBrowserHistory } from 'history';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Applicants from '../Pages/Applicants/Applicants';
+import { ScrollContext } from 'react-router-scroll-4';
 
+import Applicants from '../Pages/Applicants/Applicants';
+import ApplicationsPage from '../Pages/Applications/ApplicationsPage';
 import AuthPage from '../Pages/Auth/AuthPage';
 import BlogPage from '../Pages/Blogs/BlogPage';
 import BlogsPage from '../Pages/Blogs/BlogsPage';
@@ -21,6 +23,7 @@ import ResumePage from '../Pages/Resume/ResumePage';
 import SearchPage from '../Pages/Search/SearchPage';
 import TermsAndConditionPage from '../Pages/TermsAndCondition/TermsAndConditionPage';
 import { setUserFromLocalStorage } from '../store/auth/actions';
+import { getUserProfileAC } from '../store/profile/action';
 
 
 const browserHistory = createBrowserHistory();
@@ -29,32 +32,36 @@ const AppRouter = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(setUserFromLocalStorage())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        dispatch(getUserProfileAC())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const user = useSelector(({ authSlice: { user } }) => user)
-    const authority = user?.roles[0]?.authority
+    const authority = user && user.roles ? user?.roles[0]?.authority : null;
     return (
         <Router history={browserHistory}>
-            <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/jobs" component={JobsPage} />
-                <Route exact path="/job/:id" component={JobPage} />
-                <Route exact path="/resume" component={ResumePage} />
-                <Route exact path="/resume/:id" component={Resume} />
-                <Route exact path="/companies" component={CompaniesPage} />
-                <Route exact path="/company/:id" component={CompanyPage} />
-                <Route exact path="/contact-us" component={ContactUsPage} />
-                <Route exact path="/terms" component={TermsAndConditionPage} />
-                <Route exact path="/privacy" component={PrivacyPage} />
-                <Route exact path="/search" component={SearchPage} />
-                <Route exact path="/auth" component={AuthPage} />
+            <ScrollContext>
+                <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route exact path="/jobs" component={JobsPage} />
+                    <Route exact path="/job/:id" component={JobPage} />
+                    <Route exact path="/resume" component={ResumePage} />
+                    <Route exact path="/resume/:id" component={Resume} />
+                    <Route exact path="/companies" component={CompaniesPage} />
+                    <Route exact path="/company/:id" component={CompanyPage} />
+                    <Route exact path="/contact-us" component={ContactUsPage} />
+                    <Route exact path="/terms" component={TermsAndConditionPage} />
+                    <Route exact path="/privacy" component={PrivacyPage} />
+                    <Route exact path="/search" component={SearchPage} />
+                    <Route exact path="/auth" component={AuthPage} />
 
-                <Route exact path="/blogs" component={BlogsPage} />
-                <Route exact path="/blog/:id" component={BlogPage} />
-                {localStorage.getItem("jobincast::user:token") && <Route exact path="/profile" component={ProfilePage} />}
-                {authority === "EMPLOYER" && <Route exact path="/employer/jobs" component={EmployerJobsPage} />}
-                {authority === "EMPLOYER" && <Route exact path="/employer/applicants" component={Applicants} />}
-            </Switch>
+                    <Route exact path="/blogs" component={BlogsPage} />
+                    <Route exact path="/blog/:id" component={BlogPage} />
+                    {localStorage.getItem("jobincast::user:token") && <Route exact path="/profile" component={ProfilePage} />}
+                    {localStorage.getItem("jobincast::user:token") && authority === "EMPLOYER" && <Route exact path="/employer/jobs" component={EmployerJobsPage} />}
+                    {localStorage.getItem("jobincast::user:token") && authority === "EMPLOYER" && <Route exact path="/employer/applicants" component={Applicants} />}
+                    {localStorage.getItem("jobincast::user:token") && authority === "APPLICANT" && <Route exact path="/applicant/applications" component={ApplicationsPage} />}
+                </Switch>
+            </ScrollContext>
         </Router>
     )
 };

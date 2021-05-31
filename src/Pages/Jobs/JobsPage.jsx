@@ -1,15 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './JobsPage.less';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { brownDropdown, darkgreenDropdown, pinkDropdown, purpleDropdown, skyblueDropdown } from '../../assets/icons';
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import JobLists from '../../components/Blocks/Jobs/JobList';
 import FilterElement from '../../components/Elements/Filter';
 import SearchElement from '../../components/Elements/Search';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllJobsAC } from '../../store/jobs/action'
+import { Spin } from 'antd';
 
 
 const JobsPage = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllJobsAC("page=0&size=10"))
+    }, [])
     const options = [
         {
             label: "location",
@@ -37,6 +47,12 @@ const JobsPage = () => {
             icon: purpleDropdown
         },
     ]
+
+    const onPaginationChange = (page) => {
+        dispatch(getAllJobsAC(`page=${page}&size=10`))
+    }
+
+    const { jobs, jobsLoading } = useSelector(({ jobsSlice: { jobs, jobsLoading } }) => ({ jobs, jobsLoading }))
     return (
         <BaseMarkup className="background-image-left">
             <div className="desktop-layout">
@@ -51,12 +67,17 @@ const JobsPage = () => {
                                 <FilterElement options={options} />
                             </div>
                             <div className="col-md-10">
-                                <p className="text-right text-muted font13">Showing 1–10 of 30 jobs</p>
+                                <p className="text-right text-muted font13">Showing {jobs?.numberOfElements}–{jobs?.size} of {jobs?.totalElements} jobs</p>
                             </div>
                         </div>
                         <div className="row justify-content-center">
                             <div className="col-md-9">
-                                <JobLists paginated/>
+                                {jobsLoading ?
+                                    <div className="row justify-content-center align-items-center">
+                                        <Spin size="large" />
+                                    </div> :
+                                    <JobLists onChange={onPaginationChange} data={jobs} paginated />
+                                }
                             </div>
                         </div>
                     </div>
