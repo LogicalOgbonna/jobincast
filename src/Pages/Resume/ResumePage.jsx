@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Spin } from 'antd';
 
 import { brownDropdown, darkgreenDropdown, pinkDropdown, purpleDropdown, skyblueDropdown } from '../../assets/icons';
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import ResumeList from '../../components/Blocks/Resume/ResumeList';
 import FilterElement from '../../components/Elements/Filter';
 import SearchElement from '../../components/Elements/Search';
+import { getAllResumeAC } from '../../store/resume/action';
+import { useSelector } from 'react-redux';
 
 import './ResumePage.less'
 
 const ResumePage = () => {
+    const dispatch = useDispatch()
+    const { resumes, resumesLoading } = useSelector(({ resumeSlice: { resumes, resumesLoading } }) => ({ resumes, resumesLoading }))
+    useEffect(() => {
+        dispatch(getAllResumeAC("page=0&size=10&search=entityState==ACTIVATED"))
+    }, [])
 
     const options = [
         {
@@ -51,13 +60,13 @@ const ResumePage = () => {
                                 <FilterElement options={options} />
                             </div>
                             <div className="col-md-10">
-                                <p className="text-right text-muted font13">Showing 1–10 of 30 jobs</p>
+                                <p className="text-right text-muted font13">Showing {resumes?.numberOfElements}–{resumes?.size} of {resumes?.totalElements} Resume</p>
                             </div>
                         </div>
                         <div className="row justify-content-center">
-                            <div className="col-md-9">
-                                <ResumeList />
-                            </div>
+
+                            {resumesLoading ? <div className="col-md-12 text-center"><Spin size="large" /></div> : <div className="col-md-9"><ResumeList data={resumes} /> </div>}
+
                         </div>
                     </div>
                 </div>

@@ -10,8 +10,7 @@ import { logo } from '../../assets/logo';
 const activePage = (name) => window.location.pathname === name ? 'active-page' : '';
 const shadow = () => (window.location.pathname === '/companies' || window.location.pathname === '/resume' || window.location.pathname === '/jobs' || window.location.pathname === '/search') ? '' : 'navbar-shadow';
 
-const menu = ({ roles }) => {
-    const { authority } = roles[0];
+const menu = ({ authority }) => {
     return (
         <Menu style={{ borderRadius: "10px", padding: "10px" }}>
             {authority === "APPLICANT" &&
@@ -43,6 +42,8 @@ const ToolBar = () => {
         localStorage.clear()
         window.location.href = "/";
     }
+
+    const authority = user && user.roles ? user?.roles[0]?.authority : null;
     return (
         <div className={`tool-bar ${shadow()} desktop-layout`}>
             <div className="row">
@@ -53,7 +54,7 @@ const ToolBar = () => {
                 </div>
                 <div className="col-md-6 tool-bar-links">
                     <NavLink className={activePage('/jobs')} to="/jobs">JOBS</NavLink>
-                    <NavLink className={activePage('/resume')} to="/resume">RESUME</NavLink>
+                    {authority === "EMPLOYER" && <NavLink className={activePage('/resume')} to="/resume">RESUME</NavLink>}
                     <NavLink className={activePage('/companies')} to="/companies">COMPANIES</NavLink>
                     <NavLink className={activePage('/blogs')} to="/blogs">BLOG</NavLink>
                     <NavLink className={activePage('/contact-us')} to="/contact-us">CONTACT US</NavLink>
@@ -65,7 +66,7 @@ const ToolBar = () => {
                     }
 
                     {loggedIn && <div className="user-menu">
-                        <Dropdown overlayStyle={{ width: "200px" }} overlay={() => menu(user)} trigger={['click']}>
+                        <Dropdown overlayStyle={{ width: "200px" }} overlay={() => menu(authority)} trigger={['click']}>
                             <div className="user-avatar">
                                 <Avatar src={profile ? profile?.imageUrl : logo} size={36} /> <span className="px-3">{user?.firstName}</span>
                             </div>

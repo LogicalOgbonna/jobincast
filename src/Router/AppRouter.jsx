@@ -30,10 +30,6 @@ const browserHistory = createBrowserHistory();
 
 const AppRouter = () => {
     const dispatch = useDispatch()
-    // const shouldUpdateScroll = (prevRouterProps, { location }) => (
-    //     // prevRouterProps && location.pathname !== prevRouterProps.location.pathname
-    //     true
-    // );
     useEffect(() => {
         dispatch(setUserFromLocalStorage())
         dispatch(getUserProfileAC())

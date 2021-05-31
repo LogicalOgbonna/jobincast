@@ -10,6 +10,7 @@ import UserHeading from '../../components/Elements/UserHeading';
 import PostJobModal from '../../components/Modals/PostJob';
 import { useDispatch, useSelector } from 'react-redux';
 import { createJobAC, getJobsAC } from '../../store/jobs/action';
+import moment from 'moment';
 
 const EmployerJobsPage = () => {
 
@@ -40,8 +41,9 @@ const EmployerJobsPage = () => {
         },
         {
             title: 'Date Published',
-            dataIndex: 'date',
+            dataIndex: 'createdAt',
             key: 'date',
+            render: (value) => <p className="text-center">{moment(value).format('YYYY-MM-DD')}</p>
         },
         {
             title: 'Applicants',

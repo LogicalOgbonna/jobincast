@@ -6,12 +6,18 @@ import authSlice from './auth/reducer'
 import profileSlice from './profile/reducer'
 import applicantsSlice from './applicants/reducer'
 import jobsSlice from './jobs/reducer'
+import homeSlice from './home/reducer'
+import resumeSlice from './resume/reducer'
+import companiesSlice from './companies/reducer'
 const reducers = combineReducers({
     filterSlice,
     authSlice,
     profileSlice,
     applicantsSlice,
-    jobsSlice
+    jobsSlice,
+    homeSlice,
+    resumeSlice,
+    companiesSlice
 });
 
 // const persistConfig = {

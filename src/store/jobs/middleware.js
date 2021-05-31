@@ -1,6 +1,11 @@
 import { notification } from "antd";
 
-import { createJobService, getRecruiterGetJobsService, getAllJobsService } from './service'
+import {
+    createJobService,
+    getRecruiterGetJobsService,
+    getAllJobsService,
+    getSingleJobService
+} from './service'
 import { setData } from './reducer';
 import { getJobsAC } from "./action";
 
@@ -57,7 +62,7 @@ const getAllJobsMW = store => next => async action => {
         value: true
     }))
 
-    const { success, message } = await getAllJobsService()
+    const { success, message } = await getAllJobsService(action.payload)
     store.dispatch(setData({
         type: "jobsLoading",
         value: false
@@ -73,6 +78,15 @@ const getAllJobsMW = store => next => async action => {
     }))
 }
 
-const jobsMiddleware = [createJobMW, getRecruiterGetJobsMW, getAllJobsMW]
+const getSingleJobMW = store => next => async action => {
+    if (action.type !== "user/get-single-job") return next(action);
+    const { message, success } = await getSingleJobService(action.payload)
+    if (!success) return notification.error({
+        description: message
+    })
+    store.dispatch(setData({ type: "job", value: message }))
+}
+
+const jobsMiddleware = [createJobMW, getRecruiterGetJobsMW, getAllJobsMW, getSingleJobMW]
 
 export default jobsMiddleware

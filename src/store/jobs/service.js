@@ -26,13 +26,22 @@ export const getRecruiterGetJobsService = async () => {
     }
 }
 
-export const getAllJobsService = async () => {
+export const getAllJobsService = async (searchSpec) => {
     try {
-        const { data: message } = await jobincast.get('/services/jobs')
+        const { data: message } = await jobincast.get(`/services/jobs?${searchSpec}`)
         return {
             message,
             success: true
         }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}
+
+export const getSingleJobService = async (id) => {
+    try {
+        const { data } = await jobincast.get(`/services/jobs?search=id==${id}`)
+        return { message: data.content[0], success: true }
     } catch (e) {
         return errorHandler(e)
     }

@@ -134,7 +134,7 @@ const JobDetails = ({ onFinish, loading, accountType, step }) => {
                 </div>
                 <div className="col-12 col-md-6">
                     <Form.Item label="Application Deadline" name="deadline">
-                        <DatePicker placeholder="Year Awarded" className="profile-inputs w-100" />
+                        <DatePicker placeholder="Deadline for applicants" className="profile-inputs w-100" />
                     </Form.Item>
                 </div>
 

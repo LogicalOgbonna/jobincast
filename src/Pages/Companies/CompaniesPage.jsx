@@ -1,14 +1,28 @@
-import { Checkbox } from 'antd';
-import React from 'react';
+import { Checkbox, Spin } from 'antd';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { brownDropdown, pinkDropdown, skyblueDropdown } from '../../assets/icons';
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import CompanyList from '../../components/Blocks/Companies/CompanyList';
 import FilterElement from '../../components/Elements/Filter';
 import SearchElement from '../../components/Elements/Search';
+import { getAllCompaniesAC } from '../../store/companies/action';
 import './CompaniesPage.less'
 
 const CompaniesPage = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllCompaniesAC("page=0&size=10"))
+    }, [])
+
+    // const onPaginationChange = (page) => {
+    //     dispatch(getAllCompaniesAC(`page=${page}&size=10`))
+    // }
+
+    const { companies, companiesLoading } = useSelector(({ companiesSlice: { companies, companiesLoading } }) => ({ companies, companiesLoading }))
+    console.log("🚀 ~ file: CompaniesPage.jsx ~ line 27 ~ CompaniesPage ~ companies, companiesLoading", companies, companiesLoading)
     const options = [
         {
             label: "Locatioin",
@@ -39,12 +53,17 @@ const CompaniesPage = () => {
                                 />
                             </div>
                             <div className="col-md-10">
-                                <p className="text-right text-muted font13">Showing 1–10 of 30 jobs</p>
+                                <p className="text-right text-muted font13">Showing {companies?.numberOfElements}–{companies?.size} of {companies?.totalElements} companies</p>
                             </div>
                         </div>
                         <div className="row justify-content-center">
                             <div className="col-md-9">
-                                <CompanyList />
+                                {companiesLoading ?
+                                    <div className="row justify-content-center align-items-center">
+                                        <Spin size="large" />
+                                    </div> :
+                                    <CompanyList data={companies} paginated />
+                                }
                             </div>
                         </div>
                     </div>

@@ -1,11 +1,9 @@
 import React from 'react'
 import './Dot.less'
 
-const Dot = ({ active }) => {
+const Dot = ({ active, onClick, page }) => {
     return (
-        <div className={`dot ${active ? 'active-dot': 'normal-dot'} mx-1`}>
-
-        </div>
+        <div onClick={() => onClick(page)} className={`dot ${active ? 'active-dot': 'normal-dot'} mx-1`} />
     )
 }
 
