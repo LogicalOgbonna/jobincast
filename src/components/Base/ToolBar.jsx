@@ -10,7 +10,7 @@ import { logo } from '../../assets/logo';
 const activePage = (name) => window.location.pathname === name ? 'active-page' : '';
 const shadow = () => (window.location.pathname === '/companies' || window.location.pathname === '/resume' || window.location.pathname === '/jobs' || window.location.pathname === '/search') ? '' : 'navbar-shadow';
 
-const menu = ({ authority }) => {
+const menu = (authority) => {
     return (
         <Menu style={{ borderRadius: "10px", padding: "10px" }}>
             {authority === "APPLICANT" &&

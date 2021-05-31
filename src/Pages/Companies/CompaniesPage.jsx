@@ -22,7 +22,6 @@ const CompaniesPage = () => {
     // }
 
     const { companies, companiesLoading } = useSelector(({ companiesSlice: { companies, companiesLoading } }) => ({ companies, companiesLoading }))
-    console.log("🚀 ~ file: CompaniesPage.jsx ~ line 27 ~ CompaniesPage ~ companies, companiesLoading", companies, companiesLoading)
     const options = [
         {
             label: "Locatioin",

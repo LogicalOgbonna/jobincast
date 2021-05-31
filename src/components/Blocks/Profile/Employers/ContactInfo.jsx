@@ -19,7 +19,6 @@ const ContactInfo = ({ onFinish, accountType, loading, step }) => {
     const [form] = Form.useForm()
 
     const profile = useSelector(({ profileSlice: { profile } }) => profile)
-    console.log("🚀 ~ file: ContactInfo.jsx ~ line 22 ~ ContactInfo ~ profile", profile)
     const [country, setCountry] = useState("")
     useEffect(() => {
         if(profile?.contact) form.setFieldsValue(profile?.contact)

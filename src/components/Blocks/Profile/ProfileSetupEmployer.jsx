@@ -31,10 +31,7 @@ const ProfileSetupEmployer = ({ action }) => {
     const onFinishContactInfo = (data) => {
         dispatch(profileLoadingAction({ data, type: "contactInfoLoading", push, accountType }))
     }
-    const onJobDetailsFinish = (data) => {
-        console.log("🚀 ~ file: ProfileSetupEmployer.jsx ~ line 35 ~ onJobDetailsFinish ~ data", data)
-        dispatch(profileLoadingAction({ data, type: "resumeInfoLoading", push, accountType }))
-    }
+    const onJobDetailsFinish = (data) => dispatch(profileLoadingAction({ data, type: "resumeInfoLoading", push, accountType }))
     const onFinishPreview = () => {
         push("/profile?action=view")
     }
