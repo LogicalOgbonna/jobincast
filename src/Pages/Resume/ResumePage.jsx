@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Spin } from 'antd';
+import { Skeleton, Spin } from 'antd';
 
 import { brownDropdown, darkgreenDropdown, pinkDropdown, purpleDropdown, skyblueDropdown } from '../../assets/icons';
 import BaseMarkup from '../../components/Base/BaseMarkup';
@@ -16,7 +16,7 @@ const ResumePage = () => {
     const dispatch = useDispatch()
     const { resumes, resumesLoading } = useSelector(({ resumeSlice: { resumes, resumesLoading } }) => ({ resumes, resumesLoading }))
     useEffect(() => {
-        dispatch(getAllResumeAC("page=0&size=10&search=entityState==ACTIVATED"))
+        dispatch(getAllResumeAC("page=0&size=10"))
     }, [])
 
     const options = [
@@ -64,14 +64,41 @@ const ResumePage = () => {
                             </div>
                         </div>
                         <div className="row justify-content-center">
+                            <div className="col-md-9">
+                                <Skeleton
+                                    avatar={{
+                                        size: 110
+                                    }}
+                                    active
+                                    loading={resumesLoading}
+                                    paragraph={{ rows: 2 }}
+                                >
 
-                            {resumesLoading ? <div className="col-md-12 text-center"><Spin size="large" /></div> : <div className="col-md-9"><ResumeList data={resumes} /> </div>}
-
+                                    <ResumeList data={resumes} />
+                                </Skeleton>
+                                <Skeleton
+                                    className="py-5"
+                                    avatar={{
+                                        size: 110
+                                    }}
+                                    active
+                                    loading={resumesLoading}
+                                    paragraph={{ rows: 2 }}
+                                />
+                                <Skeleton
+                                    avatar={{
+                                        size: 110
+                                    }}
+                                    active
+                                    loading={resumesLoading}
+                                    paragraph={{ rows: 2 }}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </BaseMarkup>
+        </BaseMarkup >
     )
 }
 

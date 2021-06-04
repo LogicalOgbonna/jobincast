@@ -1,5 +1,5 @@
 import { notification } from "antd";
-import { getAllCompaniesService } from "./service";
+import { getAllCompaniesService, getSingleCompanyService } from "./service";
 import { setData } from './reducer'
 
 
@@ -25,5 +25,26 @@ const getAllCompaniesMV = store => next => async action => {
     }))
 }
 
-const companiesMiddleware = [getAllCompaniesMV];
+const getSingleCompanyMW = store => next => async action => {
+    if (action.type !== 'user/get-single-company') return next(action);
+    store.dispatch(setData({
+        type: 'companyLoading',
+        value: true
+    }))
+
+    const { success, message } = await getSingleCompanyService(action.payload);
+    store.dispatch(setData({
+        type: 'companyLoading',
+        value: false
+    }))
+    if (!success) return notification.error({
+        description: message
+    })
+
+    store.dispatch(setData({
+        type: 'company',
+        value: message
+    }))
+}
+const companiesMiddleware = [getAllCompaniesMV, getSingleCompanyMW];
 export default companiesMiddleware;

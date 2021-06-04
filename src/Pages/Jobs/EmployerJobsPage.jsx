@@ -2,14 +2,14 @@ import './EmployerJobsPage.less';
 import 'react-phone-input-2/lib/style.css';
 
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Button, Table } from 'antd';
+import { Button, Table, Tooltip } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import UserHeading from '../../components/Elements/UserHeading';
 import PostJobModal from '../../components/Modals/PostJob';
 import { useDispatch, useSelector } from 'react-redux';
-import { createJobAC, getJobsAC } from '../../store/jobs/action';
+import { createJobAC, deleteJobAC, getJobsAC } from '../../store/jobs/action';
 import moment from 'moment';
 
 const EmployerJobsPage = () => {
@@ -22,6 +22,9 @@ const EmployerJobsPage = () => {
     useEffect(() => {
         dispatch(getJobsAC())
     }, [])
+
+    const deleteJob = (id, title) => dispatch(deleteJobAC({ id, title }))
+    const editJob = () => ({})
 
     const columns = [
         {
@@ -54,9 +57,14 @@ const EmployerJobsPage = () => {
             title: 'Action',
             dataIndex: 'action',
             key: 'action',
-            render: () => <div className="d-flex">
-                <EditOutlined />
-                <DeleteOutlined className="px-3" />
+            render: (_, { jobPostingUrl, jobTitle, ...rest }) => <div className="d-flex justify-content-center">
+                <Tooltip placement="bottom" title="Edit Job">
+                    {console.log(rest)}
+                    <EditOutlined onClick={() => editJob(jobPostingUrl, jobTitle)} style={{ cursor: 'pointer' }} />
+                </Tooltip>
+                <Tooltip placement="bottom" title="Delete Job">
+                    <DeleteOutlined onClick={() => deleteJob(jobPostingUrl, jobTitle)} style={{ cursor: 'pointer' }} className="px-3" />
+                </Tooltip>
             </div>
         },
     ]

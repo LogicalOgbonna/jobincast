@@ -100,8 +100,6 @@ const PostJobModal = ({ onFinish, loading, toggle, open }) => {
                             </Select>
                         </Form.Item>
                     </div>
-                    {selectJob !== "REMOTE" &&
-                        <>
                             <div className="col-12 col-md-6">
                                 <Form.Item label="Country" name="jobCountry" rules={[{ required: true, message: "Country is required for a none REMOTE position" }]}>
                                     <Select placeholder="Select Country" onChange={(value) => setCountry(value)} className="profile-inputs">
@@ -116,8 +114,6 @@ const PostJobModal = ({ onFinish, loading, toggle, open }) => {
                                     </Select>
                                 </Form.Item>
                             </div>
-                        </>
-                    }
                     <div className="col-12 col-md-6">
                         <Form.Item label="Currency" name="currency" rules={[{ required: true, message: "Currency is required" }]}>
                             <Select placeholder="e.g USD" className="profile-inputs">

@@ -8,7 +8,7 @@ const Resume = ({ img, stack, address, tech, posted, name }) => {
             <Divider class= "reversediv"/>
             <div className="row">
                 <div className="col-md-2">
-                    <img src={img} alt="taletize" />
+                    <img src={img ? img : "/logo.png"} alt={name} />
                 </div>
                 <div className="col-md-7 resume-block-card-text-section">
                     <h6>{name}</h6>

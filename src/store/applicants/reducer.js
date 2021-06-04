@@ -6,10 +6,11 @@ const applicantSlice = createSlice({
         applications: { content: [] },
         applicationsLoading: false
     },
+    applyLoading: false,
     reducers: {
         setData: (state, action) => ({
             ...state,
-            [action.payload.type]: action.payload.data
+            [action.payload.type]: action.payload.value
         })
     }
 })

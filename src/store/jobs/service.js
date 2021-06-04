@@ -46,3 +46,23 @@ export const getSingleJobService = async (id) => {
         return errorHandler(e)
     }
 }
+export const checkIfUserAppliedAlready = async (id) => {
+    try {
+        const { data: { status } } = await jobincast.get(`/services/applicants/applications/${id}`)
+
+        return { message: status, success: true }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}
+export const deleteJobService = async (id) => {
+    try {
+        const { data } = await jobincast.delete(`/services/jobs/${id}`)
+        return {
+            success: true,
+            message: data
+        }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}

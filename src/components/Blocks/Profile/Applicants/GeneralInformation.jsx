@@ -12,11 +12,16 @@ const GeneralInformation = ({ finishGeneralInfo, accountType, loading }) => {
 
     const profile = useSelector(({ profileSlice: { profile } }) => profile)
     useEffect(() => {
-        if(profile) form.setFieldsValue(profile)
+        if (profile) form.setFieldsValue(profile)
     }, [profile])
 
     return <Form form={form} layout="vertical" onFinish={finishGeneralInfo}>
         <div className="row">
+            <div className="col-12 col-md-6">
+                <Form.Item label="Title" name="title" rules={[{ required: true, message: "Title is required" }]}>
+                    <Input placeholder="e.g Fullstack Web Developer" className="profile-inputs" />
+                </Form.Item>
+            </div>
             <div className="col-12 col-md-6">
                 <Form.Item label="Teaser" name="shortBio" rules={[{ required: true, message: "Title is required" }]}>
                     <Input placeholder="e.g I'm available for work" className="profile-inputs" />

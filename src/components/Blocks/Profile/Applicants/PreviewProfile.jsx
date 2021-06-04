@@ -33,11 +33,10 @@ const PreviewProfile = ({ accountType, onFinish, loading, action }) => {
 
 
                 <br />
-                <br />
                 <p>{profile?.fullBio}</p>
                 <br />
                 <br />
-                <Steps className="step-custom-style" direction="vertical" current={5}>
+                {accountType === "APPLICANT" && <Steps className="step-custom-style" direction="vertical" current={5}>
                     {profile?.educations && <Step
                         icon={<i className="fa fa-book" />}
                         title="Education"
@@ -102,6 +101,7 @@ const PreviewProfile = ({ accountType, onFinish, loading, action }) => {
                     />}
 
                 </Steps>
+            }
             </div>
             {action === "setup" && <>
                 <div className="col-12 text-center pt-3 pb-5">

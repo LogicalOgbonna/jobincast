@@ -8,7 +8,7 @@ const Company = ({ img, company, location, technology, applicants, available }) 
         <div className="company-block-card">
             <div className="row">
                 <div className="col-md-2">
-                    <img src={img} alt="taletize" />
+                    <img src={img ? img : "/logo.png"} alt={company + "-logo"} />
                 </div>
                 <div className="col-md-7 company-block-card-text-section">
                     <h6 className="company-text">{company}</h6>
@@ -20,7 +20,7 @@ const Company = ({ img, company, location, technology, applicants, available }) 
                     <i className="fa fa-briefcase company-block-card-icon" /> <span className="pl-2 text-muted">{available}</span>
                 </div>
 
-                <Divider/>
+                <Divider />
             </div>
         </div>
     )

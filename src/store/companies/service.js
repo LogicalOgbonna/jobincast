@@ -13,3 +13,15 @@ export const getAllCompaniesService = async (search) => {
         return errorHandler(error)
     }
 }
+
+export const getSingleCompanyService = async (id) => {
+    try {
+        const { data } = await jobincast.get(`/services/companies?search=id==${id}`)
+        return {
+            success: true,
+            message: data.content[0]
+        }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}

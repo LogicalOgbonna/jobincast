@@ -12,7 +12,7 @@ const CompanyList = ({ paginated, data: { content, totalElements } }) => {
             <div className="row justify-content-center">
                 <div className="col-md-12">
                     {content.map(company =>
-                        <NavLink to={`/company/${company.id}`}>
+                        <NavLink to={`/company/${company.companyId}`}>
                             <Company
                                 img={company.imageURL}
                                 available={company.numberOfPositions + " jobs available"}
