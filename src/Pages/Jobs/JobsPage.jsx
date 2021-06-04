@@ -48,7 +48,7 @@ const JobsPage = () => {
             icon: darkgreenDropdown
         },
         {
-            label: "years of experience",
+            label: "experience level",
             data: filterSlice.experiences,
             icon: purpleDropdown
         },

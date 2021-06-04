@@ -20,6 +20,6 @@ const clearPillMW = (store) => (next) => (action) => {
     store.dispatch(setPill([]))
 }
 
-const filterMiddlerware = [selectPillMW, removePillMW, clearPillMW];
+const filterMiddleware = [selectPillMW, removePillMW, clearPillMW];
 
-export default filterMiddlerware;
+export default filterMiddleware;

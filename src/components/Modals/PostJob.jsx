@@ -1,11 +1,12 @@
 import { Button, DatePicker, Form, Input, InputNumber, Modal, Select } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './PostJob.less'
 
 
 import file from "../countries.json";
 
 import { useHistory } from 'react-router';
+import { useForm } from 'antd/lib/form/Form';
 
 const selectCountry = {};
 file.forEach(({ Country, state }) => {
@@ -64,15 +65,21 @@ const currencies = [
     "DONG",
     "RUPEE"
 ]
-const PostJobModal = ({ onFinish, loading, toggle, open }) => {
+const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
 
 
+    const [form] = useForm()
     const { push } = useHistory()
     const [country, setCountry] = useState("")
     const [selectJob, setJob] = useState('')
+
+    useEffect(() => {
+        if(editableJob) form.setFieldsValue(editableJob)
+    }, [editableJob])
+
     return (
-        <Modal width={700} onClose={toggle} visible={open} footer={null} style={{ borderRadius: 10 }} >
-            <Form layout="vertical" onFinish={onFinish}>
+        <Modal width={700} onCancel={toggle} visible={open} footer={null} style={{ borderRadius: 10 }} >
+            <Form form={form} layout="vertical" onFinish={onFinish}>
                 <div className="row">
                     <div className="col-12 col-md-6">
                         <Form.Item label="Title" name="jobTitle" rules={[{ required: true, message: "Job Title is required" }]}>
@@ -100,20 +107,20 @@ const PostJobModal = ({ onFinish, loading, toggle, open }) => {
                             </Select>
                         </Form.Item>
                     </div>
-                            <div className="col-12 col-md-6">
-                                <Form.Item label="Country" name="jobCountry" rules={[{ required: true, message: "Country is required for a none REMOTE position" }]}>
-                                    <Select placeholder="Select Country" onChange={(value) => setCountry(value)} className="profile-inputs">
-                                        {Object.keys(selectCountry).map((value, index) => <Option value={value} key={index} className="text-capitalize">{value.toLowerCase()}</Option>)}
-                                    </Select>
-                                </Form.Item>
-                            </div>
-                            <div className="col-12 col-md-6">
-                                <Form.Item label="State/Province" name="jobLocation" rules={[{ required: true, message: "State/Province is required for a none REMOTE position" }]}>
-                                    <Select notFoundContent={<span className="text-center">Please Select Country</span>} placeholder={country ? "Select State/Province" : "Please Select Country"} className="profile-inputs">
-                                        {country && selectCountry[country] && selectCountry[country].map((value, index) => <Option value={value} key={index}>{value}</Option>)}
-                                    </Select>
-                                </Form.Item>
-                            </div>
+                    <div className="col-12 col-md-6">
+                        <Form.Item label="Country" name="jobCountry" rules={[{ required: true, message: "Country is required for a none REMOTE position" }]}>
+                            <Select placeholder="Select Country" onChange={(value) => setCountry(value)} className="profile-inputs">
+                                {Object.keys(selectCountry).map((value, index) => <Option value={value} key={index} className="text-capitalize">{value.toLowerCase()}</Option>)}
+                            </Select>
+                        </Form.Item>
+                    </div>
+                    <div className="col-12 col-md-6">
+                        <Form.Item label="State/Province" name="jobLocation" rules={[{ required: true, message: "State/Province is required for a none REMOTE position" }]}>
+                            <Select notFoundContent={<span className="text-center">Please Select Country</span>} placeholder={country ? "Select State/Province" : "Please Select Country"} className="profile-inputs">
+                                {country && selectCountry[country] && selectCountry[country].map((value, index) => <Option value={value} key={index}>{value}</Option>)}
+                            </Select>
+                        </Form.Item>
+                    </div>
                     <div className="col-12 col-md-6">
                         <Form.Item label="Currency" name="currency" rules={[{ required: true, message: "Currency is required" }]}>
                             <Select placeholder="e.g USD" className="profile-inputs">

@@ -15,7 +15,7 @@ const Blog = ({ img, date, title, excert}) => {
                     <h6>{title}</h6>
                     <p className="bloglistexcert text-muted">{excert}</p>
                     <div className= "bloglistbottom">
-                        <span className="text-muted font13 bloglistdate"><i class="dateicon fa fa-clock-o"></i>{date}</span>
+                        <span className="text-muted font13 bloglistdate"><i className="dateicon fa fa-clock-o"></i>{date}</span>
                         <NavLink to= "/blog/qwerty" className= "font13 blink bloglistmore">Read More</NavLink>
                     </div>
                 </div>

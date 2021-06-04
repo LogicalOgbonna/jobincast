@@ -19,7 +19,7 @@ const Dropdown = ({ label, options, img, className }) => {
             </div>
             <div className={`dropdown-body ${isOpen && 'open'}`}>
                 {options.map((item, index) => (
-                    <div className="dropdown-item text-capitalize" onClick={e => dispatch(selectFilterPillAC(options[index]))} id={item.id}>
+                    <div key={item.id} className="dropdown-item text-capitalize" onClick={e => dispatch(selectFilterPillAC(options[index]))} id={item.id}>
                         {item?.label?.replace(/_/g, " ")?.toLowerCase()}
                     </div>
                 ))}

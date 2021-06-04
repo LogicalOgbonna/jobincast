@@ -17,7 +17,7 @@ const FilterElement = ({ options, extra }) => {
     return (
         <div className="filter-element">
             <div className="filter-section row">
-                {options.map(option => <div className="col-md-2 filter-dropdown">
+                {options.map((option, index) => <div key={index} className="col-md-2 filter-dropdown">
                     <Dropdown options={option.data} label={option.label} img={option.icon} />
                 </div>)}
 

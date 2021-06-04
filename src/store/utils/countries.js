@@ -1,4 +1,6 @@
-[
+import { nanoid } from "@reduxjs/toolkit";
+
+const countriesNStates = [
     {
         "Country": "Malaysia",
         "state": "Johor"
@@ -1204,3 +1206,11 @@
         "state": "Cần Thơ City"
     }
 ]
+
+const countriesFilter = [...new Set(countriesNStates.map(value => value.Country))].map(value => ({ label: value, id: nanoid(), type: 'location' }));
+const selectCountry = {};
+countriesNStates.forEach(({ Country, state }) => {
+    selectCountry[Country.toUpperCase()] ? selectCountry[Country.toUpperCase()].push(state) : selectCountry[Country.toUpperCase()] = [state]
+})
+
+export { countriesFilter, selectCountry }

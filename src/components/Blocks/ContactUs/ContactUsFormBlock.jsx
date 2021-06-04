@@ -31,7 +31,7 @@ const ContactUsFormBlock = () => {
                     <Input.TextArea rows={8} />
                 </Form.Item>
                 <Form.Item name="attachment" label="File attachment">
-                    <label for="file-upload" class="custom-file-upload">Add file</label>
+                    <label for="file-upload" className="custom-file-upload">Add file</label>
                     <input id="file-upload" type="file" />
                 </Form.Item>
 

@@ -6,7 +6,8 @@ import {
     getAllJobsService,
     getSingleJobService,
     checkIfUserAppliedAlready,
-    deleteJobService
+    deleteJobService,
+    rePostJobService
 } from './service'
 import { setData } from './reducer';
 import { getJobsAC } from "./action";
@@ -122,6 +123,35 @@ const getSingleJobMW = store => next => async action => {
     store.dispatch(setData({ type: "job", value: { ...message, applied } }))
 }
 
-const jobsMiddleware = [createJobMW, getRecruiterGetJobsMW, getAllJobsMW, getSingleJobMW, deleteJobMW]
+const rePostJobMW = store => next => async action => {
+    if (action.type !== 'company/re-post-job') return next(action)
+    store.dispatch(setData({
+        type: 'recruiterJobsLoading',
+        value: true
+    }))
+    const { success, message } = await rePostJobService(action.payload);
+    store.dispatch(setData({
+        type: 'recruiterJobsLoading',
+        value: false
+    }))
+
+    if (!success) return notification.error({
+        description: message
+    })
+
+    const jobs = { ...store.getState().jobsSlice.recruiterJobs };
+
+    jobs.content.map(job => {
+        return job.id === message.id ? message : job
+    })
+
+    store.dispatch(setData({
+        type: 'recruiterJobs',
+        value: jobs
+    }))
+
+}
+
+const jobsMiddleware = [createJobMW, getRecruiterGetJobsMW, getAllJobsMW, getSingleJobMW, deleteJobMW, rePostJobMW]
 
 export default jobsMiddleware

@@ -34,12 +34,19 @@ const ApplicationsPage = () => {
             title: 'Company',
             dataIndex: 'companyName',
             key: 'company',
-            render: (value) => <NavLink to={`/company/${value}`}>{value}</NavLink>
+            render: (value, { companyId }) => <NavLink to={`/company/${companyId}`}>{value}</NavLink>
         },
         {
             title: 'Status',
-            dataIndex: 'entityState',
+            dataIndex: 'jobApplicationStatus',
             key: 'entityState',
+            render: (state) => {
+                if (String(state).toLocaleLowerCase() === "accepted") return <span className="text-success">{state}</span>
+                if (String(state).toLocaleLowerCase() === "rejected") return <span className="text-danger">{state}</span>
+                if (String(state).toLocaleLowerCase() === "submitted") return <span className="text-info">{state}</span>
+                if (String(state).toLocaleLowerCase() === "reviewing") return <span className="text-warning">{state}</span>
+                return <span className="text-info">Submitted</span>
+            }
         },
         {
             title: 'Action',

@@ -15,7 +15,7 @@ const BlogPage = () => {
                             <div className= "singleblog col-md-12">
                                 <div className= "singleblog-top">
                                     <h1 className= "bigblogtitle">The 5 Essential Elements Your Resume Needs</h1>
-                                    <span className= "font13 text-muted bigblogdate"><i class="dateicon fa fa-clock-o"></i> 14th March, 2020 </span>
+                                    <span className= "font13 text-muted bigblogdate"><i className="dateicon fa fa-clock-o"></i> 14th March, 2020 </span>
                                     <img src= {veggies} />
                                 </div>
                                 <div className= "singleblog-bottom">
@@ -95,8 +95,8 @@ const BlogPage = () => {
                                     <i>Joe Konop is the founder and principal of One Great Resumé, a resumé creation and career service provider. His web site is www.OneGreatResume.com. Follow him on Twitter @OneGreatResume and find him on Facebook.</i>
                                     </p>
                                     <div className= "blog-buttons">
-                                        <Button className="ant-btn blog-button"><i class="fa fa-long-arrow-left blog-previous-button" aria-hidden="true"></i> Previous Post</Button>
-                                        <Button className="ant-btn blog-button">Next Post <i class="fa fa-long-arrow-right blog-next-button" aria-hidden="true"></i></Button>
+                                        <Button className="ant-btn blog-button"><i className="fa fa-long-arrow-left blog-previous-button" aria-hidden="true"></i> Previous Post</Button>
+                                        <Button className="ant-btn blog-button">Next Post <i className="fa fa-long-arrow-right blog-next-button" aria-hidden="true"></i></Button>
                                     </div>
                                 </div>
                             </div>

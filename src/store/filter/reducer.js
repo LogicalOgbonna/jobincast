@@ -1,29 +1,39 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid'
+import { countriesFilter } from '../utils/countries';
+import { jobExperienceLevelFilter } from '../utils/experience';
+import { jobTypeFilter } from '../utils/jobs';
+import { salaryFilter } from '../utils/salary';
 
 const filterSlice = createSlice({
     name: 'filterSlice',
     initialState: {
         pills: [],
-        locations: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
+        locations: countriesFilter,
         categories: [
-            { id: 0, label: "ENGINEERING", type: "category" },
-            { id: 1, label: "TELECOMMUNICATIONS", type: "category" },
-            { id: 2, label: "INTERNET_COMPUTING", type: "category" },
-            { id: 3, label: "LEGAL", type: "category" },
-            { id: 4, label: "BUSINESS_ADMINISTRATION", type: "category" },
-            { id: 5, label: "HUMAN_CAPITAL", type: "category" },
-            { id: 6, label: "SALES_AND_MARKETING", type: "category" },
-            { id: 7, label: "MANUFACTURING", type: "category" },
-            { id: 8, label: "BUILDING_AND_CONSTRUCTION", type: "category" },
-            { id: 9, label: "HEALTHCARE", type: "category" },
-            { id: 10, label: "SERVICES", type: "category" },
-            { id: 11, label: "EDUCATIONS", type: "category" },
-            { id: 12, label: "HOSPITALITY", type: "category" },
-            { id: 13, label: "OTHERS", type: "category" },
+            { id: nanoid(), label: "ENGINEERING", type: "category" },
+            { id: nanoid(), label: "TELECOMMUNICATIONS", type: "category" },
+            { id: nanoid(), label: "INTERNET_COMPUTING", type: "category" },
+            { id: nanoid(), label: "LEGAL", type: "category" },
+            { id: nanoid(), label: "BUSINESS_ADMINISTRATION", type: "category" },
+            { id: nanoid(), label: "HUMAN_CAPITAL", type: "category" },
+            { id: nanoid(), label: "SALES_AND_MARKETING", type: "category" },
+            { id: nanoid(), label: "MANUFACTURING", type: "category" },
+            { id: nanoid(), label: "BUILDING_AND_CONSTRUCTION", type: "category" },
+            { id: nanoid(), label: "HEALTHCARE", type: "category" },
+            { id: nanoid(), label: "SERVICES", type: "category" },
+            { id: nanoid(), label: "EDUCATIONS", type: "category" },
+            { id: nanoid(), label: "HOSPITALITY", type: "category" },
+            { id: nanoid(), label: "OTHERS", type: "category" },
         ],
-        salaries: [{ id: 0, label: "Istanbul, TR (AHL)", type: "salary" }, { id: 1, label: "Paris, FR (CDG)", type: "salary" }, { id: 2, label: "Paris, FR (CDG)", type: "salary" }],
-        jobTypes: [{ id: 0, label: "Istanbul, TR (AHL)", type: "type" }, { id: 1, label: "Paris, FR (CDG)", type: "type" }, { id: 2, label: "Paris, FR (CDG)", type: "type" }],
-        experiences: [{ id: 0, label: "Istanbul, TR (AHL)", type: "experience" }, { id: 1, label: "Paris, FR (CDG)", type: "experience" }, { id: 2, label: "Paris, FR (CDG)", type: "experience" }],
+        salaries: salaryFilter,
+        jobTypes: jobTypeFilter,
+        experiences: jobExperienceLevelFilter,
+        degree: [
+            {id: nanoid(), type: 'type', label: "BSc"},
+            {id: nanoid(), type: 'type', label: "Master"},
+            {id: nanoid(), type: 'type', label: "PhD"},
+        ]
     },
     reducers: {
         setPill: (state, action) => ({

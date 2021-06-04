@@ -14,7 +14,7 @@ import './ResumePage.less'
 
 const ResumePage = () => {
     const dispatch = useDispatch()
-    const { resumes, resumesLoading } = useSelector(({ resumeSlice: { resumes, resumesLoading } }) => ({ resumes, resumesLoading }))
+    const { resumes, resumesLoading, filterSlice } = useSelector(({ resumeSlice: { resumes, resumesLoading }, filterSlice }) => ({ resumes, resumesLoading, filterSlice }))
     useEffect(() => {
         dispatch(getAllResumeAC("page=0&size=10"))
     }, [])
@@ -27,22 +27,22 @@ const ResumePage = () => {
         },
         {
             label: "Location",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
+            data: filterSlice.locations,
             icon: darkgreenDropdown
         },
         {
             label: "job category",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "category" }, { id: 1, label: "Paris, FR (CDG)", type: "category" }, { id: 2, label: "Paris, FR (CDG)", type: "category" }],
+            data: filterSlice.categories,
             icon: pinkDropdown
         },
         {
             label: "Degree Level",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "type" }, { id: 1, label: "Paris, FR (CDG)", type: "type" }, { id: 2, label: "Paris, FR (CDG)", type: "type" }],
+            data: filterSlice.degree,
             icon: skyblueDropdown
         },
         {
-            label: "years of experience",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "experience" }, { id: 1, label: "Paris, FR (CDG)", type: "experience" }, { id: 2, label: "Paris, FR (CDG)", type: "experience" }],
+            label: "experience level",
+            data: filterSlice.experiences,
             icon: purpleDropdown
         },
     ]

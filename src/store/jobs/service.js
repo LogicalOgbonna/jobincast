@@ -66,3 +66,16 @@ export const deleteJobService = async (id) => {
         return errorHandler(e)
     }
 }
+
+
+export const rePostJobService = async (value) => {
+    try {
+        const { data } = await jobincast.put(`/services/jobs/activate/${value.id}`)
+        return {
+            success: true,
+            message: data
+        }
+    } catch (error) {
+        return errorHandler(error)
+    }
+}

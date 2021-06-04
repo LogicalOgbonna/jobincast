@@ -7,6 +7,7 @@ import jobsMiddleware from './jobs/middleware'
 import resumeMiddleware from './resume/middleware'
 import homeMiddleware from './home/middleware'
 import companiesMiddleware from './companies/middleware'
+import employerMiddleware from './employer/middleware'
 
 
 const middleware = [
@@ -18,7 +19,8 @@ const middleware = [
     ...jobsMiddleware,
     ...homeMiddleware,
     ...resumeMiddleware,
-    ...companiesMiddleware
+    ...companiesMiddleware,
+    ...employerMiddleware
 ]
 
 export default middleware;
