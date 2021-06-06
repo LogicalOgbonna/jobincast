@@ -15,7 +15,7 @@ const ProfileSetupEmployer = ({ action }) => {
     const dispatch = useDispatch();
     const { location: { search }, push } = useHistory()
     const { step, accountType } = queryParams.parse(search)
-    const { generalInfoLoading, contactInfoLoading, resumeInfoLoading, previewSubmitLoading, } = useSelector(({ profileSlice }) => profileSlice)
+    const { generalInfoLoading, contactInfoLoading, resumeInfoLoading, } = useSelector(({ profileSlice }) => profileSlice)
     const [activeStep, setActiveStep] = useState(parseInt(step))
 
     useEffect(() => {
@@ -32,9 +32,6 @@ const ProfileSetupEmployer = ({ action }) => {
         dispatch(profileLoadingAction({ data, type: "contactInfoLoading", push, accountType }))
     }
     const onJobDetailsFinish = (data) => dispatch(profileLoadingAction({ data, type: "resumeInfoLoading", push, accountType }))
-    const onFinishPreview = () => {
-        push("/profile?action=view")
-    }
     const steps = [
         { title: "Registration" },
         {
@@ -48,11 +45,7 @@ const ProfileSetupEmployer = ({ action }) => {
         {
             title: "Job Details",
             content: <JobDetails step={activeStep} loading={resumeInfoLoading} accountType={accountType} onFinish={onJobDetailsFinish} />
-        },
-        // {
-        //     title: "Preview",
-        //     content: <PreviewProfile action={action} loading={previewSubmitLoading} accountType={accountType} onFinish={onFinishPreview} />
-        // },
+        }
     ]
     return (
         <div className="col-md-11 applicant-details">

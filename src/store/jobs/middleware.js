@@ -7,7 +7,8 @@ import {
     getSingleJobService,
     checkIfUserAppliedAlready,
     deleteJobService,
-    rePostJobService
+    rePostJobService,
+    updateJobService
 } from './service'
 import { setData } from './reducer';
 import { getJobsAC } from "./action";
@@ -34,6 +35,36 @@ const createJobMW = (store) => (next) => async action => {
         value: message
     }))
     action.payload.onModalToggle();
+}
+const updateJobMW = (store) => (next) => async action => {
+    if (action.type !== 'company/update-job') return next(action);
+
+    store.dispatch(setData({ type: "jobUpdateLoading", value: true }))
+    const { message, success } = await updateJobService(action.payload.data);
+    store.dispatch(setData({
+        type: "jobUpdateLoading",
+        value: false
+    }))
+    if (!success) return notification.error({
+        description: message
+    })
+    // await store.dispatch(getJobsAC())
+    notification.success({
+        description: "Job updated successfully"
+    })
+
+    const jobs = { ...store.getState().jobsSlice.recruiterJobs };
+
+    jobs.content = jobs.content.map(job => {
+        return job.id === message.id ? message : job
+    })
+    console.log("🚀 ~ file: middleware.js ~ line 60 ~ jobs", jobs)
+
+    store.dispatch(setData({
+        type: 'recruiterJobs',
+        value: jobs
+    }))
+    action.payload.toggle();
 }
 
 const deleteJobMW = store => next => async action => {
@@ -141,7 +172,7 @@ const rePostJobMW = store => next => async action => {
 
     const jobs = { ...store.getState().jobsSlice.recruiterJobs };
 
-    jobs.content.map(job => {
+    jobs.content = jobs.content.map(job => {
         return job.id === message.id ? message : job
     })
 
@@ -152,6 +183,6 @@ const rePostJobMW = store => next => async action => {
 
 }
 
-const jobsMiddleware = [createJobMW, getRecruiterGetJobsMW, getAllJobsMW, getSingleJobMW, deleteJobMW, rePostJobMW]
+const jobsMiddleware = [createJobMW, getRecruiterGetJobsMW, getAllJobsMW, getSingleJobMW, deleteJobMW, rePostJobMW, updateJobMW]
 
 export default jobsMiddleware

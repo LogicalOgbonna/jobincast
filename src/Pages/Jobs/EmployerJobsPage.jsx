@@ -9,17 +9,20 @@ import BaseMarkup from '../../components/Base/BaseMarkup';
 import UserHeading from '../../components/Elements/UserHeading';
 import PostJobModal from '../../components/Modals/PostJob';
 import { useDispatch, useSelector } from 'react-redux';
-import { createJobAC, deleteJobAC, getJobsAC, rePostJobAC } from '../../store/jobs/action';
+import { createJobAC, deleteJobAC, getJobsAC, rePostJobAC, updateJobAC } from '../../store/jobs/action';
 import moment from 'moment';
 import Countdown from 'react-countdown'
+import UpdateJob from '../../components/Modals/UpdateJob';
 
 const EmployerJobsPage = () => {
 
     const dispatch = useDispatch()
 
     const [modal, toggleModal] = useState(false)
+    const [updateModal, toggleUpdateModal] = useState(false)
     const [editableJob, setEditableJob] = useState(null)
     const onModalToggle = () => toggleModal(!modal)
+    const onUpdateModalToggle = () => toggleUpdateModal(!updateModal)
     const rePostJob = (src) => dispatch(rePostJobAC(src))
 
     useEffect(() => {
@@ -28,9 +31,12 @@ const EmployerJobsPage = () => {
 
     const deleteJob = (id, title) => dispatch(deleteJobAC({ id, title }))
     const editJob = (src) => {
-        toggleModal(true)
+        toggleUpdateModal(true)
         setEditableJob(src)
     }
+
+    const onPostJob = (data) => dispatch(createJobAC({ data, onModalToggle }))
+    const onUpdateJob = (data) => dispatch(updateJobAC({ data: { ...editableJob, ...data }, toggle: onUpdateModalToggle }))
 
     const columns = [
         {
@@ -89,13 +95,14 @@ const EmployerJobsPage = () => {
             </div>
         },
     ]
-    const { jobPostingLoading, recruiterJobsLoading, recruiterJobs, profile } =
-        useSelector(({ jobsSlice: { jobPostingLoading, recruiterJobsLoading, recruiterJobs },
-            profileSlice: { profile }
-        }) =>
-            ({ jobPostingLoading, recruiterJobsLoading, recruiterJobs, profile }))
+    const { jobPostingLoading, recruiterJobsLoading, recruiterJobs, profile, jobUpdateLoading } =
+        useSelector((
+            { jobsSlice: { jobPostingLoading, recruiterJobsLoading, recruiterJobs, jobUpdateLoading },
+                profileSlice: { profile }
+            }
+        ) =>
+            ({ jobPostingLoading, recruiterJobsLoading, recruiterJobs, profile, jobUpdateLoading }))
 
-    const onPostJob = (data) => dispatch(createJobAC({ data, onModalToggle }))
 
     return (
         <BaseMarkup className="bg-grey background-image-left">
@@ -113,6 +120,7 @@ const EmployerJobsPage = () => {
                 </div>
 
                 <PostJobModal editableJob={editableJob} loading={jobPostingLoading} toggle={onModalToggle} open={modal} onFinish={onPostJob} />
+                <UpdateJob editableJob={editableJob} loading={jobUpdateLoading} toggle={onUpdateModalToggle} open={updateModal} onFinish={onUpdateJob} />
             </div>
         </BaseMarkup>
     )

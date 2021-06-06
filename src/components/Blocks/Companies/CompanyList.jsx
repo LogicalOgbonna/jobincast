@@ -17,7 +17,7 @@ const CompanyList = ({ paginated, data: { content, totalElements } }) => {
                                 img={company.imageURL}
                                 available={company.numberOfPositions + " jobs available"}
                                 company={company.name}
-                                applicants={company.people}
+                                companySize={company.companySize}
                                 location={company.location}
                                 technology={company.industry}
                             />

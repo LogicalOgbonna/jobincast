@@ -28,6 +28,10 @@ const generalInformationCreateMW = (store) => (next) => async (action) => {
             {
                 const { user } = store.getState().authSlice
                 const { profile } = store.getState().profileSlice
+
+                if (!profile.imageUrl) return notification.error({
+                    description: `Please upload ${accountType === "APPLICANT" ? "Profile Image" : "Company Logo"}`
+                })
                 data.emailAddress = user?.username
                 const { message, success } = await createProfileContactService(data)
                 store.dispatch(setLoading({ type, value: false }));

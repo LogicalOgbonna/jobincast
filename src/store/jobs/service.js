@@ -4,7 +4,18 @@ import { errorHandler } from "../utils/axiosErrorHandler";
 
 export const createJobService = async (job) => {
     try {
-        const { data } = jobincast.post('/services/jobs', job);
+        const { data } = await jobincast.post('/services/jobs', job);
+        return {
+            success: true,
+            message: data
+        }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}
+export const updateJobService = async (job) => {
+    try {
+        const { data } = await jobincast.put(`/services/jobs/${job.id}`, job);
         return {
             success: true,
             message: data

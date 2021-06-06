@@ -18,7 +18,6 @@ const ProfilePage = ({ history: { location: { search } } }) => {
         view: "Manage Profile"
     }
     const profile = useSelector(({ profileSlice: { profile }}) => profile)
-    console.log("🚀 ~ file: ProfilePage.jsx ~ line 20 ~ ProfilePage ~ profile", profile)
     const { action } = queryString.parse(search);
     return (
         <BaseMarkup className="bg-grey background-image-left">
