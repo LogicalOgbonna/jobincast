@@ -15,6 +15,6 @@ const jobExperienceLevel = [
 //     "EXPERT"
 // ]
 
-const jobExperienceLevelFilter = jobExperienceLevel.map(value => ({id: nanoid(), label: value, type: 'experience'}))  
+const jobExperienceLevelFilter = (searchKey) => jobExperienceLevel.map(value => ({ id: nanoid(), label: value, type: 'experience', searchKey }))
 
 export { jobExperienceLevel, jobExperienceLevelFilter }

@@ -1207,7 +1207,7 @@ const countriesNStates = [
     }
 ]
 
-const countriesFilter = [...new Set(countriesNStates.map(value => value.Country))].map(value => ({ label: value, id: nanoid(), type: 'location' }));
+const countriesFilter = (searchKey) => [...new Set(countriesNStates.map(value => value.Country))].map(value => ({ label: value, id: nanoid(), type: 'location', searchKey }));
 const selectCountry = {};
 countriesNStates.forEach(({ Country, state }) => {
     selectCountry[Country.toUpperCase()] ? selectCountry[Country.toUpperCase()].push(state) : selectCountry[Country.toUpperCase()] = [state]

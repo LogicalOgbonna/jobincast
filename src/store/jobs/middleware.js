@@ -58,7 +58,6 @@ const updateJobMW = (store) => (next) => async action => {
     jobs.content = jobs.content.map(job => {
         return job.id === message.id ? message : job
     })
-    console.log("🚀 ~ file: middleware.js ~ line 60 ~ jobs", jobs)
 
     store.dispatch(setData({
         type: 'recruiterJobs',
@@ -87,7 +86,6 @@ const deleteJobMW = store => next => async action => {
 
     const { jobsSlice: { jobs } } = store.getState();
     const content = jobs.filter(job => job.id !== action.payload.id)
-    console.log("🚀 ~ file: middleware.js ~ line 58 ~ content", content)
     store.dispatch(setData({
         type: 'jobs',
         value: { ...jobs, content }

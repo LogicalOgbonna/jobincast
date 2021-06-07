@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import React, { useState } from 'react';
 import { selectFilterPillAC } from '../../store/filter/actions';
+import { useHistory } from 'react-router';
 
 
 const Dropdown = ({ label, options, img, className }) => {
@@ -10,6 +11,7 @@ const Dropdown = ({ label, options, img, className }) => {
     const [isOpen, setOpen] = useState(false);
 
     const toggleDropdown = () => setOpen(!isOpen);
+    const history = useHistory()
 
     return (
         <div className={'dropdown ' + className}>
@@ -19,7 +21,7 @@ const Dropdown = ({ label, options, img, className }) => {
             </div>
             <div className={`dropdown-body ${isOpen && 'open'}`}>
                 {options.map((item, index) => (
-                    <div key={item.id} className="dropdown-item text-capitalize" onClick={e => dispatch(selectFilterPillAC(options[index]))} id={item.id}>
+                    <div key={item.id} className="dropdown-item text-capitalize" onClick={e => dispatch(selectFilterPillAC({ data: options[index], history }))} id={item.id}>
                         {item?.label?.replace(/_/g, " ")?.toLowerCase()}
                     </div>
                 ))}

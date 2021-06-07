@@ -6,5 +6,5 @@ const salary = [
     'USD 2500 - 5000',
     'USD 5000 - 10000',
 ]
-const salaryFilter = salary.map(label => ({ id: nanoid(), type: "salary", label }))
+const salaryFilter = (searchKey) => salary.map(label => ({ id: nanoid(), type: "salary", label, searchKey }))
 export { salary, salaryFilter }

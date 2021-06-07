@@ -1,14 +1,19 @@
-import './Search.less';
-
 import { SearchOutlined } from '@ant-design/icons';
-import { Input } from 'antd';
+import { Form, Input } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import { search_caret_down } from '../../assets/icons';
 import Dropdown from './DropDown';
+import './Search.less';
 
-const SearchElement = ({ buttonText, onClick }) => {
+
+
+
+
+const SearchElement = ({ buttonText, onClick, onSearch }) => {
+
+    const onFinish = ({ search }) => onSearch(search)
+
     const options = [
         {
             label: "Search Type",
@@ -43,7 +48,12 @@ const SearchElement = ({ buttonText, onClick }) => {
                     </div> :
                     <div className="row search-element-padding">
                         <div className="col-md-9">
-                            <Input prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
+                            <Form onFinish={onFinish}>
+                                <Form.Item name="search">
+                                    <Input prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
+                                </Form.Item>
+
+                            </Form>
                         </div>
                         <div className="col-md-3 text-right">
                             <button onClick={onClick} className="search-element-button">{buttonText}</button>

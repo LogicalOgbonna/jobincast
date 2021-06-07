@@ -11,11 +11,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllJobsAC } from '../../store/jobs/action'
 import { Skeleton } from 'antd';
 import { brownDropdown, darkgreenDropdown, pinkDropdown, purpleDropdown, skyblueDropdown } from '../../assets/icons';
+import { useHistory } from 'react-router';
+import queryString from "query-string"
 
 
 const JobsPage = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory()
 
     useEffect(() => {
         dispatch(getAllJobsAC("page=0&size=10"))
@@ -25,38 +28,58 @@ const JobsPage = () => {
         dispatch(getAllJobsAC(`page=${page}&size=10`))
     }
 
-    const { jobs, jobsLoading, filterSlice } = useSelector(({ jobsSlice: { jobs, jobsLoading }, filterSlice }) => ({ jobs, jobsLoading, filterSlice }))
+    const { jobs, jobsLoading, filterSlice: { jobsPage } } = useSelector(({ jobsSlice: { jobs, jobsLoading }, filterSlice }) => ({ jobs, jobsLoading, filterSlice }))
     const options = [
         {
             label: "location",
-            data: filterSlice.locations,
-            icon: brownDropdown
+            data: jobsPage.locations.map(value => ({ ...value, page: 'jobs' })),
+            icon: brownDropdown,
+            page: 'jobs'
         },
         {
             label: "job category",
-            data: filterSlice.categories,
-            icon: pinkDropdown
+            data: jobsPage.categories.map(value => ({ ...value, page: 'jobs' })),
+            icon: pinkDropdown,
+            page: 'jobs'
         },
         {
             label: "salary",
-            data: filterSlice.salaries,
-            icon: skyblueDropdown
+            data: jobsPage.salaries.map(value => ({ ...value, page: 'jobs' })),
+            icon: skyblueDropdown,
+            page: 'jobs'
         },
         {
             label: "job type",
-            data: filterSlice.jobTypes,
-            icon: darkgreenDropdown
+            data: jobsPage.jobTypes.map(value => ({ ...value, page: 'jobs' })),
+            icon: darkgreenDropdown,
+            page: 'jobs'
         },
         {
             label: "experience level",
-            data: filterSlice.experiences,
-            icon: purpleDropdown
+            data: jobsPage.experiences.map(value => ({ ...value, page: 'jobs' })),
+            icon: purpleDropdown,
+            page: 'jobs'
         },
     ]
+
+    const onSearch = search => {
+        const searchInput = search ? search : "";
+        const previousSearch = (queryString.parse(history.location.search)).search;
+        if (previousSearch) {
+            dispatch(getAllJobsAC(`page=0&size=10&search=${previousSearch};jobTitle==*${searchInput}*`))
+            history.push(`/jobs?search=${previousSearch};jobTitle==*${searchInput}*`)
+            return
+        }
+        dispatch(getAllJobsAC(`page=0&size=10&search=jobTitle==*${searchInput}*`))
+        history.push(`/jobs?search=jobTitle==*${searchInput}*`)
+
+    }
+
     return (
         <BaseMarkup className="background-image-left">
             <div className="desktop-layout">
                 <SearchElement
+                    onSearch={onSearch}
                     onClick={() => console.log("Hello")}
                     buttonText={<div><i className="fa fa-briefcase" /> POST JOB</div>}
                 />

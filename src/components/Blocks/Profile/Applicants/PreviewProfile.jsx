@@ -105,7 +105,7 @@ const PreviewProfile = ({ accountType, onFinish, loading, action }) => {
             </div>
             {action === "setup" && <>
                 <div className="col-12 text-center pt-3 pb-5">
-                    <Checkbox /> The employer can find your resume and contact you via email or BigTalent regarding your resume. Preview all information thoroughly before submitting your resume
+                    <Checkbox /> The employer can find your resume and contact you via email or JobInCast regarding your resume. Preview all information thoroughly before submitting your resume
             </div>
                 <div className="col-12 text-center d-flex justify-content-center">
                     <Button htmlType="button" onClick={back} className="button-blue mx-1">Back</Button>

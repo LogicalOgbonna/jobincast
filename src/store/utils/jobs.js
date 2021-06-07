@@ -28,5 +28,5 @@ const jobType = [
     "MIXED_REMOTE"
 ]
 
-const jobTypeFilter = jobType.map(value => ({ type: 'type', label: value, id: nanoid() }))
+const jobTypeFilter = (searchKey) => jobType.map(value => ({ type: 'type', label: value, id: nanoid(), searchKey }))
 export { jobCategories, jobTypeFilter, jobType }
