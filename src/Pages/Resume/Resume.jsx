@@ -18,7 +18,6 @@ const Resume = () => {
         dispatch(getSingleResumeAC(id))
     }, [])
     const { resume, resumeLoading } = useSelector(({ resumeSlice: { resume, resumeLoading } }) => ({ resume, resumeLoading }))
-    console.log("🚀 ~ file: Resume.jsx ~ line 28 ~ Resume ~ resume", resume)
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout job-page">

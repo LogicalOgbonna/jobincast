@@ -9,7 +9,6 @@ const filterSlice = createSlice({
     name: 'filterSlice',
     initialState: {
         pills: [],
-        locations: countriesFilter,
         jobsPage: {
             locations: countriesFilter('jobCountry'),
             categories: [
@@ -37,6 +36,7 @@ const filterSlice = createSlice({
                 { id: nanoid(), type: 'type', label: "PhD", searchKey: "jobCategory" },
             ]
         },
+        locations: countriesFilter('location'),
         categories: [
             { id: nanoid(), label: "ENGINEERING", type: "category" },
             { id: nanoid(), label: "TELECOMMUNICATIONS", type: "category" },
@@ -53,9 +53,9 @@ const filterSlice = createSlice({
             { id: nanoid(), label: "HOSPITALITY", type: "category" },
             { id: nanoid(), label: "OTHERS", type: "category" },
         ],
-        salaries: salaryFilter,
-        jobTypes: jobTypeFilter,
-        experiences: jobExperienceLevelFilter,
+        salaries: salaryFilter('companySize'),
+        jobTypes: jobTypeFilter('jobType'),
+        experiences: jobExperienceLevelFilter('experienceLevel'),
         degree: [
             { id: nanoid(), type: 'type', label: "BSc" },
             { id: nanoid(), type: 'type', label: "Master" },
