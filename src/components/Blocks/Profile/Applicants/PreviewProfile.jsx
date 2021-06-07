@@ -33,11 +33,10 @@ const PreviewProfile = ({ accountType, onFinish, loading, action }) => {
 
 
                 <br />
-                <br />
                 <p>{profile?.fullBio}</p>
                 <br />
                 <br />
-                <Steps className="step-custom-style" direction="vertical" current={5}>
+                {accountType === "APPLICANT" && <Steps className="step-custom-style" direction="vertical" current={5}>
                     {profile?.educations && <Step
                         icon={<i className="fa fa-book" />}
                         title="Education"
@@ -102,10 +101,11 @@ const PreviewProfile = ({ accountType, onFinish, loading, action }) => {
                     />}
 
                 </Steps>
+            }
             </div>
             {action === "setup" && <>
                 <div className="col-12 text-center pt-3 pb-5">
-                    <Checkbox /> The employer can find your resume and contact you via email or BigTalent regarding your resume. Preview all information thoroughly before submitting your resume
+                    <Checkbox /> The employer can find your resume and contact you via email or JobInCast regarding your resume. Preview all information thoroughly before submitting your resume
             </div>
                 <div className="col-12 text-center d-flex justify-content-center">
                     <Button htmlType="button" onClick={back} className="button-blue mx-1">Back</Button>

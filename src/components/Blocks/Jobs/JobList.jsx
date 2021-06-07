@@ -11,7 +11,7 @@ const JobList = ({ paginated, data, onChange }) => {
         <div className="jobs-list-block">
             <div className="row justify-content-center">
                 <div className="col-md-12">
-                    {data.content.map(job => <NavLink to={`/job/${job.id}`}>
+                    {data.content.map(job => <NavLink key={job.id} to={`/job/${job.id}`}>
                         <Job
                             img={job.companyInfo.companyImageURL}
                             url={`/company/${job.id}`}

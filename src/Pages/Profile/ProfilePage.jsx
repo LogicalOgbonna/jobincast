@@ -9,20 +9,22 @@ import ProfileSetupApplicant from '../../components/Blocks/Profile/ProfileSetupA
 import ProfileSetupEmployer from '../../components/Blocks/Profile/ProfileSetupEmployer';
 import UserHeading from '../../components/Elements/UserHeading';
 import ViewProfile from '../../components/Blocks/Profile/ViewProfile';
+import { useSelector } from 'react-redux';
 
-const message = {
-    setup: "Describe Yourself",
-    view: "Manage Profile"
-}
 const ProfilePage = ({ history: { location: { search } } }) => {
 
+    const message = {
+        setup: "Describe Yourself",
+        view: "Manage Profile"
+    }
+    const profile = useSelector(({ profileSlice: { profile }}) => profile)
     const { action } = queryString.parse(search);
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout profile-page">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <UserHeading action={action} message={message[action]} />
+                        <UserHeading subMessage={`Points Balance: ${profile?.availableUnits}pts`} action={action} message={message[action]} />
                         <ProfileSetupApplicant action={action} />
                         <ProfileSetupEmployer action={action} />
                         <ViewProfile action={action} />

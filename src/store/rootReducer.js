@@ -9,6 +9,7 @@ import jobsSlice from './jobs/reducer'
 import homeSlice from './home/reducer'
 import resumeSlice from './resume/reducer'
 import companiesSlice from './companies/reducer'
+import employerSlice from './employer/reducer'
 const reducers = combineReducers({
     filterSlice,
     authSlice,
@@ -17,7 +18,8 @@ const reducers = combineReducers({
     jobsSlice,
     homeSlice,
     resumeSlice,
-    companiesSlice
+    companiesSlice,
+    employerSlice
 });
 
 // const persistConfig = {

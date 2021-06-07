@@ -4,13 +4,7 @@ import React, { useEffect, useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-
-import file from "./file.json";
-
-const selectCountry = {};
-file.forEach(({ Country, state }) => {
-    selectCountry[Country.toUpperCase()] ? selectCountry[Country.toUpperCase()].push(state) : selectCountry[Country.toUpperCase()] = [state]
-})
+import { selectCountry } from '../../../../store/utils/countries';
 
 
 const { Option } = Select
@@ -49,7 +43,7 @@ const ContactInfo = ({ onFinish, accountType, loading }) => {
                         <PhoneInput
                             country="my"
                             enableSearch
-                            inputClass="profile-inputs w-100"
+                            inputclassName="profile-inputs w-100"
                         />
                     </Form.Item>
                 </div>

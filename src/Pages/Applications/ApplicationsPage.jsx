@@ -1,11 +1,12 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { Button, Table } from 'antd'
+import moment from 'moment'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import BaseMarkup from '../../components/Base/BaseMarkup'
 import UserHeading from '../../components/Elements/UserHeading'
-import { userGetApplicationsAC } from '../../store/applicants/action'
+import { userGetApplicationsAC, withdrawApplicationAC } from '../../store/applicants/action'
 import './ApplicationsPage.less'
 
 const ApplicationsPage = () => {
@@ -15,6 +16,8 @@ const ApplicationsPage = () => {
     useEffect(() => {
         dispatch(userGetApplicationsAC())
     }, [])
+
+    const withdraw = (id, title) => dispatch(withdrawApplicationAC({ id, title }))
     const columns = [
         {
             title: 'Title',
@@ -23,48 +26,35 @@ const ApplicationsPage = () => {
         },
         {
             title: 'Date',
-            dataIndex: 'date',
-            key: 'date',
+            dataIndex: 'dateApplied',
+            key: 'dateApplied',
+            render: (value) => moment(value).fromNow()
         },
         {
             title: 'Company',
-            dataIndex: 'company',
+            dataIndex: 'companyName',
             key: 'company',
-            render: (value) => <NavLink to="/company">{value}</NavLink>
+            render: (value, { companyId }) => <NavLink to={`/company/${companyId}`}>{value}</NavLink>
         },
         {
             title: 'Status',
-            dataIndex: 'status',
-            key: 'status',
+            dataIndex: 'jobApplicationStatus',
+            key: 'entityState',
+            render: (state) => {
+                if (String(state).toLocaleLowerCase() === "accepted") return <span className="text-success">{state}</span>
+                if (String(state).toLocaleLowerCase() === "rejected") return <span className="text-danger">{state}</span>
+                if (String(state).toLocaleLowerCase() === "submitted") return <span className="text-info">{state}</span>
+                if (String(state).toLocaleLowerCase() === "reviewing") return <span className="text-warning">{state}</span>
+                return <span className="text-info">Submitted</span>
+            }
         },
         {
             title: 'Action',
             dataIndex: 'action',
             key: 'action',
-            render: () => <Button type="text"><DeleteOutlined className="text-left" /></Button>
+            render: (_, { applicationId, title }) => <Button onClick={() => withdraw(applicationId, title)} type="text">Withdraw</Button>
         },
     ]
-
-    // const data = [
-    //     {
-    //         title: "Senior Graphics Designer",
-    //         status: "pending",
-    //         company: "Best Company",
-    //         date: "2 weeks ago"
-    //     },
-    //     {
-    //         title: "Senior Graphics Designer",
-    //         status: "pending",
-    //         date: "2 weeks ago",
-    //         company: "Best Company",
-    //     },
-    //     {
-    //         title: "Senior Graphics Designer",
-    //         status: "pending",
-    //         date: "2 weeks ago",
-    //         company: "Best Company"
-    //     },
-    // ]
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout applicant-application-page">

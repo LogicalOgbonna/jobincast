@@ -1,43 +1,65 @@
 import './CompanyPage.less';
 
-import { Avatar } from 'antd';
-import React from 'react';
+import { Avatar, Skeleton } from 'antd';
+import React, { useEffect } from 'react';
 
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import JobList from '../../components/Blocks/Jobs/JobList';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+import { getSingleCompanyAC } from '../../store/companies/action';
+import { getAllJobsAC } from '../../store/jobs/action';
 
 const CompanyPage = () => {
+    const dispatch = useDispatch();
+    const { id } = useParams()
+    useEffect(() => {
+        dispatch(getAllJobsAC(`page=0&size=4&search=user.id==${id}`))
+        dispatch(getSingleCompanyAC(id))
+    }, [])
+    const { company, companyLoading, jobs } = useSelector(({ companiesSlice: { company, companyLoading }, 
+    jobsSlice: { jobs } }) => ({ company, companyLoading, jobs }))
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout company-page">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-10 text-center">
-                            <Avatar size={100} />
-                            <h2 className="company-page-company-name">Bridge IT Solutions</h2>
-                            <p className= "slogan">We Create the Internet</p>
+                            {companyLoading ?
+                                <Skeleton.Avatar title size={120} loading={companyLoading} active />
+                                :
+                                <>
+                                    <Avatar src={company?.imageURL} size={100} />
+                                    <h2 className="company-page-company-name">{company?.name}</h2>
+                                    <p className="slogan">{company?.companyInfo?.slogan}</p>
+                                </>
+                            }
                         </div>
                         <div className="col-md-10 company-details">
-                            <h4 className= "lh50">Company Information</h4>
-                            <p className= "text-muted"><i class="fa fa-sitemap pr-2" aria-hidden="true"  />Company Category :  input</p>
-                            <p className= "text-muted"><i class="fa fa-users pr-2" aria-hidden="true"  /> Company Size :  input</p>
-                            <p className= "text-muted"><i className="fa fa-briefcase pr-2" aria-hidden="true" /> Job Listings : 3 Jobs Available</p>
+                            <Skeleton
+                                paragraph={{ rows: 10 }} loading={companyLoading} active
+                            >
+                                <h4 className="lh50">Company Information</h4>
+                                <p className="text-muted"><i className="fa fa-sitemap pr-2" aria-hidden="true" />Company Category :  <span className="text-capitalize">{company?.industry?.toLowerCase()}</span></p>
+                                <p className="text-muted"><i className="fa fa-users pr-2" aria-hidden="true" /> Company Size :  {company?.companySize}</p>
+                                <p className="text-muted"><i className="fa fa-briefcase pr-2" aria-hidden="true" /> Job Listings : {company?.numberOfPositions} Jobs Available</p>
 
-                            <p className="company-details-title">Company Description</p>
+                                <p className="company-details-title">Company Description</p>
 
-                            <p className="company-details-content">
-                                We do not own any data, information or material (“Content”) that you submit on the Website in the course of using the Service. You shall have sole responsibility for the accuracy, quality, integrity, legality, reliability, appropriateness, and intellectual property ownership or right to use of all submitted Content. We may, but have no obligation to, monitor and review Content on the Website submitted or created using our Services by you.
-                                We do not own any data, information or material (“Content”) that you submit on the Website in the course of using the Service. You shall have sole responsibility for the accuracy, quality, integrity, legality, reliability, appropriateness, and intellectual property ownership or right to use of all submitted Content. We may, but have no obligation to, monitor and review Content on the Website submitted or created using our Services by you.
+                                <p className="company-details-content">
+                                    {company?.companyFullBio}
                             </p>
 
-                            <p className="company-details-title">Location Information</p>
-                            <p>Address : address entered</p>
-                            <p>State :  inputed value</p>
-                            <p>Country : input</p>
-                            <br></br>
-                            <br></br>
+                                <p className="company-details-title">Location Information</p>
+                                <p>Address : {company?.address}</p>
+                                {/* <p>State :  inputed value</p> */}
+                                <p>Country : {company?.location}</p>
+                                <br></br>
+                                <br></br>
 
-                            <JobList />
+                                <JobList data={jobs} />
+
+                            </Skeleton>
                         </div>
                     </div>
                 </div>

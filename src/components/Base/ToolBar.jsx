@@ -53,6 +53,7 @@ const ToolBar = () => {
                     </NavLink>
                 </div>
                 <div className="col-md-6 tool-bar-links">
+                    <NavLink className={activePage('/')} to="/">Home</NavLink>
                     <NavLink className={activePage('/jobs')} to="/jobs">JOBS</NavLink>
                     {authority === "EMPLOYER" && <NavLink className={activePage('/resume')} to="/resume">RESUME</NavLink>}
                     <NavLink className={activePage('/companies')} to="/companies">COMPANIES</NavLink>

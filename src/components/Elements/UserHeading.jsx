@@ -80,12 +80,6 @@ const UserHeading = ({ message, action, subMessage, className }) => {
                                 <NavLink to="/profile?action=view" className="logged-in-nav">My Profile</NavLink>
                             </div>
                         </div>}
-                        {/* {authority === "EMPLOYER" && <p><NavLink to="/employer/jobs" className="logged-in-nav">Jobs</NavLink></p>}
-                        {authority === "EMPLOYER" && <p><NavLink to="/employer/applicants" className="logged-in-nav">Applicants</NavLink></p>}
-                        {authority === "EMPLOYER" && <p><NavLink to="/employer/points" className="logged-in-nav">Points</NavLink></p>}
-                        {authority === "APPLICANT" && <p><NavLink to="/applicant/applications" className="logged-in-nav">Applications</NavLink></p>}
-                        <p><NavLink to="/profile?action=view" className="logged-in-nav">My Profile</NavLink></p>
-                        <p><Button type="text" className="logged-in-nav">Logout</Button></p> */}
                     </div>
                 }
             </div>

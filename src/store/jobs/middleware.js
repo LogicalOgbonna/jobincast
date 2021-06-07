@@ -4,7 +4,11 @@ import {
     createJobService,
     getRecruiterGetJobsService,
     getAllJobsService,
-    getSingleJobService
+    getSingleJobService,
+    checkIfUserAppliedAlready,
+    deleteJobService,
+    rePostJobService,
+    updateJobService
 } from './service'
 import { setData } from './reducer';
 import { getJobsAC } from "./action";
@@ -21,7 +25,7 @@ const createJobMW = (store) => (next) => async action => {
     if (!success) return notification.error({
         description: message
     })
-
+    await store.dispatch(getJobsAC())
     notification.success({
         description: "Job Created successfully"
     })
@@ -31,7 +35,65 @@ const createJobMW = (store) => (next) => async action => {
         value: message
     }))
     action.payload.onModalToggle();
-    store.dispatch(getJobsAC())
+}
+const updateJobMW = (store) => (next) => async action => {
+    if (action.type !== 'company/update-job') return next(action);
+
+    store.dispatch(setData({ type: "jobUpdateLoading", value: true }))
+    const { message, success } = await updateJobService(action.payload.data);
+    store.dispatch(setData({
+        type: "jobUpdateLoading",
+        value: false
+    }))
+    if (!success) return notification.error({
+        description: message
+    })
+    // await store.dispatch(getJobsAC())
+    notification.success({
+        description: "Job updated successfully"
+    })
+
+    const jobs = { ...store.getState().jobsSlice.recruiterJobs };
+
+    jobs.content = jobs.content.map(job => {
+        return job.id === message.id ? message : job
+    })
+
+    store.dispatch(setData({
+        type: 'recruiterJobs',
+        value: jobs
+    }))
+    action.payload.toggle();
+}
+
+const deleteJobMW = store => next => async action => {
+    if (action.type !== 'company/delete-job') return next(action);
+
+    store.dispatch(setData({
+        type: 'jobsLoading',
+        value: true
+    }))
+
+    const { message, success } = await deleteJobService(action.payload.id);
+
+    // store.dispatch(setData({
+    //     type: 'jobsLoading',
+    //     value: false
+    // }))
+    if (!success) return notification.error({
+        description: message
+    })
+
+    const { jobsSlice: { jobs } } = store.getState();
+    const content = jobs.filter(job => job.id !== action.payload.id)
+    store.dispatch(setData({
+        type: 'jobs',
+        value: { ...jobs, content }
+    }))
+
+    notification.success({
+        description: `You have successfully deleted ${action.payload.title}`
+    })
 }
 
 const getRecruiterGetJobsMW = store => next => async action => {
@@ -82,13 +144,43 @@ const getSingleJobMW = store => next => async action => {
     if (action.type !== "user/get-single-job") return next(action);
     store.dispatch(setData({ type: "jobLoading", value: true }))
     const { message, success } = await getSingleJobService(action.payload)
+    const { message: applied } = await checkIfUserAppliedAlready(action.payload)
     store.dispatch(setData({ type: "jobLoading", value: false }))
     if (!success) return notification.error({
         description: message
     })
-    store.dispatch(setData({ type: "job", value: message }))
+    store.dispatch(setData({ type: "job", value: { ...message, applied } }))
 }
 
-const jobsMiddleware = [createJobMW, getRecruiterGetJobsMW, getAllJobsMW, getSingleJobMW]
+const rePostJobMW = store => next => async action => {
+    if (action.type !== 'company/re-post-job') return next(action)
+    store.dispatch(setData({
+        type: 'recruiterJobsLoading',
+        value: true
+    }))
+    const { success, message } = await rePostJobService(action.payload);
+    store.dispatch(setData({
+        type: 'recruiterJobsLoading',
+        value: false
+    }))
+
+    if (!success) return notification.error({
+        description: message
+    })
+
+    const jobs = { ...store.getState().jobsSlice.recruiterJobs };
+
+    jobs.content = jobs.content.map(job => {
+        return job.id === message.id ? message : job
+    })
+
+    store.dispatch(setData({
+        type: 'recruiterJobs',
+        value: jobs
+    }))
+
+}
+
+const jobsMiddleware = [createJobMW, getRecruiterGetJobsMW, getAllJobsMW, getSingleJobMW, deleteJobMW, rePostJobMW, updateJobMW]
 
 export default jobsMiddleware

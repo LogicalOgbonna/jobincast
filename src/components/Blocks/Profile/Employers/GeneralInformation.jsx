@@ -59,7 +59,7 @@ const GeneralInformation = ({ finishGeneralInfo, accountType, loading }) => {
                 </Form.Item>
             </div>
             <div className="col-12 col-md-6">
-                <Form.Item label="Company Size" name="size" rules={[{ required: true, message: "Company Size is required" }]}>
+                <Form.Item label="Company Size" name="companySize" rules={[{ required: true, message: "Company Size is required" }]}>
                     <Select placeholder="e.g 0-50" className="profile-inputs">
                         {companySizeOptions.map((category, key) => <Option key={key} value={category}> {category.replace(/_/g, " ")} </Option>)}
                     </Select>

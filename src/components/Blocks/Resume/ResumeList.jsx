@@ -1,34 +1,34 @@
 import './ResumeList.less';
 
-import React from 'react';
-
-import { taletize } from '../../../assets/images';
 import { Pagination } from 'antd';
-import Resume from './Resume';
+import moment from 'moment';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+
+import Resume from './Resume';
 
 const ResumeList = ({ data: { content, totalElements } }) => {
     return (
         <div className="resume-list-block">
             <div className="row justify-content-center">
-                {content.map(resume =>
-                    <div className="col-md-12">
-                        <NavLink to={`/resume/${resume.id}`}>
+                <div className="col-md-12">
+                    {content.map(resume =>
+                        <NavLink key={resume.profileId} to={`/resume/${resume.profileId}`}>
                             <Resume
-                                name={`${resume.firstName} ${resume.lastName}`}
-                                stack="FULLSTACK DEVELOPER"
+                                name={resume?.fullName}
+                                stack={resume?.title}
                                 address="18271 Dayton River Rd Dayton, Minnesota"
-                                tech="Science & Technology | Full Time"
-                                img={taletize}
-                                posted="12th April, 2020"
+                                tech={resume?.shortBio}
+                                img={resume?.imageURL}
+                                posted={moment(resume.createdAt).fromNow()}
                             />
 
-                            {content.length > 0 && <div className="text-right">
-                                <Pagination className="resume-pagination" defaultCurrent={1} total={totalElements} />
-                            </div>}
                         </NavLink>
-                    </div>
-                )}
+                    )}
+                    {content.length > 0 && <div className="text-right">
+                        <Pagination className="resume-pagination" defaultCurrent={1} total={totalElements} />
+                    </div>}
+                </div>
             </div>
         </div>
     )

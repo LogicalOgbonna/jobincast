@@ -4,13 +4,7 @@ import React, { useEffect, useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-
-import file from "./file.json";
-
-const selectCountry = {};
-file.forEach(({ Country, state }) => {
-    selectCountry[Country.toUpperCase()] ? selectCountry[Country.toUpperCase()].push(state) : selectCountry[Country.toUpperCase()] = [state]
-})
+import { selectCountry } from '../../../../store/utils/countries';
 
 
 const { Option } = Select
@@ -19,9 +13,10 @@ const ContactInfo = ({ onFinish, accountType, loading, step }) => {
     const [form] = Form.useForm()
 
     const profile = useSelector(({ profileSlice: { profile } }) => profile)
+    const [contact, setContact] = useState({ webSiteUrl: "" })
     const [country, setCountry] = useState("")
     useEffect(() => {
-        if(profile?.contact) form.setFieldsValue(profile?.contact)
+        if (profile?.contact) form.setFieldsValue(profile?.contact)
         setCountry(profile?.contact?.country)
     }, [profile, accountType, step])
     const { push } = useHistory()
@@ -49,7 +44,7 @@ const ContactInfo = ({ onFinish, accountType, loading, step }) => {
                         <PhoneInput
                             country="my"
                             enableSearch
-                            inputClass="profile-inputs w-100"
+                            inputclassName="profile-inputs w-100"
                         />
                     </Form.Item>
                 </div>
@@ -59,23 +54,23 @@ const ContactInfo = ({ onFinish, accountType, loading, step }) => {
                     </Form.Item>
                 </div>
                 <div className="col-12 col-md-6">
-                    <Form.Item label="Company Website" name="websiteUrl" rules={[{ type: "url", required: true, message: "Company Website is required" }]}>
-                        <Input placeholder="https://" className="profile-inputs" />
+                    <Form.Item label="Company Website" name="websiteUrl" rules={[{ type: "string", required: true, message: "Company Website is required" }]}>
+                        <Input addonBefore="https://" placeholder="jobincast.com" className="profile-inputs" />
                     </Form.Item>
                 </div>
                 <div className="col-12 col-md-6">
-                    <Form.Item label="Facebook" name="facebookUrl" rules={[{ type: "url" }]}>
-                        <Input placeholder="https://" className="profile-inputs" />
+                    <Form.Item label="Facebook" name="facebookUrl" rules={[{ type: "string" }]}>
+                        <Input addonBefore="https://" placeholder="jobincast.com" className="profile-inputs" />
                     </Form.Item>
                 </div>
                 <div className="col-12 col-md-6">
-                    <Form.Item label="Twitter" name="twitterUrl" rules={[{ type: "url" }]}>
-                        <Input placeholder="https://" className="profile-inputs" />
+                    <Form.Item label="Twitter" name="twitterUrl" rules={[{ type: "string" }]}>
+                        <Input addonBefore="https://" placeholder="jobincast.com" className="profile-inputs" />
                     </Form.Item>
                 </div>
                 <div className="col-12 col-md-6">
-                    <Form.Item label="linkedIn" name="linkedInUrl" rules={[{ type: "url" }]}>
-                        <Input placeholder="https://" className="profile-inputs" />
+                    <Form.Item label="linkedIn" name="linkedInUrl" rules={[{ type: "string" }]}>
+                        <Input addonBefore="https://" placeholder="jobincast.com" className="profile-inputs" />
                     </Form.Item>
                 </div>
                 <div className="col-12 text-center d-flex justify-content-center">

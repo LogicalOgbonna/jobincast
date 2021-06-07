@@ -1,6 +1,6 @@
 import { notification } from 'antd';
 import { setData } from './reducer';
-import { getAllResumeService } from './service';
+import { getAllResumeService, getSingleResumeService } from './service';
 
 const getAllResumeMW = store => next => async action => {
     if (action.type !== 'user/get-all-resume') return next(action);
@@ -14,6 +14,28 @@ const getAllResumeMW = store => next => async action => {
     store.dispatch(setData({ type: 'resumes', value: message }))
 }
 
-const resumeMiddleware = [getAllResumeMW];
+const getSingleResumeMW = store => next => async action => {
+    if(action.type !== 'user/get-single-resume') return next(action);
+    store.dispatch(setData({
+        type: 'resumeLoading',
+        value: true,
+    }))
+
+    const { success, message} = await getSingleResumeService(action.payload);
+    store.dispatch(setData({
+        type: 'resumeLoading',
+        value: false
+    }))
+
+    if(!success) return notification.error({
+        description: message
+    })
+
+    store.dispatch(setData({
+        type: 'resume',
+        value: message
+    }))
+}
+const resumeMiddleware = [getAllResumeMW, getSingleResumeMW];
 
 export default resumeMiddleware;

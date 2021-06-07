@@ -1,31 +1,43 @@
-import { Button } from 'antd'
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { Button } from 'antd';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 
-const Apply = () => {
-    const user = useSelector(({ authSlice: { user } }) => user)
-    const { push } = useHistory()
+import { applicantApplyAC } from '../../store/applicants/action';
+
+const Apply = ({ applied }) => {
+    const { user, applyLoading } = useSelector(({ authSlice: { user }, applicantsSlice: { applyLoading } }) => ({ user, applyLoading }))
+    const dispatch = useDispatch()
+    const { id } = useParams()
     const loggedInUser = localStorage.getItem("jobincast::user:token");
     const authority = user && user.roles ? user?.roles[0]?.authority : null;
+
+    const apply = () => dispatch(applicantApplyAC(id))
     return (
         <div className="row justify-content-center">
             <div className="col-12 text-center">
-                {loggedInUser ?
-                    authority !== "APPLICANT" ?
-                        <div className="text-center text-muted">You are an {authority}, you cannot apply for this position</div> :
-                        <Button className="job-details-button">Send Application</Button>
-                    :
-                    <Button onClick={() => push("/auth?action=login")} className="job-details-button">Login</Button>}
+                <Employer loggedIn={loggedInUser} authority={authority} />
+                <Applicant authority={authority} applied={applied} applyLoading={applyLoading} apply={apply} />
+                <Guest loggedIn={loggedInUser} />
             </div>
-            {/* <div className="col-12 text-center">
-                <div className="job-success-notification"><CheckOutlined />Application sent</div>
-            </div>
-            <div className="col-12 text-center">
-                <div className="job-error-notification"><CloseOutlined />You require a resume to apply for this job</div>
-            </div> */}
         </div>
     )
 }
 
-export default Apply
+export default Apply;
+
+const Employer = ({ authority, loggedInUser }) => {
+    if (!loggedInUser) return null;
+    if (authority !== "EMPLOYER") return null;
+
+    return <div className="text-center text-muted">You are an {authority}, you cannot apply for this position</div>
+
+}
+const Applicant = ({ authority, applied, applyLoading, apply }) => {
+    if (authority !== "APPLICANT") return null;
+    if (applied) return <Link to="/applicant/applications" className="job-details-a-button">Check Application Status</Link>
+
+    return <Button loading={applyLoading} className="job-details-button" onClick={apply}>Send Application</Button>
+}
+
+const Guest = ({ loggedIn }) => loggedIn ? null : <Link to="/auth?action=login" className="job-details-a-button">Send Application</Link>

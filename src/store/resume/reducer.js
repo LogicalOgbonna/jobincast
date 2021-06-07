@@ -6,6 +6,8 @@ const resumeSlice = createSlice({
     initialState: {
         resumes: { content: [] },
         resumesLoading: true,
+        resume: null,
+        resumeLoading: true
     },
     reducers: {
         setData: (state, action) => ({

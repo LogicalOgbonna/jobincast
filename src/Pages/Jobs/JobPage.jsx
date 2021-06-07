@@ -1,13 +1,14 @@
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons'
-import { Avatar, Button, Skeleton } from 'antd'
-import moment from 'moment'
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router'
-import BaseMarkup from '../../components/Base/BaseMarkup'
-import Apply from '../../components/Elements/Apply'
-import { getSingleJobAC } from '../../store/jobs/action'
-import './JobPage.less'
+import './JobPage.less';
+
+import { Avatar, Skeleton } from 'antd';
+import moment from 'moment';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+
+import BaseMarkup from '../../components/Base/BaseMarkup';
+import Apply from '../../components/Elements/Apply';
+import { getSingleJobAC } from '../../store/jobs/action';
 
 
 const JobPage = () => {
@@ -56,7 +57,7 @@ const JobPage = () => {
                                 <br></br>
                                 <br></br>
 
-                                {<Apply />}
+                                <Apply applied={job?.applied} />
                             </Skeleton>
                         </div>
                     </div>

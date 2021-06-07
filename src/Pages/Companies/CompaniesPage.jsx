@@ -21,21 +21,21 @@ const CompaniesPage = () => {
     //     dispatch(getAllCompaniesAC(`page=${page}&size=10`))
     // }
 
-    const { companies, companiesLoading } = useSelector(({ companiesSlice: { companies, companiesLoading } }) => ({ companies, companiesLoading }))
+    const { companies, companiesLoading, filterSlice } = useSelector(({ companiesSlice: { companies, companiesLoading }, filterSlice }) => ({ companies, companiesLoading, filterSlice }))
     const options = [
         {
-            label: "Locatioin",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
+            label: "Location",
+            data: filterSlice.locations,
             icon: brownDropdown
         },
         {
             label: "job category",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "category" }, { id: 1, label: "Paris, FR (CDG)", type: "category" }, { id: 2, label: "Paris, FR (CDG)", type: "category" }],
+            data: filterSlice.categories,
             icon: pinkDropdown
         },
         {
             label: "salary",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "salary" }, { id: 1, label: "Paris, FR (CDG)", type: "salary" }, { id: 2, label: "Paris, FR (CDG)", type: "salary" }],
+            data: filterSlice.salaries,
             icon: skyblueDropdown
         },
     ]

@@ -5,10 +5,10 @@ import React from 'react';
 const Resume = ({ img, stack, address, tech, posted, name }) => {
     return (
         <div className="resume-block-card">
-            <Divider class= "reversediv"/>
+            <Divider className= "reversediv"/>
             <div className="row">
                 <div className="col-md-2">
-                    <img src={img} alt="taletize" />
+                    <img src={img ? img : "/logo.png"} alt={name} />
                 </div>
                 <div className="col-md-7 resume-block-card-text-section">
                     <h6>{name}</h6>

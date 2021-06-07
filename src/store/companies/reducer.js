@@ -5,9 +5,11 @@ const companiesSlice = createSlice({
     name: 'companiesSlice',
     initialState: {
         companies: { content: [] },
-        companiesLoading: true
+        companiesLoading: true,
+        company: null,
+        companyLoading: true
     },
-    reducers: { 
+    reducers: {
         setData: (state, action) => ({
             ...state,
             [action.payload.type]: action.payload.value

@@ -65,7 +65,7 @@ const currencies = [
     "DONG",
     "RUPEE"
 ]
-const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
+const UpdateJob = ({ onFinish, loading, toggle, open, editableJob }) => {
 
 
     const [form] = useForm()
@@ -173,8 +173,7 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
                     </div>
 
                     <div className="col-12 text-center d-flex justify-content-center mt-3">
-                        {/* <Button htmlType="button" onClick={back} className="button-blue mx-1">Back</Button> */}
-                        <Button loading={loading} htmlType="submit" className="button-blue mx-1">Post</Button>
+                        <Button loading={loading} htmlType="submit" className="button-blue mx-1">Update</Button>
                     </div>
                     <div className="col-12 text-center my-3">
                         <Button type="text" className="text-muted" onClick={() => push("/")}>Return to Dashboard</Button>
@@ -185,4 +184,4 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
     )
 }
 
-export default PostJobModal
+export default UpdateJob
