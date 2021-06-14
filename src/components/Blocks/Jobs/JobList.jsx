@@ -28,7 +28,8 @@ const JobList = ({ paginated, data, onChange }) => {
                             className="job-pagination"
                             current={data.number}
                             onChange={onChange}
-                            total={data.totalElements} />
+                            total={data.totalElements}
+                        />
                     </div>}
                 </div>
             </div>

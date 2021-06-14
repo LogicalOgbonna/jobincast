@@ -28,7 +28,7 @@ const companySizeOptions = [
     '0-50',
     '50-100',
     '100-500',
-    '500-1000',
+    'more than 500',
 ]
 const GeneralInformation = ({ finishGeneralInfo, accountType, loading }) => {
 

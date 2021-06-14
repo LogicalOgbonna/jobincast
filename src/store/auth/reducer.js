@@ -7,7 +7,8 @@ const authSlice = createSlice({
         registerLoading: false,
         resetPasswordLoading: false,
         verifyEmailLoading: false,
-        user: null
+        user: null,
+        completePasswordLoading: false
     },
     reducers: {
         setLoading: (state, action) => ({

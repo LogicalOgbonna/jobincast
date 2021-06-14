@@ -10,7 +10,7 @@ import './Search.less';
 
 
 
-const SearchElement = ({ buttonText, onClick, onSearch }) => {
+const SearchElement = ({ buttonText, onClick, onSearch, onChange }) => {
 
     const onFinish = ({ search }) => onSearch(search)
 
@@ -49,8 +49,8 @@ const SearchElement = ({ buttonText, onClick, onSearch }) => {
                     <div className="row search-element-padding">
                         <div className="col-md-9">
                             <Form onFinish={onFinish}>
-                                <Form.Item name="search">
-                                    <Input prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
+                                <Form.Item name="search" rules={[{ required: true, message:"" }]}>
+                                    <Input onChange={onChange} prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
                                 </Form.Item>
 
                             </Form>

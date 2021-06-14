@@ -35,3 +35,26 @@ export const loginService = async ({ email, password }) => {
         return errorHandler(e)
     }
 }
+
+export const resetPasswordService = async ({ email }) => {
+    try {
+        const { data } = await jobincast.put(`/auth/begin-pass-reset?email=${email}`)
+        return {
+            success: true,
+            message: data
+        }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}
+export const completeResetPasswordService = async (body) => {
+    try {
+        const { data } = await jobincast.put(`/auth/com-pass-reset`, body)
+        return {
+            success: true,
+            message: data
+        }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}

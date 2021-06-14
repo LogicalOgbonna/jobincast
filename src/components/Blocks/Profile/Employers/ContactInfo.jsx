@@ -54,7 +54,7 @@ const ContactInfo = ({ onFinish, accountType, loading, step }) => {
                     </Form.Item>
                 </div>
                 <div className="col-12 col-md-6">
-                    <Form.Item label="Company Website" name="websiteUrl" rules={[{ type: "string", required: true, message: "Company Website is required" }]}>
+                    <Form.Item label="Company Website" name="websiteUrl" rules={[{ type: "string", }]}>
                         <Input addonBefore="https://" placeholder="jobincast.com" className="profile-inputs" />
                     </Form.Item>
                 </div>

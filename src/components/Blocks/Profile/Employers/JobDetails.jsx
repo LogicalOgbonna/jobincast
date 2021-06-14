@@ -97,7 +97,7 @@ const JobDetails = ({ onFinish, loading, accountType, step }) => {
                     </Form.Item>
                 </div>
                 <div className="col-12 col-md-6">
-                    <Form.Item label="Minimum Salary" name="minAmount" >
+                    <Form.Item label="Minimum Salary Monthly" name="minAmount" >
                         <InputNumber
                             defaultValue={100}
                             formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
@@ -108,7 +108,7 @@ const JobDetails = ({ onFinish, loading, accountType, step }) => {
                     </Form.Item>
                 </div>
                 <div className="col-12 col-md-6">
-                    <Form.Item label="Maximum Salary" name="maxAmount" >
+                    <Form.Item label="Maximum Salary Monthly" name="maxAmount" >
                         <InputNumber
                             defaultValue={1000}
                             formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
