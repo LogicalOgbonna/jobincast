@@ -6,7 +6,7 @@ import './CompanyList.less';
 
 
 
-const CompanyList = ({ paginated, data: { content, totalElements } }) => {
+const CompanyList = ({ paginated, data: { content, totalElements, number }, onPaginationChange }) => {
     return (
         <div className="company-list-block">
             <div className="row justify-content-center">
@@ -25,7 +25,12 @@ const CompanyList = ({ paginated, data: { content, totalElements } }) => {
                         </NavLink>
                     )}
                     {paginated && <div className="text-right">
-                        <Pagination className="company-pagination" total={totalElements} />
+                        <Pagination
+                            onChange={onPaginationChange}
+                            className="company-pagination"
+                            total={totalElements}
+                            current={number}
+                        />
                     </div>}
                 </div>
             </div>

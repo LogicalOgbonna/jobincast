@@ -1,5 +1,8 @@
 import { Button, Input, Select } from 'antd'
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { mappedCountries } from '../../../store/utils/countries';
+import { mappedJobCategories, mappedJobTypes } from '../../../store/utils/jobs';
 import './HeroBlock.less'
 
 const { Option } = Select;
@@ -16,21 +19,15 @@ const HeroBlock = () => {
                     <div className="hero-search-container">
                         <Input placeholder="Keyword" type="text" className="w-100" />
                         <Select className="w-100" placeholder="Job Category">
-                            <Option value="jack">Jack</Option>
-                            <Option value="lucy">Lucy</Option>
-                            <Option value="tom">Tom</Option>
+                            {mappedJobCategories.map(({ label, value }) => <Option className="text-capitalize" value={value}>{label}</Option>)}
                         </Select>
                         <Select className="w-100" placeholder="Job Type">
-                            <Option value="jack">Jack</Option>
-                            <Option value="lucy">Lucy</Option>
-                            <Option value="tom">Tom</Option>
+                            {mappedJobTypes.map(({ label, value }) => <Option className="text-capitalize" value={value}>{label}</Option>)}
                         </Select>
                         <Select className="w-100" placeholder="Job Location">
-                            <Option value="jack">Jack</Option>
-                            <Option value="lucy">Lucy</Option>
-                            <Option value="tom">Tom</Option>
+                            {mappedCountries.map(({ label, value }) => <Option className="text-capitalize" value={value}>{label}</Option>)}
                         </Select>
-                        <Button className="w-50">Search</Button>
+                        <Link to="/search" className="w-50">Search</Link>
                     </div>
                 </div>
             </div>

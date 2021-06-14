@@ -29,6 +29,20 @@ const WhyUsBlock = () => {
                             </div>
                         </div>
                         <div className="col-md-4">
+                            <div className="why-us-card">
+                                <img src={stack} alt="stack" />
+                                <h5 className="my-3">Standalone Resume Database</h5>
+                                <p>Employers can get talents right away from our robust resume database at $2 per contact reveal. and then add your job ad separately later.</p>
+                            </div>
+                        </div>
+                        <div className="col-md-4">
+                            <div className="why-us-card">
+                                <img src={stack} alt="stack" />
+                                <h5 className="my-3">Free Job Application</h5>
+                                <p>Join as a standard member, create your resume instantly for free and you are ready to apply for jobs advertised. All is free, with no hidden cost.</p>
+                            </div>
+                        </div>
+                        <div className="col-md-4">
                             <div className="why-us-card margin-buttom">
                                 <img src={addressBook} alt="addressBook" />
                                 <h5 className="my-3">Premium Resume</h5>
@@ -40,13 +54,6 @@ const WhyUsBlock = () => {
                                 <img src={trumpet} alt="trumpet" />
                                 <h5 className="my-3">Free Job Alerts</h5>
                                 <p>Talents can get regular job alerts from us and you will never miss a relevant job matching your profile straight in your inbox.  And it’s totally free. No hidden cost.</p>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="why-us-card">
-                                <img src={stack} alt="stack" />
-                                <h5 className="my-3">Standalone Resume Database</h5>
-                                <p>Employers can get talents right away from our robust resume database at $2 per contact reveal. and then add your job ad separately later.</p>
                             </div>
                         </div>
                     </div>

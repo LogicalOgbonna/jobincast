@@ -1,5 +1,6 @@
 import { Button, Form, Input, Select } from 'antd'
 import React from 'react'
+import { mappedCountries } from '../../../store/utils/countries';
 import './ContactUsFormBlock.less'
 
 const { Option } = Select;
@@ -15,16 +16,17 @@ const ContactUsFormBlock = () => {
                     <Input type="text" />
                 </Form.Item>
                 <Form.Item name="email" required label="Email">
-                    <Input type="emial" />
+                    <Input type="email" />
                 </Form.Item>
                 <Form.Item name="iam" required label="I am">
                     <Select>
-                        <Option>Hello</Option>
+                        <Option value="EMPLOYER">Employer</Option>
+                        <Option value="APPLICANT">Applicant</Option>
                     </Select>
                 </Form.Item>
                 <Form.Item name="country" required label="Country of inquiry">
                     <Select>
-                        <Option>Hello</Option>
+                    {mappedCountries.map(({ label, value }) => <Option className="text-capitalize" value={value}>{label}</Option>)}
                     </Select>
                 </Form.Item>
                 <Form.Item name="message" required label="Message">

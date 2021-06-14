@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router';
 
 import BaseMarkup from '../../components/Base/BaseMarkup';
-import { registerAction, verifyEmailAction, loginAction } from '../../store/auth/actions';
-import { ForgotPasswordBlock, LoginBlock, RegisterBlock, ActivateAccountBlock } from '../../components/Blocks/Auth';
+import { registerAction, verifyEmailAction, loginAction, resetPasswordAC, completeResetPasswordAC } from '../../store/auth/actions';
+import { ForgotPasswordBlock, LoginBlock, RegisterBlock, ActivateAccountBlock, CompletePasswordRestBlock } from '../../components/Blocks/Auth';
 
 
 
@@ -23,7 +23,9 @@ const AuthPage = ({ history: { location: { search } } }) => {
     const submitLogin = (data) => dispatch(loginAction({ data, history }))
 
 
-    const { loginLoading, registerLoading, resetPasswordLoading, verifyEmailLoading } = useSelector(({ authSlice }) => authSlice);
+    const { loginLoading, registerLoading, resetPasswordLoading, verifyEmailLoading, completePasswordLoading } = useSelector(({ authSlice }) => authSlice);
+    const onResetPassword = (data) => dispatch(resetPasswordAC({ data, history }))
+    const onCompletePasswordReset = (data) => dispatch(completeResetPasswordAC({ data, history }))
     if (localStorage.getItem("jobincast::user:token")) return <Redirect path="/" />;
     return (
         <BaseMarkup className="background-image-left">
@@ -36,6 +38,7 @@ const AuthPage = ({ history: { location: { search } } }) => {
                                 {action === "register" && "Create an account"}
                                 {action === "reset-password" && "Reset Password"}
                                 {action === "activate-account" && "Activate account"}
+                                {action === "complete-reset-password" && "Set Password"}
                             </div>
                             <div className="toggle-buttons d-flex">
                                 {action === "register" && <Button size="middle" onClick={() => history.push('/auth?action=login')} className="button-blue">Already have account ?  Login</Button>}
@@ -63,7 +66,13 @@ const AuthPage = ({ history: { location: { search } } }) => {
                                     <ForgotPasswordBlock
                                         history={history}
                                         loading={resetPasswordLoading}
-                                        onFinish={(data => console.log(data))}
+                                        onFinish={onResetPassword}
+                                        page={action}
+                                    />
+                                    <CompletePasswordRestBlock
+                                        history={history}
+                                        loading={completePasswordLoading}
+                                        onFinish={onCompletePasswordReset}
                                         page={action}
                                     />
                                     <ActivateAccountBlock

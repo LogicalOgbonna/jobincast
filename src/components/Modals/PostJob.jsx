@@ -74,7 +74,7 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
     const [selectJob, setJob] = useState('')
 
     useEffect(() => {
-        if(editableJob) form.setFieldsValue(editableJob)
+        if (editableJob) form.setFieldsValue(editableJob)
     }, [editableJob])
 
     return (
@@ -83,26 +83,26 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
                 <div className="row">
                     <div className="col-12 col-md-6">
                         <Form.Item label="Title" name="jobTitle" rules={[{ required: true, message: "Job Title is required" }]}>
-                            <Input placeholder="Senior Frontend Developer" className="profile-inputs" />
+                            <Input  className="profile-inputs" />
                         </Form.Item>
                     </div>
                     <div className="col-12 col-md-6">
                         <Form.Item label="Experience" name="experienceLevel" rules={[{ required: true, message: "Job Experience is required" }]}>
-                            <Select placeholder="e.g Senior" className="profile-inputs">
+                            <Select  className="profile-inputs">
                                 {jobExperienceLevel.map((experience, key) => <Option key={key} value={experience} className="text-capitalize"> {experience} </Option>)}
                             </Select>
                         </Form.Item>
                     </div>
                     <div className="col-12 col-md-6">
                         <Form.Item label="Type" name="jobType" rules={[{ required: true, message: "Job Type is required" }]}>
-                            <Select placeholder="e.g Full Time" onChange={setJob} className="profile-inputs">
+                            <Select onChange={setJob} className="profile-inputs">
                                 {jobType.map((type, key) => <Option key={key} value={type} className="text-capitalize"> {type.replace(/_/g, " ")} </Option>)}
                             </Select>
                         </Form.Item>
                     </div>
                     <div className="col-12 col-md-6">
                         <Form.Item label="Category" name="jobCategory" rules={[{ required: true, message: "Job Category is required" }]}>
-                            <Select placeholder="e.g Health" className="profile-inputs">
+                            <Select className="profile-inputs">
                                 {jobCategories.map((category, key) => <Option key={key} value={category} className="text-capitalize"> {category.replace(/_/g, " ")} </Option>)}
                             </Select>
                         </Form.Item>
@@ -123,29 +123,29 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
                     </div>
                     <div className="col-12 col-md-6">
                         <Form.Item label="Currency" name="currency" rules={[{ required: true, message: "Currency is required" }]}>
-                            <Select placeholder="e.g USD" className="profile-inputs">
+                            <Select className="profile-inputs">
                                 {currencies.map((currency, key) => <Option key={key} value={currency} className="text-capitalize"> {currency} </Option>)}
                             </Select>
                         </Form.Item>
                     </div>
                     <div className="col-12 col-md-6">
-                        <Form.Item label="Minimum Salary" name="minAmount" rules={[{ required: true, message: "Minimum Salary is required" }]} >
+                        <Form.Item label="Minimum Salary Monthly" name="minAmount" rules={[{ required: true, message: "Minimum Salary is required" }]} >
                             <InputNumber
                                 defaultValue={100}
                                 formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                 className="profile-inputs w-100 pt-1"
-                                placeholder="Minimum"
+                                
                                 parser={value => value.replace(/\$\s?|(,*)/g, '')}
                             />
                         </Form.Item>
                     </div>
                     <div className="col-12 col-md-6">
-                        <Form.Item label="Maximum Salary" name="maxAmount" rules={[{ required: true, message: "Maximum Salary is required" }]}>
+                        <Form.Item label="Maximum Salary Monthly" name="maxAmount" rules={[{ required: true, message: "Maximum Salary is required" }]}>
                             <InputNumber
                                 defaultValue={1000}
                                 formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                 className="profile-inputs w-100 pt-1"
-                                placeholder="Maximum"
+                                
                                 parser={value => value.replace(/\$\s?|(,*)/g, '')}
                             />
                         </Form.Item>
@@ -153,8 +153,10 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
 
                     <div className="col-12 col-md-6">
                         <Form.Item label="Minimum Degree Level" name="degree">
-                            <Select placeholder="e.g BSc" className="profile-inputs">
-                                <Option value="BSc"> BSc </Option>
+                            <Select  className="profile-inputs">
+                                <Option value="Diploma"> Diploma </Option>
+                                <Option value="Higher Diploma"> Higher Diploma </Option>
+                                <Option value="Degree"> Degree </Option>
                                 <Option value="Masters">Masters </Option>
                                 <Option value="PhD">PhD </Option>
                             </Select>
@@ -162,7 +164,7 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
                     </div>
                     <div className="col-12 col-md-6">
                         <Form.Item label="Application Deadline" name="deadline">
-                            <DatePicker placeholder="Deadline" className="profile-inputs w-100" />
+                            <DatePicker  className="profile-inputs w-100" />
                         </Form.Item>
                     </div>
 

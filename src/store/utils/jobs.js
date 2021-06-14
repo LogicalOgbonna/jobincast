@@ -30,3 +30,11 @@ const jobType = [
 
 const jobTypeFilter = (searchKey) => jobType.map(value => ({ type: 'type', label: value, id: nanoid(), searchKey }))
 export { jobCategories, jobTypeFilter, jobType }
+
+const mappedJobTypes = jobType.map(value => ({ label: value.replace(/_/g, " ").toLowerCase(), value }))
+const mappedJobCategories = jobCategories.map(value => ({ label: value.replace(/_/g, " ").toLowerCase(), value }))
+
+export {
+    mappedJobTypes,
+    mappedJobCategories
+}

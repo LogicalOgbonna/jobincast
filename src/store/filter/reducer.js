@@ -36,6 +36,51 @@ const filterSlice = createSlice({
                 { id: nanoid(), type: 'type', label: "PhD", searchKey: "jobCategory" },
             ]
         },
+        companiesPage: {
+            locations: countriesFilter('contact.country'),
+            industry: [
+                { id: nanoid(), label: "ENGINEERING", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "TELECOMMUNICATIONS", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "INTERNET_COMPUTING", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "LEGAL", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "BUSINESS_ADMINISTRATION", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "HUMAN_CAPITAL", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "SALES_AND_MARKETING", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "MANUFACTURING", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "BUILDING_AND_CONSTRUCTION", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "HEALTHCARE", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "SERVICES", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "EDUCATIONS", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "HOSPITALITY", type: "category", searchKey: "category" },
+                { id: nanoid(), label: "OTHERS", type: "category", searchKey: "category" },
+            ],
+            companySize: [
+                { id: nanoid(), type: 'salary', label: "0-50", searchKey: "companySize" },
+                { id: nanoid(), type: 'salary', label: "50-100", searchKey: "companySize" },
+                { id: nanoid(), type: 'salary', label: "100-500", searchKey: "companySize" },
+                { id: nanoid(), type: 'salary', label: "more than 500", searchKey: "companySize" },
+            ]
+        },
+        resumePage: {
+            locations: countriesFilter('contact.country'),
+            alphabetical: [
+                { id: nanoid(), label: "A-Z", type: "category", searchKey: "alphabetical" },
+                { id: nanoid(), label: "Z-A", type: "category", searchKey: "alphabetical" },
+            ],
+            degree: [
+                { id: nanoid(), type: 'type', label: "Diploma", searchKey: "degree" },
+                { id: nanoid(), type: 'type', label: "Higher Diploma", searchKey: "degree" },
+                { id: nanoid(), type: 'type', label: "BSc", searchKey: "degree" },
+                { id: nanoid(), type: 'type', label: "Masters", searchKey: "degree" },
+                { id: nanoid(), type: 'type', label: "PhD", searchKey: "degree" },
+            ],
+            experiences: [
+                { id: nanoid(), type: 'experience', label: "0-1", searchKey: "yearsOfExperience" },
+                { id: nanoid(), type: 'experience', label: "2-5", searchKey: "yearsOfExperience" },
+                { id: nanoid(), type: 'experience', label: "6-10", searchKey: "yearsOfExperience" },
+                { id: nanoid(), type: 'experience', label: "more than 10", searchKey: "yearsOfExperience" },
+            ],
+        },
         locations: countriesFilter('location'),
         categories: [
             { id: nanoid(), label: "ENGINEERING", type: "category" },
@@ -60,16 +105,21 @@ const filterSlice = createSlice({
             { id: nanoid(), type: 'type', label: "BSc" },
             { id: nanoid(), type: 'type', label: "Master" },
             { id: nanoid(), type: 'type', label: "PhD" },
-        ]
+        ],
+        currentState: {}
     },
     reducers: {
         setPill: (state, action) => ({
             ...state,
             pills: action.payload
+        }),
+        setCurrentState: (state, action) => ({
+            ...state,
+            currentState: action.payload
         })
     }
 })
 
 
-export const { setPill } = filterSlice.actions;
+export const { setPill, setCurrentState } = filterSlice.actions;
 export default filterSlice.reducer;

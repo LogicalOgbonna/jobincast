@@ -8,12 +8,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearFilterPillAC } from '../../store/filter/actions';
 import Dropdown from './DropDown';
 import FilterPills from './FilterPills';
+import { useHistory } from 'react-router';
 
 
 
 const FilterElement = ({ options, extra }) => {
     const dispatch = useDispatch();
     const pills = useSelector(({ filterSlice: { pills } }) => pills)
+    const history = useHistory()
     return (
         <div className="filter-element">
             <div className="filter-section row">
@@ -30,7 +32,7 @@ const FilterElement = ({ options, extra }) => {
                 <div className="filter-pills">
                     <FilterPills />
                 </div>
-                {pills.length > 0 && <button type="default" onClick={() => dispatch(clearFilterPillAC())} className="filter-element-button text-right"><RedoOutlined /> RESET</button>}
+                {pills.length > 0 && <button type="default" onClick={() => dispatch(clearFilterPillAC(history))} className="filter-element-button text-right"><RedoOutlined /> RESET</button>}
             </div>
         </div>
     )

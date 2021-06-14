@@ -1,4 +1,4 @@
-import { registerService, verifyEmailService, loginService } from './service'
+import { registerService, verifyEmailService, loginService, resetPasswordService, completeResetPasswordService } from './service'
 import { setLoading, setUser } from './reducer'
 import { notification } from 'antd';
 import { setDefaultBearer } from '../../axios';
@@ -86,12 +86,56 @@ const loginMW = (store) => (next) => async action => {
 
 }
 
+const resetPasswordMW = store => next => async action => {
+    if (action.type !== "user/reset-password") return next(action);
+    store.dispatch(setLoading({
+        type: "resetPasswordLoading",
+        value: true
+    }))
+    const { success, message } = await resetPasswordService(action.payload.data);
+    store.dispatch(setLoading({
+        type: "resetPasswordLoading",
+        value: false
+    }))
+    if (!success) return notification.error({
+        description: message
+    })
+    notification.success({
+        description: "A token has been sent you your mail"
+    });
+
+    action.payload.history.push("/auth?action=complete-reset-password")
+}
+const completeResetPasswordMW = store => next => async action => {
+    if (action.type !== "user/complete-reset-password") return next(action);
+    store.dispatch(setLoading({
+        type: "completePasswordLoading",
+        value: true
+    }))
+    const { success, message } = await completeResetPasswordService({
+        newPassword: action.payload.data.newPassword,
+        token: action.payload.data.token
+    });
+    store.dispatch(setLoading({
+        type: "completePasswordLoading",
+        value: false
+    }))
+    if (!success) return notification.error({
+        description: message
+    })
+    notification.success({
+        description: "Password Set successfully"
+    });
+
+    action.payload.history.push("/auth?action=login")
+}
+
 const setUserFromLocalStorageMW = store => next => action => {
     if (action.type !== 'app/set-user-from-local-storage') return next(action);
     store.dispatch(setUser(decodeToken()))
 
 }
 
-const authMiddleware = [registerMW, verifyEmailMW, loginMW, setUserFromLocalStorageMW];
+const authMiddleware = [registerMW, verifyEmailMW, loginMW, setUserFromLocalStorageMW, resetPasswordMW, completeResetPasswordMW];
 
 export default authMiddleware

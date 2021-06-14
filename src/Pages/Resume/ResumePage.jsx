@@ -1,55 +1,115 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Skeleton, Spin } from 'antd';
-
-import { brownDropdown, darkgreenDropdown, pinkDropdown, purpleDropdown, skyblueDropdown } from '../../assets/icons';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Skeleton } from 'antd';
+import queryString from "query-string";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { brownDropdown, darkgreenDropdown, purpleDropdown, skyblueDropdown } from '../../assets/icons';
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import ResumeList from '../../components/Blocks/Resume/ResumeList';
 import FilterElement from '../../components/Elements/Filter';
 import SearchElement from '../../components/Elements/Search';
+import { clearFilterAndCurrentStateAC } from '../../store/filter/actions';
+import { setCurrentState } from '../../store/filter/reducer';
 import { getAllResumeAC } from '../../store/resume/action';
-import { useSelector } from 'react-redux';
+import searchSplitter from '../../store/utils/searchSplitter';
+import './ResumePage.less';
 
-import './ResumePage.less'
 
+
+
+
+const searchParams = {
+    title: "",
+    fullName: "",
+}
 const ResumePage = () => {
     const dispatch = useDispatch()
+    const history = useHistory();
+
+    const [state, setState] = useState(searchParams)
     const { resumes, resumesLoading, filterSlice } = useSelector(({ resumeSlice: { resumes, resumesLoading }, filterSlice }) => ({ resumes, resumesLoading, filterSlice }))
     useEffect(() => {
-        dispatch(getAllResumeAC("page=0&size=10"))
+        const previousSearch = (queryString.parse(history.location.search))?.search;
+        if (!previousSearch) return dispatch(getAllResumeAC("page=0&size=10"))
+        const updatedSearchParams = searchSplitter(previousSearch)
+        setState(updatedSearchParams)
+        dispatch(setCurrentState({ ...updatedSearchParams }))
+        dispatch(getAllResumeAC(`search=${previousSearch}&page=0&size=10`))
+    }, [history.location.search])
+
+    useEffect(() => {
+
+        return () => {
+            dispatch(clearFilterAndCurrentStateAC())
+        }
     }, [])
 
     const options = [
         {
             label: "Alphabetical",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
+            data: filterSlice.resumePage.alphabetical.map(value => ({ ...value, page: 'resume' })),
             icon: brownDropdown
         },
         {
             label: "Location",
-            data: filterSlice.locations,
+            data: filterSlice.resumePage.locations.map(value => ({ ...value, page: 'resume' })),
             icon: darkgreenDropdown
         },
-        {
-            label: "job category",
-            data: filterSlice.categories,
-            icon: pinkDropdown
-        },
+        // {
+        //     label: "job category",
+        //     data: filterSlice.categories,
+        //     icon: pinkDropdown
+        // },
         {
             label: "Degree Level",
-            data: filterSlice.degree,
+            data: filterSlice.resumePage.degree.map(value => ({ ...value, page: 'resume' })),
             icon: skyblueDropdown
         },
         {
-            label: "experience level",
-            data: filterSlice.experiences,
+            label: "years of experience",
+            data: filterSlice.resumePage.experiences.map(value => ({ ...value, page: 'resume' })),
             icon: purpleDropdown
         },
     ]
+
+    const onSearchChange = ({ target: { value } }) => {
+        setState({
+            ...state,
+            title: value,
+            fullName: value,
+        })
+    }
+
+    const onSearch = search => {
+        let searchString = `search=`;
+        for (let m in state) {
+            if (state[m].length > 0) {
+                if (m === "title" || m === "fullName") {
+                    const searchValue = state[m].replace(/'/g, "");
+                    searchString += `${m}=='*${searchValue}*';`;
+                }
+                else {
+                    if (state[m].length > 1) {
+                        const searchValue = state[m].join(",").replace(/'/g, "").split(",").map(value => `'${value}'`).join(",");
+                        searchString += `${m}=in=(${searchValue});`;
+                    } else {
+                        const searchValue = state[m].join(",").replace(/'/g, "");
+                        searchString += `${m}=='${searchValue}';`;
+                    }
+                }
+            }
+        }
+        dispatch(setCurrentState({ ...state }))
+        searchString = searchString.substring(0, searchString.length - 1).replace(/"/g, "");
+        history.push(`/resume?page=0&size=10&${searchString}`)
+    }
     return (
         <BaseMarkup className="background-image-left">
             <div className="desktop-layout">
                 <SearchElement
+                    onChange={onSearchChange}
+                    onSearch={onSearch}
                     onClick={() => console.log("Hello")}
                     buttonText={<div><i className="fa fa-briefcase" /> POST RESUME</div>}
                 />

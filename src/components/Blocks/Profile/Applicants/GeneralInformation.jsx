@@ -38,13 +38,16 @@ const GeneralInformation = ({ finishGeneralInfo, accountType, loading }) => {
                         <Option value="0-1"> 0-1 Year </Option>
                         <Option value="2-5">2-5 Years </Option>
                         <Option value="6-10">6-10 Years </Option>
+                        <Option value="more than 10">more than 10 Years </Option>
                     </Select>
                 </Form.Item>
             </div>
             <div className="col-12 col-md-6">
                 <Form.Item label="Highest Degree Level" name="degree" rules={[{ required: true, message: "Degree is required" }]}>
                     <Select placeholder="e.g BSc" className="profile-inputs">
-                        <Option value="BSc"> BSc </Option>
+                        <Option value="Diploma"> Diploma </Option>
+                        <Option value="Higher Diploma"> Higher Diploma </Option>
+                        <Option value="Degree"> Degree </Option>
                         <Option value="Masters">Masters </Option>
                         <Option value="PhD">PhD </Option>
                     </Select>

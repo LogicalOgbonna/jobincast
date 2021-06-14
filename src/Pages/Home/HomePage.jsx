@@ -12,6 +12,8 @@ const HomePage = () => {
         dispatch(getAllJobsAC("page=0&size=4&sort=createdAt,desc"))
         dispatch(getFeaturedCompaniesAC("page=0&size=4"))
     }, [])
+
+    const state = useSelector(state => state.state)
     
     return (
         <BaseMarkup>
