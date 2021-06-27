@@ -13,6 +13,10 @@ const Dropdown = ({ label, options, img, className }) => {
     const toggleDropdown = () => setOpen(!isOpen);
     const history = useHistory()
 
+    const onClick = (index) => {
+        dispatch(selectFilterPillAC({ data: options[index], history }))
+        setOpen(false)
+    }
     return (
         <div className={'dropdown ' + className}>
             <div className='dropdown-header' onClick={toggleDropdown}>
@@ -21,7 +25,7 @@ const Dropdown = ({ label, options, img, className }) => {
             </div>
             <div className={`dropdown-body ${isOpen && 'open'}`}>
                 {options.map((item, index) => (
-                    <div key={item.id} className="dropdown-item text-capitalize" onClick={e => dispatch(selectFilterPillAC({ data: options[index], history }))} id={item.id}>
+                    <div key={item.id} className="dropdown-item text-capitalize" onClick={() => onClick(index)} id={item.id}>
                         {item?.label?.replace(/_/g, " ")?.toLowerCase()}
                     </div>
                 ))}
