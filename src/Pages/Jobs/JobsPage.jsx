@@ -36,10 +36,7 @@ const JobsPage = () => {
 
     useEffect(() => {
         const previousSearch = (queryString.parse(history.location.search))?.search;
-        if (!previousSearch) {
-            dispatch(getAllJobsAC("page=0&size=10"));
-            return
-        }
+        if (!previousSearch) return dispatch(getAllJobsAC("page=0&size=10"));
         const updatedSearchParams = searchSplitter(previousSearch)
         setState(updatedSearchParams)
         dispatch(setCurrentState({ ...updatedSearchParams }))
@@ -93,9 +90,10 @@ const JobsPage = () => {
 
     const onSearch = search => {
         let searchString = `search=`;
+        console.log("🚀 ~ file: JobsPage.jsx ~ line 97 ~ JobsPage ~ state", state)
         for (let m in state) {
             if (state[m].length > 0) {
-                if (m === "title" || m === "fullName") {
+                if (m === "jobTitle") {
                     const searchValue = state[m].replace(/'/g, "");
                     searchString += `${m}=='*${searchValue}*';`;
                 }
@@ -175,6 +173,8 @@ const JobsPage = () => {
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </BaseMarkup>
     )

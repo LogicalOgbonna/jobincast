@@ -62,7 +62,7 @@ const ToolBar = () => {
                 </div>
                 <div className="col-md-4 d-flex align-items-center justify-content-end">
                     {!loggedIn && <div className="tool-bar-button">
-                        <Button size="small" onClick={() => history.push('/auth?action=login')}><i className="fa fa-key pr-2" /> LOG IN <span className="px-2">|</span>SIGN UP </Button>
+                        <Button size="small" onClick={() => history.push('/auth?action=login')}><i className={"fa fa-key pr-2"} /> LOG IN <span className="px-2">|</span>SIGN UP </Button>
                     </div>
                     }
 

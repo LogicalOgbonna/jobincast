@@ -27,6 +27,20 @@ const selectPillMW = (store) => (next) => async (action) => {
     const { currentState, pills } = { ...store.getState().filterSlice }
     const newCurrentState = { ...currentState }
     const { data, history } = action.payload;
+    if (data.searchPage) {
+        if (data.searchKey && !_.find(pills, data)) {
+            newCurrentState[data.searchKey] =
+                newCurrentState[data.searchKey] ?
+                    [...newCurrentState[data.searchKey], data.label.toUpperCase()] :
+                    [data.label.toUpperCase()];
+            const searchString = prepareSearch(newCurrentState)
+            history.push(`/search?searchType=${data.searchType}&page=0&size=10&${searchString}`)
+            const newPills = [...pills, data]
+            store.dispatch(setPill(newPills))
+            return
+        }
+        return history.push(`/search?searchType=${data.label.toUpperCase()}`)
+    }
     if (!_.find(pills, data)) {
         newCurrentState[data.searchKey] =
             newCurrentState[data.searchKey] ?
@@ -45,11 +59,16 @@ const removePillMW = (store) => (next) => (action) => {
     const { pills, currentState } = store.getState().filterSlice;
     const newCurrentState = { ...currentState }
     const pillToRemove = pills.find(value => value.id === id)
+    console.log("🚀 ~ file: middleware.js ~ line 62 ~ removePillMW ~ pillToRemove", pillToRemove)
     const regex = new RegExp(`${pillToRemove.label}`, "gi");
     let searchValue = newCurrentState[pillToRemove.searchKey].join(" ").replace(regex, "").replace(/'/g, "").trim().replace(/  +/g, " ")
     newCurrentState[pillToRemove.searchKey] = searchValue.length > 1 ? searchValue.split(" ") : [];
     const searchString = prepareSearch(newCurrentState)
-    history.push(`/${pillToRemove.page}?page=0&size=10&${searchString}`)
+    if (pillToRemove.searchPage) {
+        history.push(`/search?searchType=${pillToRemove.searchType}&page=0&size=10&${searchString}`)
+    } else {
+        history.push(`/${pillToRemove.page}?page=0&size=10&${searchString}`)
+    }
     const newPills = pills.filter(pill => pill.id !== id)
     store.dispatch(setCurrentState(newCurrentState))
     store.dispatch(setPill(newPills))
