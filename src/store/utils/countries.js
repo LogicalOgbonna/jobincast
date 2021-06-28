@@ -1212,5 +1212,5 @@ const selectCountry = {};
 countriesNStates.forEach(({ Country, state }) => {
     selectCountry[Country.toUpperCase()] ? selectCountry[Country.toUpperCase()].push(state) : selectCountry[Country.toUpperCase()] = [state]
 })
-const mappedCountries =  [...new Set(countriesNStates.map(value => value.Country))].map(value => ({ label: value.replace(/_/g, " ").toLowerCase(), value }));
+const mappedCountries =  [...new Set(countriesNStates.map(value => value.Country))].map(value => ({ label: value.replace(/_/g, " ").toLowerCase(), value: value.toLocaleUpperCase() }));
 export { countriesFilter, selectCountry, mappedCountries }

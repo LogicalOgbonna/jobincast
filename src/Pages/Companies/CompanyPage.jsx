@@ -18,7 +18,7 @@ const CompanyPage = () => {
         dispatch(getSingleCompanyAC(id))
     }, [])
     const { company, companyLoading, jobs } = useSelector(({ companiesSlice: { company, companyLoading }, 
-    jobsSlice: { jobs } }) => ({ company, companyLoading, jobs }))
+    jobsSlice: { jobs } }) => ({ company, companyLoading, jobs }))  
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout company-page">

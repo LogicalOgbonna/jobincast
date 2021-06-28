@@ -2,6 +2,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Form, Input } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { search_caret_down } from '../../assets/icons';
 import Dropdown from './DropDown';
 import './Search.less';
@@ -13,24 +14,20 @@ import './Search.less';
 const SearchElement = ({ buttonText, onClick, onSearch, onChange }) => {
 
     const onFinish = ({ search }) => onSearch(search)
+    const { user } = useSelector(({ authSlice: { user } }) => ({ user }))
 
     const options = [
         {
             label: "Search Type",
-            data: [{ id: 0, label: "Job", type: "searchtype" }, { id: 1, label: "Resume", type: "searchtype" }, { id: 2, label: "Company", type: "searchtype" }],
-            icon: search_caret_down
-        },
-        {
-            label: "Location",
-            data: [{ id: 0, label: "Istanbul, TR (AHL)", type: "location" }, { id: 1, label: "Paris, FR (CDG)", type: "location" }, { id: 2, label: "Paris, FR (CDG)", type: "location" }],
-            icon: search_caret_down
-        },
-        {
-            label: "Category",
-            data: [{ id: 0, label: "Technology", type: "category" }, { id: 1, label: "Real Estate", type: "category" }, { id: 2, label: "Services", type: "category" }],
+            data: [{ id: 0, label: "Job", type: "searchType", searchPage: true }, { id: 2, label: "Company", type: "searchType", searchPage: true }],
             icon: search_caret_down
         },
     ]
+
+    const authority = user && user.roles ? user?.roles[0]?.authority : null;
+    if (authority && authority === "EMPLOYER") {
+        options[0].data.push({ id: 1, label: "Resume", type: "searchType", searchPage: true })
+    }
     return (
         <div className="search-element">
             <div className="container">
@@ -49,7 +46,7 @@ const SearchElement = ({ buttonText, onClick, onSearch, onChange }) => {
                     <div className="row search-element-padding">
                         <div className="col-md-9">
                             <Form onFinish={onFinish}>
-                                <Form.Item name="search" rules={[{ required: true, message:"" }]}>
+                                <Form.Item name="search" rules={[{ required: true, message: "" }]}>
                                     <Input onChange={onChange} prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
                                 </Form.Item>
 

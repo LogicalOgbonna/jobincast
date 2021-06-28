@@ -70,7 +70,7 @@ const CompaniesPage = () => {
         let searchString = `search=`;
         for (let m in state) {
             if (state[m].length > 0) {
-                if (m === "title" || m === "fullName") {
+                if (m === "companyName") {
                     const searchValue = state[m].replace(/'/g, "");
                     searchString += `${m}=='*${searchValue}*';`;
                 }
