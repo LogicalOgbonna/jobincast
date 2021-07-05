@@ -5,16 +5,18 @@ import { Avatar, Button, Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { uploadImageAction } from '../../store/profile/action';
+import { active } from '../../assets/icons';
 
 
 
-const UserHeading = ({ message, action, subMessage, className }) => {
+const UserHeading = ({ message, action, subMessage }) => {
 
     const dispatch = useDispatch();
 
+    const { pathname } = useLocation()
     const customRequest = async options => {
         const { onSuccess, file, onProgress } = options;
         const formData = new FormData();
@@ -55,29 +57,35 @@ const UserHeading = ({ message, action, subMessage, className }) => {
                     :
                     <div className="col-md-6 mt-auto">
                         {authority === "EMPLOYER" && <div className="row">
-                            <div className="col-md-3">
+                            <div className="col-md-3 logged-in-nav-container">
                                 <NavLink to="/employer/jobs" className="logged-in-nav">Jobs</NavLink>
+                                {pathname === "/employer/jobs" && <img src={active} alt="active" />}
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 logged-in-nav-container">
                                 <NavLink to="/employer/applicants" className="logged-in-nav">Applicants</NavLink>
+                                {pathname === "/employer/applicants" && <img src={active} alt="active" />}
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 logged-in-nav-container">
                                 <NavLink to="/employer/points" className="logged-in-nav">Points</NavLink>
+                                {pathname === "/employer/points" && <img src={active} alt="active" />}
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 logged-in-nav-container">
                                 <NavLink to="/profile?action=view" className="logged-in-nav">My Profile</NavLink>
+                                {pathname === "/profile" && <img src={active} alt="active" />}
                             </div>
                         </div>}
                         {authority === "APPLICANT" && <div className="row">
-                            <div className="col-md-3">
+                            <div className="col-md-3 logged-in-nav-container">
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 logged-in-nav-container">
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 logged-in-nav-container">
                                 <NavLink to="/applicant/applications" className="logged-in-nav">Applications</NavLink>
+                                {pathname === "/applicant/applications" && <img src={active} alt="active" />}
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 logged-in-nav-container">
                                 <NavLink to="/profile?action=view" className="logged-in-nav">My Profile</NavLink>
+                                {pathname === "/profile" && <img src={active} alt="active" />}
                             </div>
                         </div>}
                     </div>

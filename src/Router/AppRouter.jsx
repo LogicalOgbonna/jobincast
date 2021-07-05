@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll-4';
 
 import Applicants from '../Pages/Applicants/Applicants';
+import Points from '../Pages/Points/Points';
 import ApplicationsPage from '../Pages/Applications/ApplicationsPage';
 import AuthPage from '../Pages/Auth/AuthPage';
 import BlogPage from '../Pages/Blogs/BlogPage';
@@ -59,6 +60,7 @@ const AppRouter = () => {
                     {localStorage.getItem("jobincast::user:token") && <Route exact path="/profile" component={ProfilePage} />}
                     {localStorage.getItem("jobincast::user:token") && authority === "EMPLOYER" && <Route exact path="/employer/jobs" component={EmployerJobsPage} />}
                     {localStorage.getItem("jobincast::user:token") && authority === "EMPLOYER" && <Route exact path="/employer/applicants" component={Applicants} />}
+                    {localStorage.getItem("jobincast::user:token") && authority === "EMPLOYER" && <Route exact path="/employer/points" component={Points} />}
                     {localStorage.getItem("jobincast::user:token") && authority === "APPLICANT" && <Route exact path="/applicant/applications" component={ApplicationsPage} />}
                 </Switch>
             </ScrollContext>
