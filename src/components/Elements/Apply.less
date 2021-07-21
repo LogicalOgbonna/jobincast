@@ -1,0 +1,33 @@
+@import url("../../theme/index.less");
+.apply-modal {
+  .single-resume {
+    box-shadow: @STANDARD_BOX_SHADOW;
+    border-radius: 10px;
+    padding: 15px 8px;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 12px;
+
+    &:hover {
+      border: 1px solid @LIGHT_BLUE;
+    }
+
+    &.active {
+      border: 1px solid @LIGHT_BLUE;
+    }
+  }
+
+  .button-section {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      margin-top: 10px;
+      background: @LIGHT_BLUE;
+      color: @WHITE;
+      border-radius: @STANDARD_BORDER_RADIUS;
+    }
+  }
+}
