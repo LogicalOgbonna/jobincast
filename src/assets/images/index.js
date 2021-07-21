@@ -7,6 +7,8 @@ import career_tip_3 from "./carrer_tip_3.png";
 import career_tip_4 from "./carrer_tip_4.png";
 import veggies from "./veggies.jpg";
 import phone from "./phone.jpg";
+import point40 from "./point40.png";
+import point80 from "./point80.png";
 
 
 export {
@@ -19,4 +21,6 @@ export {
     career_tip_4,
     veggies,
     phone,
+    point40,
+    point80,
 }

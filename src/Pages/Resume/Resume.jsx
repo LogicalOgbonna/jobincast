@@ -1,12 +1,14 @@
 import './Resume.less';
 
-import { Avatar, Button, Skeleton, Steps } from 'antd';
-import React, { useEffect } from 'react';
-
-import BaseMarkup from '../../components/Base/BaseMarkup';
+import { CloudDownloadOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { Avatar, Button, Modal, Skeleton, Steps } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+
+import BaseMarkup from '../../components/Base/BaseMarkup';
 import { getSingleResumeAC } from '../../store/resume/action';
+import { downloadResumeAC } from '../../store/employer/action';
 
 
 
@@ -14,10 +16,28 @@ const { Step } = Steps;
 const Resume = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
+
+    const [applyModal, setApplyModal] = useState(false)
+    const [activeResume, setActiveResume] = useState(null)
     useEffect(() => {
         dispatch(getSingleResumeAC(id))
+        // dispatch(getContactByIdAC(id))
     }, [])
-    const { resume, resumeLoading } = useSelector(({ resumeSlice: { resume, resumeLoading } }) => ({ resume, resumeLoading }))
+    const onApplyModalOpen = () => {
+        setApplyModal(!applyModal)
+    }
+    const downloadResume = (id) => {
+        Modal.confirm({
+            title: 'Do you want to download this resume?',
+            icon: <ExclamationCircleOutlined />,
+            content: 'You will be charged 2points.',
+            onOk() {
+                dispatch(downloadResumeAC(id))
+            },
+            onCancel() { },
+        });
+    }
+    const { resume, resumeLoading, profile } = useSelector(({ resumeSlice: { resume, resumeLoading }, profileSlice: { profile } }) => ({ resume, resumeLoading, profile }))
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout job-page">
@@ -35,20 +55,23 @@ const Resume = () => {
                             }
                         </div>
                         <div className="col-md-10 job-details">
+                            {/* <Skeleton paragraph={{ rows: 10 }} loading={resumeLoading} active>
+                                <h4 className="lh50">Contact Information</h4>
+                                <p>Address : Not Unit Available</p>
+                                <p>Location :  Not Unit Available</p>
+                            </Skeleton> */}
                             <Skeleton
                                 paragraph={{ rows: 10 }} loading={resumeLoading} active
                             >
                                 <h4 className="lh50">General Information</h4>
-                                <p>Address : Not Unit Available</p>
-                                <p>Location :  Not Unit Available</p>
                                 <p>Language(s) :  {resume?.language}</p>
                                 <p>Highest Degree Level :  {resume?.degree}</p>
                                 <p>Total Years of Experience : {resume?.yearsOfExperience} Years</p>
                                 <br></br>
 
                                 <p className="job-details-content">
-                                   {resume?.fullBio}
-                            </p>
+                                    {resume?.fullBio}
+                                </p>
                                 <br></br>
                                 <div className="py-2">
                                     <Steps direction="vertical" current={5}>
@@ -94,13 +117,24 @@ const Resume = () => {
                                 <br></br>
                                 <div className="row justify-content-center">
                                     <div className="col-12 text-center">
-                                        <Button className="job-details-button">Download full Resume</Button>
+                                        <Button onClick={onApplyModalOpen} className="job-details-button">Download full Resume</Button>
                                     </div>
                                 </div>
                             </Skeleton>
                         </div>
                     </div>
                 </div>
+
+                <Modal onCancel={onApplyModalOpen} title="Download Resume" visible={applyModal} footer={null}>
+                    <div className="pb-2 download-modal">
+                        {resume?.attachments?.filter(value => value.attachmentType === "DOCUMENT")?.map(value =>
+                            <div key={value.id} className={`single-resume`}>
+                                <div>{value.attachmentName}</div>
+                                <Button className="download-button" type="primary" onClick={() => downloadResume(value.id)}><CloudDownloadOutlined /></Button>
+                            </div>
+                        )}
+                    </div>
+                </Modal>
             </div>
         </BaseMarkup >
     )

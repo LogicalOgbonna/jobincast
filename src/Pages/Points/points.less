@@ -1,0 +1,171 @@
+.points-page {
+  padding-top: 70px;
+  .points-content {
+    // border: 2px solid red !important;
+    background: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.53);
+    border-radius: 10px;
+    padding: 30px 109px;
+
+    .cards-section {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+
+      > :not(:first-child) {
+        margin-left: 10px;
+      }
+
+      .image40 {
+        background-image: url("../../assets/images/point40.png");
+      }
+      .image80 {
+        background-image: url("../../assets/images/point80.png");
+      }
+      .card {
+        width: 300px;
+        height: 371px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        background-repeat: no-repeat;
+        background-size: 100% 250px;
+        cursor: pointer;
+
+        .card-content {
+          margin-top: 260px;
+          padding: 30px;
+          text-align: center;
+          p {
+            margin: 0;
+          }
+          input {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    .button-paypal {
+      display: flex;
+      justify-content: center;
+      padding-top: 30px;
+
+      // .paypal-button-number-0 {
+      //     // width: 200px;
+      //     .paypal-button-shape-rect {
+      //         border-radius: 10px !important;
+      //     }
+      // }
+    }
+
+    .stripe {
+      padding: 40px 0;
+      .form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .label {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          :first-child {
+            width: 10%;
+          }
+          :last-child {
+            width: 80%;
+          }
+
+          .care_name {
+            input {
+              padding: 10px 14px;
+              font-size: 1em;
+              font-family: "Source Code Pro", monospace;
+              background: #ffffff;
+              border: 1px solid rgba(0, 0, 0, 0.5);
+              border-radius: 10px;
+              outline: 0;
+              width: 100%;
+              background: white;
+              margin: 10px 0 20px 0;
+            }
+            input::placeholder {
+              color: #aab7c4;
+            }
+          }
+        }
+        .button-section {
+          display: flex;
+          justify-content: center;
+        }
+        .exp_n_cvv {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          label {
+            width: 50%;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            :first-child {
+              width: 10%;
+            }
+            :last-child {
+              width: 60%;
+              text-align: right;
+            }
+          }
+        }
+      }
+      button {
+        white-space: nowrap;
+        border: 0;
+        outline: 0;
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 14px;
+        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11),
+          0 1px 3px rgba(0, 0, 0, 0.08);
+        color: #fff;
+        border-radius: 4px;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
+        background-color: #6772e5;
+        text-decoration: none;
+        -webkit-transition: all 150ms ease;
+        transition: all 150ms ease;
+        margin-top: 10px;
+        min-width: 148px;
+      }
+
+      button:hover {
+        color: #fff;
+        cursor: pointer;
+        background-color: #7795f8;
+        transform: translateY(-1px);
+        box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
+          0 3px 6px rgba(0, 0, 0, 0.08);
+      }
+      .StripeElement {
+        display: block;
+        margin: 10px 0 20px 0;
+        padding: 10px 14px;
+        font-size: 1em;
+        font-family: "Source Code Pro", monospace;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+        border-radius: 10px;
+        outline: 0;
+        background: white;
+      }
+    }
+
+    .or-divider {
+      text-align: center;
+    }
+  }
+}

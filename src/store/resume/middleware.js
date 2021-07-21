@@ -36,6 +36,10 @@ const getSingleResumeMW = store => next => async action => {
         value: message
     }))
 }
+
+// const getContactByIdMW = store => next => async action => {
+//     if(action)
+// }
 const resumeMiddleware = [getAllResumeMW, getSingleResumeMW];
 
 export default resumeMiddleware;

@@ -1,20 +1,32 @@
 import './Applicants.less';
 import 'react-phone-input-2/lib/style.css';
 
-import { DeleteOutlined, DownOutlined, EyeFilled } from '@ant-design/icons';
-import { Dropdown, Menu, Table } from 'antd';
+import { DownOutlined, ExclamationCircleOutlined, CloudDownloadOutlined } from '@ant-design/icons';
+import { Button, Dropdown, Menu, Modal, Table } from 'antd';
 import moment from 'moment';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import UserHeading from '../../components/Elements/UserHeading';
-import { getAllApplicantsAC, respondsToApplicantAC } from '../../store/employer/action';
+import { getAllApplicantsAC, respondsToApplicantAC, downloadResumeAC } from '../../store/employer/action';
+import { Link } from 'react-router-dom';
 
 const Applicants = () => {
     const dispatch = useDispatch()
     const attendToJob = (action) => dispatch(respondsToApplicantAC(action))
+
+    const downloadResume = (src) => {
+        Modal.confirm({
+            title: 'Do you want to download this resume?',
+            icon: <ExclamationCircleOutlined />,
+            content: 'You will be charged 2points.',
+            onOk() {
+                dispatch(downloadResumeAC(src.documentId))
+            },
+            onCancel() { },
+        });
+    }
     const statusColor = (data) => {
         if (!data) return 'text-info';
         if (data.toLowerCase() === 'reviewing') return 'text-warning';
@@ -28,6 +40,7 @@ const Applicants = () => {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
+            render: (name, src) => <Link to={`/resume/${src.profileId}`}>{name}</Link>
         },
         {
             title: 'Date Applied',
@@ -74,8 +87,8 @@ const Applicants = () => {
             title: 'Action',
             dataIndex: 'action',
             key: 'action',
-            render: () => <div className="d-flex">
-                <EyeFilled style={{ fontSize: 28, cursor: 'pointer' }} />
+            render: (_, src) => <div className="d-flex">
+                <Button className="download-button" type="primary" onClick={() => downloadResume(src)}><CloudDownloadOutlined /></Button>
             </div>
         },
     ]

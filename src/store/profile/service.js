@@ -58,6 +58,28 @@ export const uploadImageService = async (formData, config, success) => {
         return errorHandler(e)
     }
 }
+export const uploadResumeACService = async (formData) => {
+    try {
+        const { data: message } = await jobInCast.post('/user/upload-document', formData);
+        return {
+            success: true,
+            message
+        }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}
+export const removeResumeACService = async (id) => {
+    try {
+        const { data: message } = await jobInCast.delete(`/user/delete-document/${id}`);
+        return {
+            success: true,
+            message
+        }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}
 
 export const getFullProfileService = async () => {
     try {
@@ -65,6 +87,30 @@ export const getFullProfileService = async () => {
         return {
             success: true,
             message: data
+        }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}
+
+export const payPalSuccessService = async (payload) => {
+    try {
+        const { data } = await jobInCast.post('/credit', payload)
+
+        return {
+            message: data,
+            success: true
+        }
+    } catch (e) {
+        return errorHandler(e)
+    }
+}
+export const stripePaymentService = async (payload) => {
+    try {
+        const { data } = await jobInCast.post('/payment/charge-and-credit', payload)
+        return {
+            message: data,
+            success: true
         }
     } catch (e) {
         return errorHandler(e)

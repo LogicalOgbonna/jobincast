@@ -67,7 +67,7 @@ SearchElement.propTypes = {
 }
 
 SearchElement.defaultProps = {
-    buttonText: <div><i className="fa fa-briefcase" /> POST RESUME</div>
+    buttonText: <></>
 }
 
 export default SearchElement

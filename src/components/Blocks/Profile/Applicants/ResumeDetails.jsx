@@ -27,7 +27,7 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
             initialValues={{ educations: [""], experiences: [""], skills: [""], awards: [""] }}
         >
             <div className="row justify-content-center">
-                <div className="col-12 col-md-8">
+                <div className="col-12 col-md-6">
                     <Form.List
                         name="educations"
                         rules={[
@@ -105,7 +105,7 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                                                     <CloseCircleOutlined
                                                         className="dynamic-delete-button bg-red text-danger px-1"
                                                     />
-                                                Delete
+                                                    Delete
                                                 </div>
                                             ) : null}
                                         </Form.Item>
@@ -124,6 +124,130 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                         )}
                     </Form.List>
 
+                </div>
+                <div className="col-12 col-md-6">
+                    <Form.List
+                        name="awards"
+                        rules={[
+                            {
+                                validator: async (_, names) => {
+                                    // if (!names || names.length < 1) {
+                                    //     return Promise.reject(new Error('Please add at least one award'));
+                                    // }
+                                },
+                            },
+                        ]}
+                    >
+                        {(fields, { add, remove }, { errors }) => (
+                            <>
+                                {fields.map(({ key, name, fieldKey, ...field }, index) => {
+
+                                    return (
+                                        <Form.Item
+                                            className="bg-grey py-3 px-2 mb-2"
+                                            style={{ borderRadius: '10px' }}
+                                            // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                                            label="Awards"
+                                            required={false}
+                                            key={key}
+                                        >
+                                            <Form.Item
+                                                name={[name, 'title']}
+                                                fieldKey={[fieldKey, 'title']}
+                                                {...field}
+                                                validateTrigger={['onChange', 'onBlur']}
+                                                rules={[
+                                                    {
+                                                        // required: true,
+                                                        whitespace: true,
+                                                        message: "Please award's name or delete this field.",
+                                                    },
+                                                ]}
+                                                noStyle
+                                            >
+                                                <Input placeholder="Award Name" className="profile-inputs" />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name={[name, 'institution']}
+                                                fieldKey={[fieldKey, 'institution']}
+                                                {...field}
+                                                validateTrigger={['onChange', 'onBlur']}
+                                                rules={[
+                                                    {
+                                                        // required: true,
+                                                        whitespace: true,
+                                                        message: "Please input Institution or delete this field.",
+                                                    },
+                                                ]}
+                                                noStyle
+                                            >
+                                                <Input placeholder="Awarding Institution" className="profile-inputs" />
+                                            </Form.Item>
+
+                                            <div className="row">
+                                                <div className="col-md-6 col-12">
+                                                    <Form.Item
+                                                        name={[name, 'yearAwarded']}
+                                                        fieldKey={[fieldKey, 'yearAwarded']}
+                                                        {...field}
+                                                        validateTrigger={['onChange', 'onBlur']}
+                                                        rules={[
+                                                            {
+                                                                // required: true,
+                                                                message: "Please input Year Awarded or delete this field.",
+                                                            },
+                                                        ]}
+                                                        noStyle
+                                                    >
+                                                        <DatePicker placeholder="Year Awarded" picker="year" className="profile-inputs w-100" />
+                                                    </Form.Item>
+
+                                                </div>
+                                                <div className="col-md-6 col-12">
+                                                    <Form.Item
+                                                        name={[name, 'url']}
+                                                        fieldKey={[fieldKey, 'url']}
+                                                        {...field}
+                                                        validateTrigger={['onChange', 'onBlur']}
+                                                        rules={[
+                                                            {
+                                                                // required: true,
+                                                                whitespace: true,
+                                                                // message: "Please input Year Awarded or delete this field.",
+                                                                type: "url"
+                                                            },
+                                                        ]}
+                                                        noStyle
+                                                    >
+                                                        <Input placeholder="Link to award" className="profile-inputs" />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                            {fields.length > 1 ? (
+                                                <div size="small" style={{ cursor: "pointer" }} onClick={() => remove(name)} className="d-flex justify-content-end align-items-center text-danger text-right">
+                                                    <CloseCircleOutlined
+                                                        className="dynamic-delete-button bg-red text-danger px-1"
+                                                    />
+                                                    Delete
+                                                </div>
+                                            ) : null}
+                                        </Form.Item>
+                                    )
+                                })}
+                                <Form.Item>
+                                    <div size="small" style={{ cursor: "pointer" }} onClick={() => add()} className="d-flex justify-content-start align-items-center text-muted text-right">
+                                        <PlusCircleOutlined
+                                            className="dynamic-delete-button bg-red text-muted px-1"
+                                        />
+                                        Add Award
+                                    </div>
+                                    <Form.ErrorList errors={errors} />
+                                </Form.Item>
+                            </>
+                        )}
+                    </Form.List>
+                </div>
+                <div className="col-12 col-md-6">
                     <Form.List
                         name="experiences"
                         rules={[
@@ -216,7 +340,7 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                                                     <CloseCircleOutlined
                                                         className="dynamic-delete-button bg-red text-danger px-1"
                                                     />
-                                                Delete
+                                                    Delete
                                                 </div>
                                             ) : null}
                                         </Form.Item>
@@ -234,6 +358,8 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                             </>
                         )}
                     </Form.List>
+                </div>
+                <div className="col-12 col-md-6">
                     <Form.List
                         name="skills"
                         rules={[
@@ -306,7 +432,7 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                                                     <CloseCircleOutlined
                                                         className="dynamic-delete-button bg-red text-danger px-1"
                                                     />
-                                                Delete
+                                                    Delete
                                                 </div>
                                             ) : null}
                                         </Form.Item>
@@ -324,132 +450,15 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                             </>
                         )}
                     </Form.List>
-                    <Form.List
-                        name="awards"
-                        rules={[
-                            {
-                                validator: async (_, names) => {
-                                    if (!names || names.length < 1) {
-                                        return Promise.reject(new Error('Please add at least one award'));
-                                    }
-                                },
-                            },
-                        ]}
-                    >
-                        {(fields, { add, remove }, { errors }) => (
-                            <>
-                                {fields.map(({ key, name, fieldKey, ...field }, index) => {
 
-                                    return (
-                                        <Form.Item
-                                            className="bg-grey py-3 px-2 mb-2"
-                                            style={{ borderRadius: '10px' }}
-                                            // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                                            label="Awards"
-                                            required={false}
-                                            key={key}
-                                        >
-                                            <Form.Item
-                                                name={[name, 'title']}
-                                                fieldKey={[fieldKey, 'title']}
-                                                {...field}
-                                                validateTrigger={['onChange', 'onBlur']}
-                                                rules={[
-                                                    {
-                                                        required: true,
-                                                        whitespace: true,
-                                                        message: "Please award's name or delete this field.",
-                                                    },
-                                                ]}
-                                                noStyle
-                                            >
-                                                <Input placeholder="Award Name" className="profile-inputs" />
-                                            </Form.Item>
-                                            <Form.Item
-                                                name={[name, 'institution']}
-                                                fieldKey={[fieldKey, 'institution']}
-                                                {...field}
-                                                validateTrigger={['onChange', 'onBlur']}
-                                                rules={[
-                                                    {
-                                                        required: true,
-                                                        whitespace: true,
-                                                        message: "Please input Institution or delete this field.",
-                                                    },
-                                                ]}
-                                                noStyle
-                                            >
-                                                <Input placeholder="Awarding Institution" className="profile-inputs" />
-                                            </Form.Item>
-
-                                            <div className="row">
-                                                <div className="col-md-6 col-12">
-                                                    <Form.Item
-                                                        name={[name, 'yearAwarded']}
-                                                        fieldKey={[fieldKey, 'yearAwarded']}
-                                                        {...field}
-                                                        validateTrigger={['onChange', 'onBlur']}
-                                                        rules={[
-                                                            {
-                                                                required: true,
-                                                                message: "Please input Year Awarded or delete this field.",
-                                                            },
-                                                        ]}
-                                                        noStyle
-                                                    >
-                                                        <DatePicker placeholder="Year Awarded" picker="year" className="profile-inputs w-100" />
-                                                    </Form.Item>
-
-                                                </div>
-                                                <div className="col-md-6 col-12">
-                                                    <Form.Item
-                                                        name={[name, 'url']}
-                                                        fieldKey={[fieldKey, 'url']}
-                                                        {...field}
-                                                        validateTrigger={['onChange', 'onBlur']}
-                                                        rules={[
-                                                            {
-                                                                // required: true,
-                                                                whitespace: true,
-                                                                // message: "Please input Year Awarded or delete this field.",
-                                                                type: "url"
-                                                            },
-                                                        ]}
-                                                        noStyle
-                                                    >
-                                                        <Input placeholder="Link to award" className="profile-inputs" />
-                                                    </Form.Item>
-                                                </div>
-                                            </div>
-                                            {fields.length > 1 ? (
-                                                <div size="small" style={{ cursor: "pointer" }} onClick={() => remove(name)} className="d-flex justify-content-end align-items-center text-danger text-right">
-                                                    <CloseCircleOutlined
-                                                        className="dynamic-delete-button bg-red text-danger px-1"
-                                                    />
-                                                Delete
-                                                </div>
-                                            ) : null}
-                                        </Form.Item>
-                                    )
-                                })}
-                                <Form.Item>
-                                    <div size="small" style={{ cursor: "pointer" }} onClick={() => add()} className="d-flex justify-content-start align-items-center text-muted text-right">
-                                        <PlusCircleOutlined
-                                            className="dynamic-delete-button bg-red text-muted px-1"
-                                        />
-                                        Add Award
-                                    </div>
-                                    <Form.ErrorList errors={errors} />
-                                </Form.Item>
-                            </>
-                        )}
-                    </Form.List>
-
-                    <div className="col-12 text-center d-flex justify-content-center">
-                        <Button htmlType="button" onClick={back} className="button-blue mx-1">Back</Button>
-                        <Button loading={loading} htmlType="submit" className="button-blue mx-1">Preview</Button>
-                    </div>
                 </div>
+
+
+                <div className="col-12 text-center d-flex justify-content-center">
+                    <Button htmlType="button" onClick={back} className="button-blue mx-1">Back</Button>
+                    <Button loading={loading} htmlType="submit" className="button-blue mx-1">Preview</Button>
+                </div>
+
             </div>
         </Form>
     )

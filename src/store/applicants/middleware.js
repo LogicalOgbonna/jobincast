@@ -30,7 +30,7 @@ const applicantApplyMW = (store) => (next) => async (action) => {
         type: "applyLoading",
         value: true
     }))
-    const { success, message } = await applicantApplyService({ profileId, contactId, jobPostUrl: action.payload });
+    const { success, message } = await applicantApplyService({ profileId, contactId, jobPostUrl: action.payload.jobId, documentId: action.payload.documentId });
     store.dispatch(setData({
         type: "applyLoading",
         value: false
@@ -43,6 +43,8 @@ const applicantApplyMW = (store) => (next) => async (action) => {
         type: 'job',
         value: { ...job, applied: true }
     }))
+
+    action.payload.cb()
 
     notification.success({
         description: `You have successfully applied for ${message.jobOverview}`
