@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import BaseMarkup from '../../components/Base/BaseMarkup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { getSingleResumeAC } from '../../store/resume/action';
+import { getSingleResumeAC, getContactByIdAC } from '../../store/resume/action';
 
 
 
@@ -16,6 +16,7 @@ const Resume = () => {
     const { id } = useParams()
     useEffect(() => {
         dispatch(getSingleResumeAC(id))
+        // dispatch(getContactByIdAC(id))
     }, [])
     const { resume, resumeLoading } = useSelector(({ resumeSlice: { resume, resumeLoading } }) => ({ resume, resumeLoading }))
     return (
@@ -35,20 +36,23 @@ const Resume = () => {
                             }
                         </div>
                         <div className="col-md-10 job-details">
+                            {/* <Skeleton paragraph={{ rows: 10 }} loading={resumeLoading} active>
+                                <h4 className="lh50">Contact Information</h4>
+                                <p>Address : Not Unit Available</p>
+                                <p>Location :  Not Unit Available</p>
+                            </Skeleton> */}
                             <Skeleton
                                 paragraph={{ rows: 10 }} loading={resumeLoading} active
                             >
                                 <h4 className="lh50">General Information</h4>
-                                <p>Address : Not Unit Available</p>
-                                <p>Location :  Not Unit Available</p>
                                 <p>Language(s) :  {resume?.language}</p>
                                 <p>Highest Degree Level :  {resume?.degree}</p>
                                 <p>Total Years of Experience : {resume?.yearsOfExperience} Years</p>
                                 <br></br>
 
                                 <p className="job-details-content">
-                                   {resume?.fullBio}
-                            </p>
+                                    {resume?.fullBio}
+                                </p>
                                 <br></br>
                                 <div className="py-2">
                                     <Steps direction="vertical" current={5}>

@@ -9,7 +9,8 @@ import ContactInfo from './Applicants/ContactInfo';
 import ResumeDetails from './Applicants/ResumeDetails';
 import PreviewProfile from './Applicants/PreviewProfile';
 import { useDispatch, useSelector } from 'react-redux';
-import { profileLoadingAction } from '../../../store/profile/action';
+import { profileLoadingAction, removeResumeAC, uploadResumeAC } from '../../../store/profile/action';
+import jobincast from '../../../axios';
 const ProfileSetup = ({ action }) => {
     const dispatch = useDispatch();
     const { location: { search }, push } = useHistory()
@@ -25,7 +26,17 @@ const ProfileSetup = ({ action }) => {
     if (accountType !== "APPLICANT") return null;
 
     const finishGeneralInfo = async (data) => {
-        dispatch(profileLoadingAction({ data, type: "generalInfoLoading", push, accountType }))
+    }
+    const onResumeInputChange = (e) => {
+        const formData = new FormData();
+        const file = e.target.files[0];
+        formData.append("file", file)
+        formData.append("fileType", `.${file.name.split('.')[file.name.split('.').length - 1]}`)
+        dispatch(uploadResumeAC(formData))
+    }
+
+    const removeResume = (id) => {
+        dispatch(removeResumeAC(id))
     }
     const onFinishContactInfo = (data) => {
         dispatch(profileLoadingAction({ data, type: "contactInfoLoading", push, accountType }))
@@ -40,7 +51,7 @@ const ProfileSetup = ({ action }) => {
         { title: "Registration" },
         {
             title: "General Information",
-            content: <GeneralInformation loading={generalInfoLoading} accountType={accountType} finishGeneralInfo={finishGeneralInfo} />
+            content: <GeneralInformation removeResume={removeResume} onResumeInputChange={onResumeInputChange} loading={generalInfoLoading} accountType={accountType} finishGeneralInfo={finishGeneralInfo} />
         },
         {
             title: "Contact",

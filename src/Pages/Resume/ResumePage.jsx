@@ -111,7 +111,7 @@ const ResumePage = () => {
                     onChange={onSearchChange}
                     onSearch={onSearch}
                     onClick={() => console.log("Hello")}
-                    buttonText={<div><i className="fa fa-briefcase" /> POST RESUME</div>}
+                    // buttonText={<div><i className="fa fa-briefcase" /> </div>}
                 />
                 <div className="resume-page">
                     <div className="container">

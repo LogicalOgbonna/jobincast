@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
-export default function Paypal() {
+export default function Paypal({ paymentOptions, onSuccess, onError }) {
+    console.log("🚀 ~ file: Paypal.jsx ~ line 4 ~ Paypal ~ paymentOptions", paymentOptions)
     const paypal = useRef();
 
     useEffect(() => {
@@ -11,10 +12,10 @@ export default function Paypal() {
                         intent: "CAPTURE",
                         purchase_units: [
                             {
-                                description: "Cool looking table",
+                                description: `Purchase ${paymentOptions?.quantity} JobInCast Points`,
                                 amount: {
-                                    currency_code: "CAD",
-                                    value: 650.0,
+                                    currency_code: "USD",
+                                    value: paymentOptions?.amount,
                                 },
                             },
                         ],
@@ -22,18 +23,16 @@ export default function Paypal() {
                 },
                 onApprove: async (data, actions) => {
                     const order = await actions.order.capture();
-                    console.log(order);
+                    onSuccess(order)
                 },
                 onError: (err) => {
-                    console.log(err);
+                    onError(err);
                 },
             })
             .render(paypal.current);
-    }, []);
+    }, [paymentOptions?.amount, paymentOptions?.quantity]);
 
     return (
-        <div>
-            <div ref={paypal}></div>
-        </div>
+        <div className="paypal" ref={paypal}></div>
     );
 }

@@ -18,6 +18,8 @@ import search_caret_down from "./search_caret_down.svg";
 import stepper_active from "./stepper_active.svg";
 import stepper_non_active from "./stepper_non_active.svg";
 import active from "./active.svg";
+import PDF from "./PDF.svg";
+import DOC from "./DOC.svg";
 
 export {
     addressBook,
@@ -39,5 +41,7 @@ export {
     search_caret_down,
     stepper_active,
     stepper_non_active,
-    active
+    active,
+    PDF,
+    DOC,
 }

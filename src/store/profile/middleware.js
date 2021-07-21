@@ -1,6 +1,16 @@
 import { notification } from 'antd';
 import { setLoading, setProfile } from './reducer'
-import { createProfileService, createProfileContactService, updateProfileQualificationService, uploadImageService, updateProfileService, getFullProfileService } from './service';
+import {
+    createProfileService,
+    payPalSuccessService,
+    createProfileContactService,
+    updateProfileQualificationService,
+    uploadImageService, updateProfileService,
+    getFullProfileService,
+    stripePaymentService,
+    uploadResumeACService,
+    removeResumeACService
+} from './service';
 import moment from "moment";
 
 const generalInformationCreateMW = (store) => (next) => async (action) => {
@@ -94,6 +104,43 @@ const uploadImageMW = (store) => (next) => async (action) => {
         })
     }
 }
+
+const uploadResumeAC = (store) => (next) => async (action) => {
+    if (action.type !== 'user-profile/upload-resume') return next(action);
+
+    const { success, message } = await uploadResumeACService(action.payload)
+    if (!success) {
+        return notification.error({
+            description: message
+        })
+    }
+
+    const profile = { ...store.getState().profileSlice.profile }
+    const newProfile = { ...profile }
+    newProfile.attachments = [...newProfile.attachments, message]
+    store.dispatch(setProfile(newProfile))
+    notification.success({
+        description: "Resume uploaded successfully"
+    })
+}
+const removeResumeAC = (store) => (next) => async (action) => {
+    if (action.type !== 'user-profile/remove-resume') return next(action);
+
+    const { success, message } = await removeResumeACService(action.payload)
+    if (!success) {
+        return notification.error({
+            description: message
+        })
+    }
+
+    const profile = { ...store.getState().profileSlice.profile }
+    const newProfile = { ...profile }
+    newProfile.attachments = newProfile.attachments.filter(value => value.id !== action.payload)
+    store.dispatch(setProfile(newProfile))
+    notification.success({
+        description: "Resume removed successfully"
+    })
+}
 const getFUllProfileMD = (store) => (next) => async (action) => {
     if (action.type !== 'user-profile/get-full-profile') return next(action);
     if (!localStorage["jobincast::user:token"]) return
@@ -102,6 +149,45 @@ const getFUllProfileMD = (store) => (next) => async (action) => {
 }
 
 
-const profileMiddleware = [generalInformationCreateMW, uploadImageMW, getFUllProfileMD]
+const payPalSuccessMW = store => next => async action => {
+    if (action.type !== 'user-by-payal/points') return next(action);
+    const profile = { ...store.getState().profileSlice.profile }
+    const { message, success } = await payPalSuccessService({ ...action.payload, userId: profile.id });
+    if (success) {
+
+        const newProfile = { ...profile, availableUnits: message.userAvailableUnits }
+        store.dispatch(setProfile(newProfile))
+        return notification.success({
+            description: `You have successfully purchased ${action.payload.quantity} pts`
+        })
+    }
+
+    return notification.error({
+        description: message
+    })
+}
+
+const stripePaymentMD = store => next => async action => {
+    if (action.type !== 'user-by-stripe/points') return next(action);
+    const profile = { ...store.getState().profileSlice.profile }
+    const { message, success } = await stripePaymentService({ ...action.payload, userId: profile.id });
+    store.dispatch(setLoading({
+        type: "stripeLoading",
+        value: false
+    }))
+    if (success) {
+        const newProfile = { ...profile, availableUnits: message.userAvailableUnits }
+        store.dispatch(setProfile(newProfile))
+        return notification.success({
+            description: `You have successfully purchased ${action.payload.quantity} pts`
+        })
+    }
+
+    return notification.error({
+        description: message
+    })
+}
+
+const profileMiddleware = [removeResumeAC, uploadResumeAC, stripePaymentMD, generalInformationCreateMW, uploadImageMW, getFUllProfileMD, payPalSuccessMW]
 
 export default profileMiddleware;

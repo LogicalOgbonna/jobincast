@@ -1,6 +1,6 @@
 import { notification } from "antd";
 import { setData } from './reducer';
-import { getAllApplicantsService, respondsToApplicantService } from './service'
+import { getAllApplicantsService, respondsToApplicantService, downloadResumeService } from './service'
 
 
 const getAllApplicantsMW = store => next => async action => {
@@ -57,6 +57,19 @@ const respondsToApplicantMW = store => next => async action => {
     }))
 }
 
-const employerMiddleware = [getAllApplicantsMW, respondsToApplicantMW]
+const downloadResumeAC = store => next => async action => {
+    if (action.type !== 'employer/download-applicant-resume') return next(action)
+    const profile = store.getState().authSlice.user.lastName
+    const { success, message } = await downloadResumeService(action.payload, profile)
+    if (!success) return notification.error({
+        description: message
+    })
+
+    notification.success({
+        description: "Resume downloaded successfully"
+    })
+}
+
+const employerMiddleware = [downloadResumeAC, getAllApplicantsMW, respondsToApplicantMW]
 
 export default employerMiddleware;

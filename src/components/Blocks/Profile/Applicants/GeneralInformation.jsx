@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
-
-import { Button, Form, Input, Select } from 'antd';
+import { Button, Form, Input, Tooltip, Select } from 'antd';
+import React, { useEffect, } from 'react';
 import { useSelector } from 'react-redux';
-
+import './GeneralInformation.less'
 const { Option } = Select;
 
-const GeneralInformation = ({ finishGeneralInfo, accountType, loading }) => {
+const GeneralInformation = ({ finishGeneralInfo, removeResume, loading, onResumeInputChange }) => {
 
     const [form] = Form.useForm()
 
@@ -45,12 +44,27 @@ const GeneralInformation = ({ finishGeneralInfo, accountType, loading }) => {
             <div className="col-12 col-md-6">
                 <Form.Item label="Highest Degree Level" name="degree" rules={[{ required: true, message: "Degree is required" }]}>
                     <Select placeholder="e.g BSc" className="profile-inputs">
-                        <Option value="Diploma"> Diploma </Option>
-                        <Option value="Higher Diploma"> Higher Diploma </Option>
-                        <Option value="Degree"> Degree </Option>
-                        <Option value="Masters">Masters </Option>
-                        <Option value="PhD">PhD </Option>
+                        <Option value="DIPLOMA"> Diploma </Option>
+                        <Option value="HIGHER_D"> Higher Diploma </Option>
+                        <Option value="BSC"> Degree </Option>
+                        <Option value="MASTERS">Masters </Option>
+                        <Option value="PHD">PhD </Option>
                     </Select>
+                </Form.Item>
+            </div>
+            <div className="col-12 col-md-6">
+                <Form.Item label="Upload Resume" name="resume">
+                    <Input accept=".pdf,.doc,.docx" value="" onChange={onResumeInputChange} type="file" placeholder="Resume" />
+                    <div className="tag-container">
+                        {profile?.attachments?.map(value =>
+                            <div key={value.id} className="individual-tag">
+                                <Tooltip overlayStyle={{ fontSize: 10 }} title={value.attachmentName}>
+                                    <div className="value">{value.attachmentName}</div>
+                                </Tooltip>
+                                <div onClick={() => removeResume(value.id)} className="close">X</div>
+                            </div>
+                        )}
+                    </div>
                 </Form.Item>
             </div>
 

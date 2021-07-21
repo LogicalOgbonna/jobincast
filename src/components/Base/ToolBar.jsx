@@ -28,6 +28,11 @@ const menu = (authority) => {
                     <NavLink to="/employer/jobs">My Jobs</NavLink>
                 </Menu.Item>
             }
+            {authority === "EMPLOYER" &&
+                <Menu.Item key="1">
+                    <NavLink to="/employer/points">Buy Points</NavLink>
+                </Menu.Item>
+            }
             <Menu.Item key="0">
                 <NavLink to="/profile?action=view">My Profile</NavLink>
             </Menu.Item>
@@ -75,7 +80,7 @@ const ToolBar = () => {
                             |
                             <button className="user-menu-button px-3" type="link" onClick={logout}>Logout</button>
                     </div>}
-                    <Button onClick={() => history.push("/search")} className={`${activePage('/search')} search-button`}><i className="fa fa-search" /></Button>
+                    <Button onClick={() => history.push("/search")} className={`search-button`}><i className="fa fa-search" /></Button>
                 </div>
             </div>
         </div>

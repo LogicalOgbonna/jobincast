@@ -7,7 +7,9 @@ const profileSlice = createSlice({
         contactInfoLoading: false,
         resumeInfoLoading: false,
         previewSubmitLoading: false,
-        profile: null
+        profile: null,
+        stripeLoading: false,
+        payPalLoading: false,
     },
     reducers: {
         setLoading: (state, action) => ({
