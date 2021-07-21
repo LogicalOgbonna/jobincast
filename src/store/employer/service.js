@@ -33,7 +33,6 @@ export const downloadResumeService = async (id, name) => {
     }
     try {
         const response = await jobincast.get(`/user/download-document/${id}`, { responseType: "blob" })
-        console.log("🚀 ~ file: service.js ~ line 31 ~ response", response)
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');
         link.href = url;
@@ -47,7 +46,7 @@ export const downloadResumeService = async (id, name) => {
     } catch (e) {
         return {
             success: false,
-            message: "File now found, user might have deleted their Resume"
+            message: "File not found, user might have deleted their resume"
         }
     }
 }
