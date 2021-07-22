@@ -11,7 +11,7 @@ const GeneralInformation = ({ finishGeneralInfo, removeResume, loading, onResume
 
     const profile = useSelector(({ profileSlice: { profile } }) => profile)
     useEffect(() => {
-        if (profile) form.setFieldsValue(profile)
+        if(profile?.title || profile?.shortBio)  form.setFieldsValue(profile)
     }, [profile])
 
     return <Form form={form} layout="vertical" onFinish={finishGeneralInfo}>

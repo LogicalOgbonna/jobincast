@@ -25,8 +25,7 @@ const ProfileSetup = ({ action }) => {
     if (action !== "setup") return null;
     if (accountType !== "APPLICANT") return null;
 
-    const finishGeneralInfo = async (data) => {
-    }
+    const finishGeneralInfo = async (data) => dispatch(profileLoadingAction({ data, type: "generalInfoLoading", push, accountType }))
     const onResumeInputChange = (e) => {
         const formData = new FormData();
         const file = e.target.files[0];
@@ -35,18 +34,10 @@ const ProfileSetup = ({ action }) => {
         dispatch(uploadResumeAC(formData))
     }
 
-    const removeResume = (id) => {
-        dispatch(removeResumeAC(id))
-    }
-    const onFinishContactInfo = (data) => {
-        dispatch(profileLoadingAction({ data, type: "contactInfoLoading", push, accountType }))
-    }
-    const onFinishResumeDetails = (data) => {
-        dispatch(profileLoadingAction({ data, type: "resumeInfoLoading", push, accountType }))
-    }
-    const onFinishPreview = () => {
-        push("/profile?action=view")
-    }
+    const removeResume = (id) => dispatch(removeResumeAC(id))
+    const onFinishContactInfo = (data) => dispatch(profileLoadingAction({ data, type: "contactInfoLoading", push, accountType }))
+    const onFinishResumeDetails = (data) => dispatch(profileLoadingAction({ data, type: "resumeInfoLoading", push, accountType }))
+    const onFinishPreview = () => push("/profile?action=view")
     const steps = [
         { title: "Registration" },
         {
