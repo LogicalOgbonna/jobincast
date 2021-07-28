@@ -18,6 +18,11 @@ $TOOLBAR_HEIGHT_MOBILE: 70px;
   align-items: center;
   border-bottom: 1px solid #fbfbfb;
 
+  .flex-display {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .tool-bar-links {
     padding: 10px 20px;
     font-size: 12px;
