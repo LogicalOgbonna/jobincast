@@ -97,7 +97,7 @@ $TOOLBAR_HEIGHT_MOBILE: 70px;
 
 .main-content {
   padding-bottom: 150px;
-  min-height: calc(100vh - $TOOLBAR_HEIGHT);
+  min-height: calc(100vh - 60px);
   background-color: $WHITE;
 }
 .background-image-left {
