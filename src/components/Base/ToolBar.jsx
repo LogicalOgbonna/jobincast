@@ -51,21 +51,21 @@ const ToolBar = () => {
     const authority = user && user.roles ? user?.roles[0]?.authority : null;
     return (
         <div className={`tool-bar ${shadow()} desktop-layout`}>
-            <div className="row">
-                <div className="col-md-2">
+            <div className="flex-display">
+                <div className="">
                     <NavLink to="/">
                         <img src={logo} alt="logo" className="tool-bar-logo" />
                     </NavLink>
                 </div>
-                <div className="col-md-6 tool-bar-links">
+                <div className=" tool-bar-links">
                     <NavLink className={activePage('/')} to="/">Home</NavLink>
                     <NavLink className={activePage('/jobs')} to="/jobs">JOBS</NavLink>
                     {authority === "EMPLOYER" && <NavLink className={activePage('/resume')} to="/resume">RESUME</NavLink>}
                     <NavLink className={activePage('/companies')} to="/companies">COMPANIES</NavLink>
                     <NavLink className={activePage('/blogs')} to="/blogs">BLOG</NavLink>
-                    <NavLink className={activePage('/contact-us')} to="/contact-us">CONTACT-US</NavLink>
+                    <NavLink className={activePage('/contact-us')} to="/contact-us">CONTACT US</NavLink>
                 </div>
-                <div className="col-md-4 d-flex align-items-center justify-content-end">
+                <div className=" d-flex align-items-center justify-content-end">
                     {!loggedIn && <div className="tool-bar-button">
                         <Button size="small" onClick={() => history.push('/auth?action=login')}><i className={"fa fa-key pr-2"} /> LOG IN <span className="px-2">|</span>SIGN UP </Button>
                     </div>
