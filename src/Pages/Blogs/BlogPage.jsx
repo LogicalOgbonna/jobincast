@@ -1,4 +1,4 @@
-import './BlogPage.less';
+import './BlogPage.scss';
 
 import React from 'react'
 import { Button } from 'antd'

@@ -1,7 +1,7 @@
 import React from 'react';
 import ToolBar from './ToolBar';
 
-import './BaseMarkup.less';
+import './BaseMarkup.scss';
 import Footer from './Footer';
 const BaseMarkup = ({ children, className }) => {
     return (

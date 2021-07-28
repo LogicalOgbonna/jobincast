@@ -1,4 +1,4 @@
-import './JobPage.less';
+import './JobPage.scss';
 
 import { Avatar, Skeleton } from 'antd';
 import moment from 'moment';

@@ -13,7 +13,7 @@ import { getAllCompaniesAC } from '../../store/companies/action';
 import { clearFilterAndCurrentStateAC } from '../../store/filter/actions';
 import { setCurrentState } from '../../store/filter/reducer';
 import searchSplitter from '../../store/utils/searchSplitter';
-import './CompaniesPage.less';
+import './CompaniesPage.scss';
 
 
 const searchParams = {
@@ -66,7 +66,7 @@ const CompaniesPage = () => {
         },
     ]
 
-    const onSearch = search => {
+    const onSearch = e => {
         let searchString = `search=`;
         for (let m in state) {
             if (state[m].length > 0) {
@@ -99,6 +99,7 @@ const CompaniesPage = () => {
         <BaseMarkup className="background-image-left">
             <div className="desktop-layout">
                 <SearchElement
+                    placeholder={"Search by company name"}
                     onChange={onSearchChange}
                     onSearch={onSearch}
                     buttonText={<div><i className="fa fa-briefcase" /> CREATE COMPANY</div>}

@@ -1,4 +1,4 @@
-import './CompanyPage.less';
+import './CompanyPage.scss';
 
 import { Avatar, Skeleton } from 'antd';
 import React, { useEffect } from 'react';
@@ -18,7 +18,8 @@ const CompanyPage = () => {
         dispatch(getSingleCompanyAC(id))
     }, [])
     const { company, companyLoading, jobs } = useSelector(({ companiesSlice: { company, companyLoading }, 
-    jobsSlice: { jobs } }) => ({ company, companyLoading, jobs }))  
+        jobsSlice: { jobs } }) => ({ company, companyLoading, jobs }))  
+        console.log("🚀 ~ file: CompanyPage.jsx ~ line 21 ~ CompanyPage ~ company", company)
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout company-page">
@@ -31,7 +32,7 @@ const CompanyPage = () => {
                                 <>
                                     <Avatar src={company?.imageURL} size={100} />
                                     <h2 className="company-page-company-name">{company?.name}</h2>
-                                    <p className="slogan">{company?.companyInfo?.slogan}</p>
+                                    <p className="slogan">{company?.companyFullBio}</p>
                                 </>
                             }
                         </div>

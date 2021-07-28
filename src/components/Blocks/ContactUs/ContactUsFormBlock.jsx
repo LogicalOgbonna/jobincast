@@ -1,7 +1,7 @@
 import { Button, Form, Input, Select } from 'antd'
 import React from 'react'
 import { mappedCountries } from '../../../store/utils/countries';
-import './ContactUsFormBlock.less'
+import './ContactUsFormBlock.scss'
 
 const { Option } = Select;
 

@@ -1,4 +1,5 @@
-import './theme/index.less';
+import './theme/index.scss';
+import "antd/dist/antd.less";
 
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';

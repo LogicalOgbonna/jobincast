@@ -1,0 +1,55 @@
+@import "../../../theme/index.scss";
+.featured-companies-block {
+  padding-top: 70px;
+
+  .featured-companies {
+    font-family: "Montserrat";
+    font-size: 32px;
+    color: $BLACK;
+  }
+
+  .featured-companies-card {
+    height: 225px;
+    box-shadow: $STANDARD_BOX_SHADOW;
+    border-radius: $STANDARD_BORDER_RADIUS;
+    padding: 14px 12px;
+
+    .featured-companies-first-row {
+      //   .featured-companies-logo {
+      //     // width: ;
+      //   }
+
+      .featured-companies-positions {
+        box-shadow: $BOX_SHADOW;
+        border-radius: 50px;
+        padding: 10px;
+        height: 2%;
+        color: $BLUE;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+      }
+    }
+
+    .featured-companies-second-row {
+      padding-top: 10px;
+      font-weight: 600;
+    }
+
+    .featured-companies-third-row {
+      .featured-companies-third-row-content {
+        display: flex;
+        align-items: center;
+      }
+
+      .featured-companies-third-row-content:not(:first-child) {
+        padding-top: 10px;
+      }
+    }
+  }
+
+  .featured-companies-card:not(:first-child) {
+    margin-left: 5px;
+  }
+}

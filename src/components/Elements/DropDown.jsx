@@ -1,4 +1,4 @@
-import './DropDown.less';
+import './DropDown.scss';
 import { useDispatch } from 'react-redux'
 
 import React, { useState } from 'react';

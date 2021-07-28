@@ -1,6 +1,6 @@
 import { Button, DatePicker, Form, Input, InputNumber, Modal, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
-import './PostJob.less'
+import './PostJob.scss'
 
 
 import file from "../countries.json";

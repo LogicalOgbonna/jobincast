@@ -1,4 +1,4 @@
-import './UserHeading.less';
+import './UserHeading.scss';
 
 import { UploadOutlined } from '@ant-design/icons';
 import { Avatar, Button, Upload } from 'antd';
@@ -48,7 +48,7 @@ const UserHeading = ({ message, action, subMessage }) => {
                         </Upload>
                     </ImgCrop>
                     <div className="profile-page-header-text px-3 pt-2">
-                        <h2 className="profile-page-profile-name mb-0">{`${user?.firstName} ${user?.lastName}`.substr(0, 14)}</h2>
+                        <h2 className="profile-page-profile-name mb-0">{`${user?.firstName}`}</h2>
                         <p className="mb-0">{message}</p>
                         <p className="mb-0">{subMessage}</p>
                     </div>

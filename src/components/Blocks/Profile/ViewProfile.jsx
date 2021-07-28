@@ -16,7 +16,7 @@ const ViewProfile = ({ action }) => {
             <div className="profile-page-step-contents py-5">
                 <div className="row justify-content-center profile-page-step-contents-body">
                     <div className="col-md-10">
-                        <PreviewProfile onFinish={onFinish} action={action} />
+                        <PreviewProfile accountType={user?.roles?.[0]?.authority} onFinish={onFinish} action={action} />
                     </div>
                 </div>
             </div>

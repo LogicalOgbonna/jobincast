@@ -15,7 +15,7 @@ const ContactInfo = ({ onFinish, accountType, loading }) => {
     const profile = useSelector(({ profileSlice: { profile } }) => profile)
     const [country, setCountry] = useState("")
     useEffect(() => {
-        if(profile?.contact) form.setFieldsValue(profile?.contact)
+        if (profile?.contact) form.setFieldsValue(profile?.contact)
         setCountry(profile?.contact?.country)
     }, [profile])
     const { push } = useHistory()
@@ -41,9 +41,11 @@ const ContactInfo = ({ onFinish, accountType, loading }) => {
                 <div className="col-12 col-md-6">
                     <Form.Item label="Phone Number" name="phone">
                         <PhoneInput
+                            inputClass="w-100"
+                            regions={['asia']}
                             country="my"
                             enableSearch
-                            inputclassName="profile-inputs w-100"
+                            inputClassName="profile-inputs w-100"
                         />
                     </Form.Item>
                 </div>

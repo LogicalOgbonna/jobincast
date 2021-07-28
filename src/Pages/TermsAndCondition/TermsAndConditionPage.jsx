@@ -1,6 +1,6 @@
 import React from 'react'
 import BaseMarkup from '../../components/Base/BaseMarkup';
-import './TermsAndConditionPage.less';
+import './TermsAndConditionPage.scss';
 
 const TermsAndConditionPage = () => {
     return (

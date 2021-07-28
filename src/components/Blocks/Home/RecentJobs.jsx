@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import BlockHeader from './BlockHeader';
 import RecentJob from './RecentJob';
-import './RecentJobs.less';
+import './RecentJobs.scss';
 
 
 

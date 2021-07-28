@@ -1,4 +1,4 @@
-import './Footer.less';
+import './Footer.scss';
 
 import { Button, Input } from 'antd';
 import React from 'react';

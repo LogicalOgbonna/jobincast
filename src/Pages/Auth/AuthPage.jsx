@@ -1,4 +1,4 @@
-import './Auth.less';
+import './Auth.scss';
 
 import { Button } from 'antd';
 import queryString from 'query-string';

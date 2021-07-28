@@ -1,4 +1,4 @@
-import './Applicants.less';
+import './Applicants.scss';
 import 'react-phone-input-2/lib/style.css';
 
 import { DownOutlined, ExclamationCircleOutlined, CloudDownloadOutlined } from '@ant-design/icons';

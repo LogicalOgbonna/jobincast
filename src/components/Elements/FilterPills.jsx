@@ -1,5 +1,5 @@
 import React from 'react'
-import './FilterPills.less'
+import './FilterPills.scss'
 import { useSelector } from 'react-redux';
 import FilterPill from './FilterPill';
 

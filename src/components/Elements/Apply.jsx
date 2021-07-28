@@ -3,7 +3,7 @@ import Modal from 'antd/lib/modal/Modal';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import "./Apply.less"
+import "./Apply.scss"
 
 
 import { applicantApplyAC } from '../../store/applicants/action';

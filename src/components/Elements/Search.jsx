@@ -5,15 +5,18 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { search_caret_down } from '../../assets/icons';
 import Dropdown from './DropDown';
-import './Search.less';
+import './Search.scss';
 
 
 
 
 
-const SearchElement = ({ buttonText, onClick, onSearch, onChange }) => {
+const SearchElement = ({ buttonText, onClick, onSearch, onChange, placeholder }) => {
 
-    const onFinish = ({ search }) => onSearch(search)
+    const onFinish = (e) => {
+        e.preventDefault();
+        onSearch(e.target.value);
+    }
     const { user } = useSelector(({ authSlice: { user } }) => ({ user }))
 
     const options = [
@@ -43,18 +46,19 @@ const SearchElement = ({ buttonText, onClick, onSearch, onChange }) => {
                             <button onClick={onClick} className="search-element-button">{buttonText}</button>
                         </div>
                     </div> :
-                    <div className="row search-element-padding">
-                        <div className="col-md-9">
-                            <Form onFinish={onFinish}>
+                    <div className="search-component">
+                        {/* <div className="col-md-9"> */}
+
+                        <form onSubmit={onFinish}>
+                            <SearchOutlined style={{ fontSize: '24px' }} />
+                            <input onChange={onChange} required placeholder={placeholder ? placeholder : "Search by position title or applicant name "} />
+                        </form>
+                        {/* <Form onFinish={onFinish}>
                                 <Form.Item name="search" rules={[{ required: true, message: "" }]}>
                                     <Input onChange={onChange} prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
                                 </Form.Item>
-
-                            </Form>
-                        </div>
-                        <div className="col-md-3 text-right">
-                            <button onClick={onClick} className="search-element-button">{buttonText}</button>
-                        </div>
+                            </Form> */}
+                        {/* </div> */}
                     </div>}
             </div>
         </div>

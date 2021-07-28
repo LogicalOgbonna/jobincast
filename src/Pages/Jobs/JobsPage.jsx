@@ -13,7 +13,7 @@ import { clearFilterAndCurrentStateAC } from '../../store/filter/actions';
 import { setCurrentState } from '../../store/filter/reducer';
 import { getAllJobsAC } from '../../store/jobs/action';
 import searchSplitter from '../../store/utils/searchSplitter';
-import './JobsPage.less';
+import './JobsPage.scss';
 
 
 

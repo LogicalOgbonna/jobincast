@@ -103,6 +103,10 @@ const uploadImageMW = (store) => (next) => async (action) => {
             description: "Could not upload profile image at the moment, please try again later"
         })
     }
+
+    notification.error({
+        description: message
+    })
 }
 
 const uploadResumeAC = (store) => (next) => async (action) => {

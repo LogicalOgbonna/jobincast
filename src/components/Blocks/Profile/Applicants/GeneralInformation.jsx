@@ -2,7 +2,7 @@
 import { Button, Form, Input, Tooltip, Select } from 'antd';
 import React, { useEffect, } from 'react';
 import { useSelector } from 'react-redux';
-import './GeneralInformation.less'
+import './GeneralInformation.scss'
 const { Option } = Select;
 
 const GeneralInformation = ({ finishGeneralInfo, removeResume, loading, onResumeInputChange }) => {
@@ -56,7 +56,7 @@ const GeneralInformation = ({ finishGeneralInfo, removeResume, loading, onResume
                 <Form.Item label="Upload Resume" name="resume">
                     <Input accept=".pdf,.doc,.docx" value="" onChange={onResumeInputChange} type="file" placeholder="Resume" />
                     <div className="tag-container">
-                        {profile?.attachments?.map(value =>
+                        {profile?.attachments?.filter(value => value.attachmentType === "DOCUMENT").map(value =>
                             <div key={value.id} className="individual-tag">
                                 <Tooltip overlayStyle={{ fontSize: 10 }} title={value.attachmentName}>
                                     <div className="value">{value.attachmentName}</div>

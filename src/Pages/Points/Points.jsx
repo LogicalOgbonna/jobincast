@@ -1,4 +1,4 @@
-import './points.less';
+import './points.scss';
 
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -9,6 +9,7 @@ import BaseMarkup from '../../components/Base/BaseMarkup';
 import UserHeading from '../../components/Elements/UserHeading';
 import Stripe from './Stripe';
 import { payPalSuccessAC, stripePaymentAC } from '../../store/profile/action';
+import { setLoading } from '../../store/profile/reducer';
 
 const defaultOptions = {
     fortyPoints: {
@@ -62,8 +63,7 @@ const Points = () => {
         console.log("🚀 ~ file: Points.jsx ~ line 45 ~ onPaypalError ~ error", error)
     }
 
-    const onStripeInitiate = (paymentMethod, error) => {
-        console.log("🚀 ~ file: Points.jsx ~ line 65 ~ onStripeInitiate ~ paymentMethod", paymentMethod)
+    const onStripeInitiate = (paymentMethod) =>
         dispatch(stripePaymentAC({
             amount: paymentOptions?.[activeOption]?.amount,
             quantity: paymentOptions?.[activeOption]?.quantity,
@@ -73,7 +73,6 @@ const Points = () => {
             paymentChannel: "STRIPE",
             topUpType: "CREDIT_UNIT_PURCHASE"
         }))
-    }
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout points-page">
@@ -115,10 +114,8 @@ const Points = () => {
                             <div className="button-paypal">
                                 <PayPalButton
                                     amount={paymentOptions?.[activeOption]?.amount}
-                                    // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                                     onSuccess={(details, data) => onPaypalSuccess(details, data)}
                                 />
-                                {/* <Paypal onSuccess={onPaypalSuccess} onError={onPaypalError} paymentOptions={paymentOptions?.[activeOption]} /> */}
                             </div>
                         </div>
                     </div>

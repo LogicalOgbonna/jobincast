@@ -6,11 +6,11 @@ import {
   CardCvcElement,
   CardExpiryElement
 } from "@stripe/react-stripe-js";
-import axios from "axios";
 
 import useResponsiveFontSize from "./fonts";
 import { setLoading } from "../../store/profile/reducer";
 import { useDispatch, useSelector } from "react-redux";
+import { notification } from "antd";
 
 const useOptions = () => {
   const fontSize = useResponsiveFontSize();
@@ -29,14 +29,14 @@ const useOptions = () => {
         invalid: {
           color: "#9e2146"
         }
-      }
+      },
+      required: true
     }),
     [fontSize]
   );
 
   return options;
 };
-
 const SplitForm = ({ paymentOptions, onSuccess }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -51,13 +51,19 @@ const SplitForm = ({ paymentOptions, onSuccess }) => {
     if (!stripe || !elements) {
       return;
     }
-
     dispatch(setLoading({ type: "stripeLoading", value: true, }))
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardNumberElement)
     });
-    onSuccess(paymentMethod, error)
+    if (error) {
+      notification.error({
+        message: error.code,
+        description: error.message,
+      })
+      return dispatch(setLoading({ type: "stripeLoading", value: false, }))
+    }
+    onSuccess(paymentMethod)
   };
 
   return (

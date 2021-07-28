@@ -1,6 +1,6 @@
 import { Button, DatePicker, Form, Input, InputNumber, Modal, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
-import './PostJob.less'
+import './PostJob.scss'
 
 
 import file from "../countries.json";
@@ -131,7 +131,7 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
                     <div className="col-12 col-md-6">
                         <Form.Item label="Minimum Salary Monthly" name="minAmount" rules={[{ required: true, message: "Minimum Salary is required" }]} >
                             <InputNumber
-                                defaultValue={100}
+                                placeholder={100}
                                 formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                 className="profile-inputs w-100 pt-1"
                                 
@@ -142,7 +142,7 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
                     <div className="col-12 col-md-6">
                         <Form.Item label="Maximum Salary Monthly" name="maxAmount" rules={[{ required: true, message: "Maximum Salary is required" }]}>
                             <InputNumber
-                                defaultValue={1000}
+                                placeholder={1000}
                                 formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                 className="profile-inputs w-100 pt-1"
                                 

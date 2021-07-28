@@ -5,7 +5,7 @@ import LeftColumn from '../../components/Base/Columns/LeftColumn'
 import RightColumn from '../../components/Base/Columns/RightColumn'
 import ContactUsCards from '../../components/Blocks/ContactUs/ContactUsCards'
 import ContactUsFormBlock from '../../components/Blocks/ContactUs/ContactUsFormBlock'
-import './ContactUsPage.less'
+import './ContactUsPage.scss'
 
 
 const ContactUsPage = () => {

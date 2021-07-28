@@ -1,4 +1,4 @@
-import './ResumeList.less';
+import './ResumeList.scss';
 
 import { Pagination } from 'antd';
 import moment from 'moment';

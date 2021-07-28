@@ -1,7 +1,7 @@
 import React from 'react'
 import { money, stack, addressBook, trumpet, available } from '../../../assets/icons'
 import BlockHeader from './BlockHeader'
-import './WhyUsBlock.less'
+import './WhyUsBlock.scss'
 const WhyUsBlock = () => {
     return (
         <div className="why-choose-us-block">

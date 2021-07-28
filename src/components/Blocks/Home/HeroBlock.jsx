@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { mappedCountries } from '../../../store/utils/countries';
 import { mappedJobCategories, mappedJobTypes } from '../../../store/utils/jobs';
-import './HeroBlock.less'
+import './HeroBlock.scss'
 
 const { Option } = Select;
 

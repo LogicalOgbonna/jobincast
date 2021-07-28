@@ -1,5 +1,5 @@
 import React from 'react'
-import './FilterPill.less'
+import './FilterPill.scss'
 import { Tag } from 'antd'
 import { useDispatch } from 'react-redux'
 import { removeFilterPillAC } from '../../store/filter/actions'

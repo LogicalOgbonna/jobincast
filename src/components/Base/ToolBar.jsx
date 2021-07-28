@@ -63,7 +63,7 @@ const ToolBar = () => {
                     {authority === "EMPLOYER" && <NavLink className={activePage('/resume')} to="/resume">RESUME</NavLink>}
                     <NavLink className={activePage('/companies')} to="/companies">COMPANIES</NavLink>
                     <NavLink className={activePage('/blogs')} to="/blogs">BLOG</NavLink>
-                    <NavLink className={activePage('/contact-us')} to="/contact-us">CONTACT US</NavLink>
+                    <NavLink className={activePage('/contact-us')} to="/contact-us">CONTACT-US</NavLink>
                 </div>
                 <div className="col-md-4 d-flex align-items-center justify-content-end">
                     {!loggedIn && <div className="tool-bar-button">
