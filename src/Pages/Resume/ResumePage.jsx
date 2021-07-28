@@ -13,7 +13,7 @@ import { clearFilterAndCurrentStateAC } from '../../store/filter/actions';
 import { setCurrentState } from '../../store/filter/reducer';
 import { getAllResumeAC } from '../../store/resume/action';
 import searchSplitter from '../../store/utils/searchSplitter';
-import './ResumePage.less';
+import './ResumePage.scss';
 
 
 
@@ -21,7 +21,8 @@ import './ResumePage.less';
 
 const searchParams = {
     title: "",
-    fullName: "",
+    'user.firstName': "",
+    'user.lastName': "",
 }
 const ResumePage = () => {
     const dispatch = useDispatch()
@@ -77,7 +78,8 @@ const ResumePage = () => {
         setState({
             ...state,
             title: value,
-            fullName: value,
+            'user.firstName': value,
+            'user.lastName': value,
         })
     }
 
@@ -85,12 +87,13 @@ const ResumePage = () => {
         let searchString = `search=`;
         for (let m in state) {
             if (state[m].length > 0) {
-                if (m === "title" || m === "fullName") {
+                if (m === "title" || m === "user.firstName" || m === "user.lastName") {
                     const searchValue = state[m].replace(/'/g, "");
-                    searchString += `${m}=='*${searchValue}*';`;
+                    searchString += `${m}=='*${searchValue}*',`;
                 }
                 else {
                     if (state[m].length > 1) {
+                        console.log("🚀 ~ file: ResumePage.jsx ~ line 97 ~ ResumePage ~ searchValue", state[m])
                         const searchValue = state[m].join(",").replace(/'/g, "").split(",").map(value => `'${value}'`).join(",");
                         searchString += `${m}=in=(${searchValue});`;
                     } else {
@@ -111,7 +114,7 @@ const ResumePage = () => {
                     onChange={onSearchChange}
                     onSearch={onSearch}
                     onClick={() => console.log("Hello")}
-                    // buttonText={<div><i className="fa fa-briefcase" /> </div>}
+                // buttonText={<div><i className="fa fa-briefcase" /> </div>}
                 />
                 <div className="resume-page">
                     <div className="container">

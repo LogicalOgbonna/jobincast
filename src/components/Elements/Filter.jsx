@@ -1,4 +1,4 @@
-import './Filter.less';
+import './Filter.scss';
 
 import { RedoOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';

@@ -1,0 +1,44 @@
+@import "../../theme/index.scss";
+
+.blogs-page {
+    padding-top: 70px;
+    // background: url("../../assets/images/bubble2.png") no-repeat left top;
+    .dateicon{
+        padding-right: 5px;
+        font-size: 14px;
+        color: #dadada;
+    }
+    .big-blog{
+        display: inline-flex;
+        justify-content: space-between;
+        .big-blog-area{
+            background: $WHITE;
+            box-shadow: $BOX_SHADOW;
+            // margin: 0px 8px 10px 8px;
+            padding: 10px;
+            max-width: 49% !important;
+            border-radius: 0px;
+            img{
+                width: 100%;
+            }
+            .bigblogredirect{
+                float: right;
+            }
+        }
+    }
+    .miniheaderarea{
+        margin-top: 50px;
+        .miniheader{
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .minidivider {
+            width: 10% !important;
+            display: block;
+            border-bottom: 1px solid #2E3192;
+            padding: 0px;
+            margin-top: -10px;
+            margin-bottom: 30px;
+        }
+    }
+}

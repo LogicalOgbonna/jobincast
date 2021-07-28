@@ -1,5 +1,5 @@
 import React from 'react'
-import './Dot.less'
+import './Dot.scss'
 
 const Dot = ({ active, onClick, page }) => {
     return (

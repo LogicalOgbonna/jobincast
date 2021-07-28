@@ -1,4 +1,4 @@
-import './BlogsPage.less';
+import './BlogsPage.scss';
 
 import React from 'react'
 

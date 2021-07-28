@@ -1,4 +1,4 @@
-import './JobList.less';
+import './JobList.scss';
 
 import React from 'react';
 

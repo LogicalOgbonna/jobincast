@@ -5,7 +5,7 @@ import { service_location, service_type } from '../../../assets/icons'
 import { getFeaturedCompaniesAC } from '../../../store/home/action'
 import Dots from '../../Elements/Dots'
 import BlockHeader from './BlockHeader'
-import './FeaturedCompanies.less'
+import './FeaturedCompanies.scss'
 
 const FeaturedCompanies = () => {
     const dispatch = useDispatch()

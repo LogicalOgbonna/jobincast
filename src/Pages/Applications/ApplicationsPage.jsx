@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom'
 import BaseMarkup from '../../components/Base/BaseMarkup'
 import UserHeading from '../../components/Elements/UserHeading'
 import { userGetApplicationsAC, withdrawApplicationAC } from '../../store/applicants/action'
-import './ApplicationsPage.less'
+import './ApplicationsPage.scss'
 
 const ApplicationsPage = () => {
     const dispatch = useDispatch()

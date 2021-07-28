@@ -1,0 +1,13 @@
+@import "../../theme/index.scss";
+
+.terms-and-condition-page {
+  padding: 88px;
+  background: url("../../assets/images/bubble2.png") left center no-repeat;
+  .terms-and-condition-content {
+    background: $WHITE;
+    padding: 80px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+  // margin: 88px 0;
+}

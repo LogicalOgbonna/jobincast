@@ -10,7 +10,7 @@ import ResumeDetails from './Applicants/ResumeDetails';
 import PreviewProfile from './Applicants/PreviewProfile';
 import { useDispatch, useSelector } from 'react-redux';
 import { profileLoadingAction, removeResumeAC, uploadResumeAC } from '../../../store/profile/action';
-import jobincast from '../../../axios';
+
 const ProfileSetup = ({ action }) => {
     const dispatch = useDispatch();
     const { location: { search }, push } = useHistory()

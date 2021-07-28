@@ -1,4 +1,4 @@
-import './Blog.less';
+import './Blog.scss';
 
 import { Divider } from 'antd';
 import React from 'react'

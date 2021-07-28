@@ -1,0 +1,109 @@
+@import "../../theme/index.scss";
+
+$TOOLBAR_HEIGHT: 60px;
+$TOOLBAR_HEIGHT_MOBILE: 70px;
+
+.tool-bar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: $TOOLBAR_HEIGHT;
+  width: 100% !important;
+  background: #fff;
+  z-index: 2;
+  font-family: "Montserrat";
+  font-weight: 500;
+  padding: 10px 70px;
+  color: $BLACK;
+  align-items: center;
+  border-bottom: 1px solid #fbfbfb;
+
+  .tool-bar-links {
+    padding: 10px 20px;
+    font-size: 12px;
+
+    a {
+      text-decoration: none;
+      color: $BLACK;
+    }
+  }
+  .tool-bar-logo {
+    width: 90%;
+    // padding-top: 10px;
+  }
+  .active-page {
+    background: #fff !important;
+    box-shadow: 0 -10px 12px hsla(0,0%,41.2%,.15);
+  }
+  .tool-bar-links > a {
+    padding: 24px;
+  }
+
+  .tool-bar-button {
+    background: $LIGHT_BLUE;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: $WHITE;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) !important;
+
+    button {
+      background: transparent;
+      color: $WHITE;
+      border-color: transparent;
+      font-weight: 600;
+      font-size: 13px;
+      font-family: 'Open Sans';
+      text-transform: capitalize;
+      letter-spacing: 0.3px;
+    }
+  }
+
+  .search-button {
+    border: none;
+    background: transparent;
+    padding: 0px 30px;
+    box-shadow: none;
+    font-weight: 500;
+    font-size: 20px;
+    height: 100%;
+  }
+
+  .search-button:hover, .search-button:active, .search-button:visited, .search-button:focus {
+    background: transparent;
+    color: $LIGHT_GREY;
+  }
+
+  .user-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .user-menu-button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .user-avatar {
+    cursor: pointer;
+  }
+}
+
+.navbar-shadow {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.04) !important;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.main-content {
+  padding-bottom: 150px;
+  min-height: calc(100vh - $TOOLBAR_HEIGHT);
+  background-color: $WHITE;
+}
+.background-image-left {
+  background: url("../../assets/images/bubble2.png") no-repeat left top;
+}
+
+.bg-grey {
+  background-color: #fbfbfb;
+}

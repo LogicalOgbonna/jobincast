@@ -1,0 +1,51 @@
+@import "../../theme/index.scss";
+
+.recent-jobs-element {
+  .recent-jobs-card {
+    min-height: 200px;
+    box-shadow: $BOX_SHADOW;
+    border-radius: $STANDARD_BORDER_RADIUS;
+    padding: 20px 30px 0px 30px;
+
+    margin-bottom: 30px;
+
+    img {
+      width: 130px;
+      border-radius: 100px;
+    }
+
+    .recent-jobs-card-text-section {
+      p {
+        margin-bottom: 0px;
+      }
+
+      h5 {
+        font-weight: 600;
+      }
+
+      padding-left: 25px;
+
+      a {
+        color: $GREEN;
+      }
+    }
+
+    .recent-jobs-card-icon-section {
+      font-size: 14px;
+
+      .recent-jobs-card-icon {
+        font-size: 20px;
+        color: $GREEN;
+      }
+    }
+  }
+
+  .ant-pagination-item-link {
+    color: $WHITE !important;
+    background: $BLUE !important;
+  }
+  .ant-pagination-item {
+    color: $WHITE !important;
+    background: $BLUE !important;
+  }
+}

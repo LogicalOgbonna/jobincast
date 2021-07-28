@@ -1,4 +1,4 @@
-import './BlogList.less';
+import './BlogList.scss';
 
 import React from 'react';
 

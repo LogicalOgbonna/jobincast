@@ -1,4 +1,4 @@
-import './EmployerJobsPage.less';
+import './EmployerJobsPage.scss';
 import 'react-phone-input-2/lib/style.css';
 
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';

@@ -1,5 +1,5 @@
 import React from 'react'
-import './BlockHeader.less'
+import './BlockHeader.scss'
 const BlockHeader = ({ heading, subheading, featured }) => {
     return (
         <div className={featured ? "block-header-featured-companies" : "block-header"}>

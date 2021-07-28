@@ -1,4 +1,4 @@
-import './Resume.less';
+import './Resume.scss';
 
 import { CloudDownloadOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { Avatar, Button, Modal, Skeleton, Steps } from 'antd';
@@ -65,7 +65,7 @@ const Resume = () => {
                             >
                                 <h4 className="lh50">General Information</h4>
                                 <p>Language(s) :  {resume?.language}</p>
-                                <p>Highest Degree Level :  {resume?.degree}</p>
+                                <p>Highest Degree Level :  {resume?.degree === "HIGHER_D" ? "HIGHER DIPLOMA" : resume?.degree}</p>
                                 <p>Total Years of Experience : {resume?.yearsOfExperience} Years</p>
                                 <br></br>
 

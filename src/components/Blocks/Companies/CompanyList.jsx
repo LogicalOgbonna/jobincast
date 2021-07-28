@@ -2,7 +2,7 @@ import { Pagination } from 'antd';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Company from './Company';
-import './CompanyList.less';
+import './CompanyList.scss';
 
 
 

@@ -1,4 +1,4 @@
-import './ProfilePage.less';
+import './ProfilePage.scss';
 import 'react-phone-input-2/lib/style.css';
 
 import queryString from 'query-string';

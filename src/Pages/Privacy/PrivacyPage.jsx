@@ -1,6 +1,6 @@
 import React from 'react'
 import BaseMarkup from '../../components/Base/BaseMarkup';
-import './PrivacyPage.less';
+import './PrivacyPage.scss';
 
 const PrivacyPage = () => {
     return (
