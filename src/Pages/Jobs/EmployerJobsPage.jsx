@@ -35,7 +35,11 @@ const EmployerJobsPage = () => {
         setEditableJob(src)
     }
 
-    const onPostJob = (data) => dispatch(createJobAC({ data, onModalToggle }))
+    const onPostJob = (data) => {
+        data.minAmount = parseInt(data?.salary?.split("-")?.[0]?.replace(",", ''))
+        data.maxAmount = parseInt(data?.salary?.split("-")?.[1]?.replace(",", ''))
+        dispatch(createJobAC({ data, onModalToggle }))
+    }
     const onUpdateJob = (data) => dispatch(updateJobAC({ data: { ...editableJob, ...data }, toggle: onUpdateModalToggle }))
 
     const columns = [

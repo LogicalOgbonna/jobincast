@@ -2,9 +2,9 @@ import jobincast from "../../axios"
 import { errorHandler } from "../utils/axiosErrorHandler"
 
 
-export const getFeaturedCompaniesService = async (query) => {
+export const getFeaturedCompaniesService = async () => {
     try {
-        const { data } = await jobincast.get(`/services/companies?${query}`)
+        const { data } = await jobincast.get(`/services/companies/featured`)
         return {
             message: data,
             success: true

@@ -9,7 +9,7 @@ const getFeaturedCompaniesMW = (store) => (next) => async action => {
         type: "featuredCompaniesLoading",
         value: true
     }))
-    const { success, message } = await getFeaturedCompaniesService(action.payload);
+    const { success, message } = await getFeaturedCompaniesService();
 
     if (!success) return notification.error({
         description: "Could not get any featured company at the moment.",

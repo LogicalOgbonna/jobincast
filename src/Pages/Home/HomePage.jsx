@@ -10,7 +10,7 @@ const HomePage = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllJobsAC("page=0&size=4&sort=createdAt,desc"))
-        dispatch(getFeaturedCompaniesAC("page=0&size=4"))
+        dispatch(getFeaturedCompaniesAC())
     }, [])
 
     const state = useSelector(state => state.state)

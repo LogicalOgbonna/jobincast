@@ -1,9 +1,10 @@
 import { Skeleton, Spin } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { service_location, service_type } from '../../../assets/icons'
 import { getFeaturedCompaniesAC } from '../../../store/home/action'
-import Dots from '../../Elements/Dots'
+// import Dots from '../../Elements/Dots'
 import BlockHeader from './BlockHeader'
 import './FeaturedCompanies.scss'
 
@@ -11,9 +12,9 @@ const FeaturedCompanies = () => {
     const dispatch = useDispatch()
     const { featuredCompanies: { content, number, totalPages }, featuredCompaniesLoading } = useSelector(({ homeSlice: { featuredCompanies, featuredCompaniesLoading } }) => ({ featuredCompanies, featuredCompaniesLoading }))
 
-    const changePage = page => {
-        dispatch(getFeaturedCompaniesAC(`page=${page}&size=4`))
-    }
+    // const changePage = page => {
+    //     dispatch(getFeaturedCompaniesAC(`page=${page}&size=4`))
+    // }
     return (
         <div className="featured-companies-block">
             <div className="row justify-content-center">
@@ -42,10 +43,10 @@ const FeaturedCompanies = () => {
                     </div>
                 </>}
 
-                {
-                    !featuredCompaniesLoading && content.map(company =>
-                        <div key={company.imageURL} className="col-md-3">
-                            <div className="featured-companies-card">
+                <div className="featured-companies-cards col-md-10">
+                    {
+                        !featuredCompaniesLoading && content.map(company =>
+                            <Link to={`/company/${company.companyId}`} className="featured-companies-card">
                                 <div className="featured-companies-first-row row pr-3">
                                     <div className="col-md-6">
                                         <img src={company.imageURL} alt="company-logo" className="featured-companies-logo" width="100" />
@@ -65,14 +66,14 @@ const FeaturedCompanies = () => {
                                         <span className="px-3">{company.industry}</span>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    )
-                }
+                            </Link>
+                        )
+                    }
+                </div>
             </div>
-            <div className="row justify-content-center">
+            {/* <div className="row justify-content-center">
                 <Dots onClick={changePage} totalPages={totalPages} first={number + 1 === 1} second={number + 1 === 2} third={number + 1 === 3} />
-            </div>
+            </div> */}
         </div>
     )
 }
