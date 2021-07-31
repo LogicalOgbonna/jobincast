@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
 export default function Paypal({ paymentOptions, onSuccess, onError }) {
-    console.log("🚀 ~ file: Paypal.jsx ~ line 4 ~ Paypal ~ paymentOptions", paymentOptions)
     const paypal = useRef();
 
     useEffect(() => {

@@ -193,7 +193,7 @@ const ResumeDetails = ({ onFinish, accountType, loading }) => {
                                                         validateTrigger={['onChange', 'onBlur']}
                                                         rules={[
                                                             {
-                                                                // required: true,
+                                                                required: true,
                                                                 message: "Please input Year Awarded or delete this field.",
                                                             },
                                                         ]}

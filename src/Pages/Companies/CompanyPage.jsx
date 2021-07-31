@@ -19,7 +19,6 @@ const CompanyPage = () => {
     }, [])
     const { company, companyLoading, jobs } = useSelector(({ companiesSlice: { company, companyLoading }, 
         jobsSlice: { jobs } }) => ({ company, companyLoading, jobs }))  
-        console.log("🚀 ~ file: CompanyPage.jsx ~ line 21 ~ CompanyPage ~ company", company)
     return (
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout company-page">

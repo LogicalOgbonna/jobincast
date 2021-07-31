@@ -90,7 +90,6 @@ const JobsPage = () => {
 
     const onSearch = search => {
         let searchString = `search=`;
-        console.log("🚀 ~ file: JobsPage.jsx ~ line 97 ~ JobsPage ~ state", state)
         for (let m in state) {
             if (state[m].length > 0) {
                 if (m === "jobTitle") {
