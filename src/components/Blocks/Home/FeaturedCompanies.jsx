@@ -9,8 +9,8 @@ import BlockHeader from './BlockHeader'
 import './FeaturedCompanies.scss'
 
 const FeaturedCompanies = () => {
-    const dispatch = useDispatch()
-    const { featuredCompanies: { content, number, totalPages }, featuredCompaniesLoading } = useSelector(({ homeSlice: { featuredCompanies, featuredCompaniesLoading } }) => ({ featuredCompanies, featuredCompaniesLoading }))
+    // const dispatch = useDispatch()
+    const { featuredCompanies, featuredCompaniesLoading } = useSelector(({ homeSlice: { featuredCompanies, featuredCompaniesLoading } }) => ({ featuredCompanies, featuredCompaniesLoading }))
 
     // const changePage = page => {
     //     dispatch(getFeaturedCompaniesAC(`page=${page}&size=4`))
@@ -45,7 +45,7 @@ const FeaturedCompanies = () => {
 
                 <div className="featured-companies-cards col-md-10">
                     {
-                        !featuredCompaniesLoading && content.map(company =>
+                        !featuredCompaniesLoading && featuredCompanies?.map(company =>
                             <Link to={`/company/${company.companyId}`} className="featured-companies-card">
                                 <div className="featured-companies-first-row row pr-3">
                                     <div className="col-md-6">
