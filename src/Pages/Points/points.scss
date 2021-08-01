@@ -52,16 +52,14 @@
     }
 
     .button-paypal {
-      display: flex;
-      justify-content: center;
       padding-top: 30px;
+      margin: 0 auto;
+      width: 65%;
 
-      // .paypal-button-number-0 {
-      //     // width: 200px;
-      //     .paypal-button-shape-rect {
-      //         border-radius: 10px !important;
-      //     }
-      // }
+      div {
+        width: 100% !important;
+      }
+      // width: 80%;
     }
 
     .stripe {
