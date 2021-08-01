@@ -92,7 +92,7 @@ const SplitForm = ({ paymentOptions, onSuccess }) => {
           />
         </div>
         <div className="col-md-1">
-          CVV
+          CVC
         </div>
         <div className="col-md-5">
           <CardCvcElement
