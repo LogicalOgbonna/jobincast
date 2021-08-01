@@ -71,11 +71,11 @@ const salaries = [
     '1,100-2,000',
     '2,100-3,000',
     '3,100-4,000',
-    '4,1000-5,000',
+    '4,100-5,000',
     '5,100-6,000',
     '6,100-7,000',
     '7,100-8,000',
-    '8,00-9,000',
+    '8,000-9,000',
     '9,100-10,000',
     '10,000-more',
 ]
@@ -94,7 +94,7 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
     return (
         <Modal title="Post A Job" width={700} onCancel={toggle} visible={open} footer={null} style={{ borderRadius: 10 }} >
             <Form form={form} layout="vertical" onFinish={onFinish}>
-                <div style={{ height: 400, overflowY: "scroll" }} className="row">
+                <div style={{ height: "65vh", overflowY: "scroll" }} className="row">
                     <div className="col-12 col-md-6">
                         <Form.Item label="Title" name="jobTitle" rules={[{ required: true, message: "Job Title is required" }]}>
                             <Input className="profile-inputs" />
