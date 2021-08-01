@@ -105,7 +105,7 @@ const Points = () => {
                                 </div>
                             </div>
                             <div className="stripe">
-                                <p>Pay with card</p>
+                                <p>Pay with Card (Stripe)</p>
                                 <Stripe onSuccess={onStripeInitiate} paymentOptions={paymentOptions?.[activeOption]} />
                             </div>
                             <div className="or-divider">
@@ -113,6 +113,7 @@ const Points = () => {
                             </div>
                             <div className="button-paypal">
                                 <PayPalButton
+                                    disableCard
                                     amount={paymentOptions?.[activeOption]?.amount}
                                     onSuccess={(details, data) => onPaypalSuccess(details, data)}
                                 />

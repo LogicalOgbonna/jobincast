@@ -19,9 +19,11 @@ const FilterElement = ({ options, extra }) => {
     return (
         <div className="filter-element">
             <div className="filter-section row">
-                {options.map((option, index) => <div key={index} className="col-md-2 filter-dropdown">
-                    <Dropdown options={option.data} label={option.label} img={option.icon} />
-                </div>)}
+                {options.map((option, index) =>
+                    <div key={index} className="col-md-2 filter-dropdown">
+                        <Dropdown options={option.data} label={option.label} img={option.icon} />
+                    </div>
+                )}
 
                 <div className="extra-filter-element">
                     {extra}
@@ -41,11 +43,10 @@ const FilterElement = ({ options, extra }) => {
 FilterElement.defaultProps = {
     options: []
 }
-FilterElement.propTypes = {
-    options: PropTypes.shape({
-        map: PropTypes.func,
-        // data: PropTypes.
-    })
-}
+// FilterElement.propTypes = {
+//     options: PropTypes.shape({
+//         map: PropTypes.func
+//     })
+// }
 
 export default FilterElement

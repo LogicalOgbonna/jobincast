@@ -1,20 +1,14 @@
-import { Skeleton, Spin } from 'antd'
+import { Skeleton } from 'antd'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { service_location, service_type } from '../../../assets/icons'
-import { getFeaturedCompaniesAC } from '../../../store/home/action'
-// import Dots from '../../Elements/Dots'
+
 import BlockHeader from './BlockHeader'
 import './FeaturedCompanies.scss'
 
 const FeaturedCompanies = () => {
-    // const dispatch = useDispatch()
     const { featuredCompanies, featuredCompaniesLoading } = useSelector(({ homeSlice: { featuredCompanies, featuredCompaniesLoading } }) => ({ featuredCompanies, featuredCompaniesLoading }))
-
-    // const changePage = page => {
-    //     dispatch(getFeaturedCompaniesAC(`page=${page}&size=4`))
-    // }
     return (
         <div className="featured-companies-block">
             <div className="row justify-content-center">

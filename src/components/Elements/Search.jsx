@@ -33,33 +33,20 @@ const SearchElement = ({ buttonText, onClick, onSearch, onChange, placeholder })
     }
     return (
         <div className="search-element">
-            <div className="container">
-                {window.location.pathname === "/search" ?
-                    <div className="row align-items-center search-element-padding">
-                        <div className="col-md-5">
-                            <Input prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
-                        </div>
-                        <div className="col-md-5 search-page-filter">
-                            {options.map(option => <Dropdown className="bg-fb" options={option.data} label={option.label} img={option.icon} />)}
-                        </div>
-                        <div className="col-md-2 text-right">
-                            <button onClick={onClick} className="search-element-button">{buttonText}</button>
-                        </div>
-                    </div> :
-                    <div className="search-component">
-                        {/* <div className="col-md-9"> */}
+            <div className="container search-layer">
+                <div className="search-component">
+                    <form onSubmit={onFinish}>
+                        <SearchOutlined style={{ fontSize: '24px' }} />
+                        <input onChange={onChange} required placeholder={placeholder ? placeholder : "Search by position title or applicant name "} />
 
-                        <form onSubmit={onFinish}>
-                            <SearchOutlined style={{ fontSize: '24px' }} />
-                            <input onChange={onChange} required placeholder={placeholder ? placeholder : "Search by position title or applicant name "} />
-                        </form>
-                        {/* <Form onFinish={onFinish}>
-                                <Form.Item name="search" rules={[{ required: true, message: "" }]}>
-                                    <Input onChange={onChange} prefix={<SearchOutlined style={{ fontSize: '24px' }} />} placeholder="Search by position title or applicant name " />
-                                </Form.Item>
-                            </Form> */}
-                        {/* </div> */}
-                    </div>}
+                    </form>
+                </div>
+                {
+                    window.location.pathname === "/search" &&
+                    <div className="search-page-filter">
+                        {options.map((option, index) => <Dropdown key={index} className="bg-fb" options={option.data} label={option.label} img={option.icon} />)}
+                    </div>
+                }
             </div>
         </div>
     )

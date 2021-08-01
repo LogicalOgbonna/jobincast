@@ -36,8 +36,9 @@ const EmployerJobsPage = () => {
     }
 
     const onPostJob = (data) => {
+        const maxAmount = parseInt(data?.salary?.split("-")?.[1]?.replace(",", ''))
         data.minAmount = parseInt(data?.salary?.split("-")?.[0]?.replace(",", ''))
-        data.maxAmount = parseInt(data?.salary?.split("-")?.[1]?.replace(",", ''))
+        data.maxAmount = isNaN(maxAmount) ? 50000 : maxAmount;
         dispatch(createJobAC({ data, onModalToggle }))
     }
     const onUpdateJob = (data) => dispatch(updateJobAC({ data: { ...editableJob, ...data }, toggle: onUpdateModalToggle }))

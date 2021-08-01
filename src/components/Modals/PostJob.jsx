@@ -67,16 +67,17 @@ const currencies = [
 ]
 
 const salaries = [
-    '100-10,000',
-    '11,000-20,000',
-    '21,000-30,000',
-    '31,000-40,000',
-    '41,000-50,000',
-    '51,000-60,000',
-    '61,000-70,000',
-    '71,000-80,000',
-    '81,000-90,000',
-    '91,000-100,000',
+    '100-1,000',
+    '1,100-2,000',
+    '2,100-3,000',
+    '3,100-4,000',
+    '4,1000-5,000',
+    '5,100-6,000',
+    '6,100-7,000',
+    '7,100-8,000',
+    '8,00-9,000',
+    '9,100-10,000',
+    '10,000-more',
 ]
 const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
 
@@ -91,9 +92,9 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
     }, [editableJob])
 
     return (
-        <Modal width={700} onCancel={toggle} visible={open} footer={null} style={{ borderRadius: 10 }} >
+        <Modal title="Post A Job" width={700} onCancel={toggle} visible={open} footer={null} style={{ borderRadius: 10 }} >
             <Form form={form} layout="vertical" onFinish={onFinish}>
-                <div className="row">
+                <div style={{ height: 400, overflowY: "scroll" }} className="row">
                     <div className="col-12 col-md-6">
                         <Form.Item label="Title" name="jobTitle" rules={[{ required: true, message: "Job Title is required" }]}>
                             <Input className="profile-inputs" />
@@ -148,17 +149,6 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
                             </Select>
                         </Form.Item>
                     </div>
-                    {/* <div className="col-12 col-md-6">
-                        <Form.Item label="Maximum Salary Monthly" name="maxAmount" rules={[{ required: true, message: "Maximum Salary is required" }]}>
-                            <InputNumber
-                                placeholder={1000}
-                                formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                className="profile-inputs w-100 pt-1"
-                                
-                                parser={value => value.replace(/\$\s?|(,*)/g, '')}
-                            />
-                        </Form.Item>
-                    </div> */}
 
                     <div className="col-12 col-md-6">
                         <Form.Item label="Minimum Degree Level" name="degree">
