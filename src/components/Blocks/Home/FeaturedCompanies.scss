@@ -1,6 +1,7 @@
 @import "../../../theme/index.scss";
+
 .featured-companies-block {
-  padding-top: 70px;
+  // padding-top: 20px;
 
   .featured-companies {
     font-family: "Montserrat";
@@ -8,43 +9,73 @@
     color: $BLACK;
   }
 
-  .featured-companies-card {
-    height: 225px;
-    box-shadow: $STANDARD_BOX_SHADOW;
-    border-radius: $STANDARD_BORDER_RADIUS;
-    padding: 14px 12px;
+  .featured-companies-cards {
+    overflow: scroll;
+    display: flex;
+    justify-content:center;
+    flex-wrap: nowrap;
+    // box-shadow: $STANDARD_BOX_SHADOW;
+    // padding: 20px 0;
 
-    .featured-companies-first-row {
-      //   .featured-companies-logo {
-      //     // width: ;
-      //   }
-
-      .featured-companies-positions {
-        box-shadow: $BOX_SHADOW;
-        border-radius: 50px;
-        padding: 10px;
-        height: 2%;
-        color: $BLUE;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-      }
+    a {
+      color: black;
     }
 
-    .featured-companies-second-row {
-      padding-top: 10px;
-      font-weight: 600;
+    &::-webkit-scrollbar {
+      height: 1px;
     }
 
-    .featured-companies-third-row {
-      .featured-companies-third-row-content {
-        display: flex;
-        align-items: center;
+    /* Track */
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px #FFFFFF;
+      // border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $BLUE;
+      // border-radius: 10px;
+    }
+
+    .featured-companies-card {
+      flex-grow: 1;
+      height: 225px;
+      min-width: 257px;
+      max-width: 257px;
+      margin: 0 10px;
+      box-shadow: $STANDARD_BOX_SHADOW;
+      border-radius: $STANDARD_BORDER_RADIUS;
+      padding: 14px 12px;
+
+      .featured-companies-first-row {
+
+        .featured-companies-positions {
+          box-shadow: $BOX_SHADOW;
+          border-radius: 50px;
+          padding: 10px;
+          height: 2%;
+          color: $BLUE;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+        }
       }
 
-      .featured-companies-third-row-content:not(:first-child) {
+      .featured-companies-second-row {
         padding-top: 10px;
+        font-weight: 600;
+      }
+
+      .featured-companies-third-row {
+        .featured-companies-third-row-content {
+          display: flex;
+          align-items: center;
+        }
+
+        .featured-companies-third-row-content:not(:first-child) {
+          padding-top: 10px;
+        }
       }
     }
   }

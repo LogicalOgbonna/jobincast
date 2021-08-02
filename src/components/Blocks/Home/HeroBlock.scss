@@ -2,7 +2,10 @@
 
 .hero-block {
   min-height: 100vh;
-  background: url("../../../assets/images/hero.png") no-repeat 100% 35%;
+  background: url("../../../assets/images/homepage1.png");
+  background-repeat: no-repeat;
+  background-size: 933px;
+  background-position: top right;
   padding: 160px 80px 90px 80px;
 
   .hero-heading {
@@ -35,7 +38,7 @@
       margin-left: 10px;
     }
 
-    .ant-select > .ant-select-selector {
+    .ant-select>.ant-select-selector {
       border-radius: $STANDARD_BORDER_RADIUS;
       padding: 10px 15px;
       height: 45px;

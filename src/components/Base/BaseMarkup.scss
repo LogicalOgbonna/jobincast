@@ -10,7 +10,7 @@ $TOOLBAR_HEIGHT_MOBILE: 70px;
   height: $TOOLBAR_HEIGHT;
   width: 100% !important;
   background: #fff;
-  z-index: 2;
+  z-index: 999;
   font-family: "Montserrat";
   font-weight: 500;
   padding: 10px 70px;

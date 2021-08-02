@@ -100,7 +100,7 @@ const PreviewProfile = ({ accountType, onFinish, loading, action }) => {
                                                     <p className="px-5 color-purple">{skill.institution}</p>
                                                 </div>
                                             </div>)
-                                        : <p>No Skills Supplied</p>
+                                        : <p>No Awards Supplied</p>
                                 }
                             />}
 
@@ -113,7 +113,7 @@ const PreviewProfile = ({ accountType, onFinish, loading, action }) => {
                         <h5>Company Information</h5>
                         <p>Company Name: {profile?.companyName}</p>
                         <p>Company Category: {profile?.category}</p>
-                        <p>Company companySize: {profile?.companySize}</p>
+                        <p>Company Size: {profile?.companySize}</p>
 
                         <br />
                         <br />

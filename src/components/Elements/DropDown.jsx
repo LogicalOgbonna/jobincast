@@ -24,11 +24,13 @@ const Dropdown = ({ label, options, img, className }) => {
                 <img src={img} alt="drop-down" />
             </div>
             <div className={`dropdown-body ${isOpen && 'open'}`}>
-                {options.map((item, index) => (
-                    <div key={item.id} className="dropdown-item text-capitalize" onClick={() => onClick(index)} id={item.id}>
-                        {item?.label?.replace(/_/g, " ")?.toLowerCase()}
-                    </div>
-                ))}
+                {options.map((item, index) => {
+                    return (
+                        <div key={item.id} className="dropdown-item text-capitalize" onClick={() => onClick(index)} id={item.id}>
+                            {item?.label?.replace(/_/g, " ")?.toLowerCase()}
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )

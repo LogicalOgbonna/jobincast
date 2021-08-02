@@ -93,7 +93,6 @@ const ResumePage = () => {
                 }
                 else {
                     if (state[m].length > 1) {
-                        console.log("🚀 ~ file: ResumePage.jsx ~ line 97 ~ ResumePage ~ searchValue", state[m])
                         const searchValue = state[m].join(",").replace(/'/g, "").split(",").map(value => `'${value}'`).join(",");
                         searchString += `${m}=in=(${searchValue});`;
                     } else {

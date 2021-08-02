@@ -4,9 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const companiesSlice = createSlice({
     name: 'companiesSlice',
     initialState: {
-        featuredCompanies: {
-            content: []
-        },
+        featuredCompanies: [],
         featuredCompaniesLoading: true
     },
     reducers: {

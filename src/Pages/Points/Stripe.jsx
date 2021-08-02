@@ -68,30 +68,38 @@ const SplitForm = ({ paymentOptions, onSuccess }) => {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <label className="label">
-        Card Name
-        <div className="care_name">
+      <div className="row align-items-center">
+        <div className="col-md-2">
+          Card Name
+        </div>
+        <div className="col-md-10 care_name">
           <input placeholder="Card Name" type="text" name="" id="" />
         </div>
-      </label>
-      <label className="label">
-        Card number
-        <CardNumberElement
-          options={options}
-        />
-      </label>
-      <label className="label">
-        Expiry date
-        <CardExpiryElement
-          options={options}
-        />
-      </label>
-      <label className="label">
-        CVC
-        <CardCvcElement
-          options={options}
-        />
-      </label>
+        <div className="col-md-2">
+          Card number
+        </div>
+        <div className="col-md-10">
+          <CardNumberElement
+            options={options}
+          />
+        </div>
+        <div className="col-md-2">
+          Expiry date
+        </div>
+        <div className="col-md-4">
+          <CardExpiryElement
+            options={options}
+          />
+        </div>
+        <div className="col-md-1">
+          CVC
+        </div>
+        <div className="col-md-5">
+          <CardCvcElement
+            options={options}
+          />
+        </div>
+      </div>
       <div className="button-section">
         <button type="submit" disabled={!stripe || loading}>
           {loading ? "Loading..." : `Buy ${paymentOptions?.quantity} Points`}

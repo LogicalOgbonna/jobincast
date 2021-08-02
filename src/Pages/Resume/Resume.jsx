@@ -100,7 +100,7 @@ const Resume = () => {
                                                     <p className="color-purple">{skill.experienceLevel}</p>
                                                 </div>)
                                         } />
-                                        <Step title="Awards" description={
+                                        {resume?.awards?.length > 0 && <Step title="Awards" description={
                                             resume?.awards?.map(skill =>
                                                 <div key={skill.id} className="">
                                                     <h6>{skill.title}</h6>
@@ -109,7 +109,7 @@ const Resume = () => {
                                                         <p className="px-5 color-purple">{skill.institution}</p>
                                                     </div>
                                                 </div>)
-                                        } />
+                                        } />}
                                     </Steps>
                                 </div>
                                 <br></br>

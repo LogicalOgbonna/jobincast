@@ -65,6 +65,20 @@ const currencies = [
     "DONG",
     "RUPEE"
 ]
+
+const salaries = [
+    '100-1,000',
+    '1,100-2,000',
+    '2,100-3,000',
+    '3,100-4,000',
+    '4,100-5,000',
+    '5,100-6,000',
+    '6,100-7,000',
+    '7,100-8,000',
+    '8,000-9,000',
+    '9,100-10,000',
+    '10,000-more',
+]
 const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
 
 
@@ -78,17 +92,17 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
     }, [editableJob])
 
     return (
-        <Modal width={700} onCancel={toggle} visible={open} footer={null} style={{ borderRadius: 10 }} >
+        <Modal title="Post A Job" width={700} onCancel={toggle} visible={open} footer={null} style={{ borderRadius: 10 }} >
             <Form form={form} layout="vertical" onFinish={onFinish}>
-                <div className="row">
+                <div style={{ height: "65vh", overflowY: "scroll" }} className="row">
                     <div className="col-12 col-md-6">
                         <Form.Item label="Title" name="jobTitle" rules={[{ required: true, message: "Job Title is required" }]}>
-                            <Input  className="profile-inputs" />
+                            <Input className="profile-inputs" />
                         </Form.Item>
                     </div>
                     <div className="col-12 col-md-6">
                         <Form.Item label="Experience" name="experienceLevel" rules={[{ required: true, message: "Job Experience is required" }]}>
-                            <Select  className="profile-inputs">
+                            <Select className="profile-inputs">
                                 {jobExperienceLevel.map((experience, key) => <Option key={key} value={experience} className="text-capitalize"> {experience} </Option>)}
                             </Select>
                         </Form.Item>
@@ -129,31 +143,16 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
                         </Form.Item>
                     </div>
                     <div className="col-12 col-md-6">
-                        <Form.Item label="Minimum Salary Monthly" name="minAmount" rules={[{ required: true, message: "Minimum Salary is required" }]} >
-                            <InputNumber
-                                placeholder={100}
-                                formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                className="profile-inputs w-100 pt-1"
-                                
-                                parser={value => value.replace(/\$\s?|(,*)/g, '')}
-                            />
-                        </Form.Item>
-                    </div>
-                    <div className="col-12 col-md-6">
-                        <Form.Item label="Maximum Salary Monthly" name="maxAmount" rules={[{ required: true, message: "Maximum Salary is required" }]}>
-                            <InputNumber
-                                placeholder={1000}
-                                formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                className="profile-inputs w-100 pt-1"
-                                
-                                parser={value => value.replace(/\$\s?|(,*)/g, '')}
-                            />
+                        <Form.Item label="Salary Monthly" name="salary" rules={[{ required: true, message: "Minimum Salary is required" }]} >
+                            <Select className="profile-inputs">
+                                {salaries.map((salary, key) => <Option key={key} value={salary} className="text-capitalize"> {salary} </Option>)}
+                            </Select>
                         </Form.Item>
                     </div>
 
                     <div className="col-12 col-md-6">
                         <Form.Item label="Minimum Degree Level" name="degree">
-                            <Select  className="profile-inputs">
+                            <Select className="profile-inputs">
                                 <Option value="Diploma"> Diploma </Option>
                                 <Option value="Higher Diploma"> Higher Diploma </Option>
                                 <Option value="Degree"> Degree </Option>
@@ -164,7 +163,7 @@ const PostJobModal = ({ onFinish, loading, toggle, open, editableJob }) => {
                     </div>
                     <div className="col-12 col-md-6">
                         <Form.Item label="Application Deadline" name="deadline">
-                            <DatePicker  className="profile-inputs w-100" />
+                            <DatePicker className="profile-inputs w-100" />
                         </Form.Item>
                     </div>
 

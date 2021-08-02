@@ -6,12 +6,18 @@
   background: #fbfbfb;
   padding: 20px 0;
 
+  .search-layer {
+    display: flex;
+  }
+
   .search-component {
     border-bottom: 1px solid rgba(7, 7, 22, .18);
+    width: 90%;
 
     form {
       display: flex;
       padding: 10px 0;
+
       input {
         width: 100%;
         border: none;
@@ -53,8 +59,9 @@
   }
 
   .search-page-filter {
-    display: flex;
-    justify-content: space-between;
+    width: 10%;
+    // display: flex;
+    // justify-content: space-between;
   }
 
   .ant-input-affix-wrapper {

@@ -59,7 +59,6 @@ const removePillMW = (store) => (next) => (action) => {
     const { pills, currentState } = store.getState().filterSlice;
     const newCurrentState = { ...currentState }
     const pillToRemove = pills.find(value => value.id === id)
-    console.log("🚀 ~ file: middleware.js ~ line 62 ~ removePillMW ~ pillToRemove", pillToRemove)
     const regex = new RegExp(`${pillToRemove.label}`, "gi");
     let searchValue = newCurrentState[pillToRemove.searchKey].join(" ").replace(regex, "").replace(/'/g, "").trim().replace(/  +/g, " ")
     newCurrentState[pillToRemove.searchKey] = searchValue.length > 1 ? searchValue.split(" ") : [];

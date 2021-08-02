@@ -23,6 +23,12 @@
   padding: 5px;
   border-top: 1px solid #e5e8ec;
   display: none;
+  min-width: 170px;
+  margin: 0 auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .dropdown-body.open {
@@ -39,7 +45,6 @@
 }
 
 .dropdown-item {
-  // padding: 10px;
   font-size: 13px !important;
   color: #808080;
   background: #fff !important;

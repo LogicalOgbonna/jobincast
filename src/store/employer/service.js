@@ -46,7 +46,7 @@ export const downloadResumeService = async (id, name) => {
     } catch (e) {
         return {
             success: false,
-            message: "File not found, user might have deleted their resume"
+            message: e.response.data.message
         }
     }
 }
