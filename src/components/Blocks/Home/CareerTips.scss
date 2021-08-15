@@ -1,13 +1,34 @@
 @import "../../../theme/index.scss";
 
 .career-tips-block {
+  .blogContent{
+    display: flex;
+  align-items: flex-start;
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+      height: 1px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px #FFFFFF;
+      // border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $BLUE;
+      // border-radius: 10px;
+    }
+  }
   .career-tips-card {
-    min-height: 407px;
+    min-height: 350px;
+    width: 280px;
     box-shadow: $STANDARD_BOX_SHADOW;
-    //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: $STANDARD_BORDER_RADIUS;
     padding: 5px;
-    // border: 1px solid red;
+    margin-bottom: 25px;
 
     .career-tips-card-image {
       height: 190px;
@@ -35,5 +56,49 @@
     }
   }
 
-  padding-bottom: 100px;
+  padding-bottom: 0px;
+}
+
+@media screen and (min-width: 991px){
+  .career-tips-block {
+    .blogContent{
+      gap: 25px;
+      
+    }
+    .career-tips-card {
+      min-height: 407px;
+      box-shadow: $STANDARD_BOX_SHADOW;
+      //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+      border-radius: $STANDARD_BORDER_RADIUS;
+      padding: 5px;
+      // border: 1px solid red;
+  
+      .career-tips-card-image {
+        height: 190px;
+        border-radius: 5px 5px 0px 0px;
+      }
+  
+      .career-tips-card-text {
+        padding: 20px 12px;
+  
+        a {
+            color: $LIGHT_BLUE;
+            display: flex;
+            align-items: center;
+            margin-top: 1em;
+  
+            span {
+                width: 20px;
+                height: 20px;
+                border-radius: 10px;
+                background: $LIGHT_BLUE;
+                color: $WHITE;
+                padding: 2px;
+            }
+        }
+      }
+    }
+  
+    padding-bottom: 100px;
+  }
 }
