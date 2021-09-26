@@ -47,7 +47,7 @@ const HeroBlock = () => {
                         <Select onChange={jobCountry => onSetSearch("jobCountry", jobCountry)} className="w-100" placeholder="Job Location">
                             {mappedCountries.map(({ label, value }) => <Option className="text-capitalize" value={value}>{label}</Option>)}
                         </Select>
-                        <Link to={toFormatted()} className="w-50">Search</Link>
+                        <Link to={toFormatted()} className="searchButton">Search</Link>
                     </div>
                 </div>
             </div>
