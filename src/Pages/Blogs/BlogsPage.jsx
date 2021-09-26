@@ -30,11 +30,11 @@ const BlogsPage = () => {
                                     {/* <a className="blink font13 bigblogredirect" href="#">Read More</a> */}
                                 </div>
                             </div>
-                            <div className= "miniheaderarea col-lg-11">
+                            <div className= "miniheaderarea col-lg-12">
                                 <p className = "font13 miniheader">Recent Stories</p>
                                 <Divider className="minidivider" />
                             </div>
-                            <div className= "blog-list-area col-lg-9">
+                            <div className= "blog-list-area col-lg-11">
                                 <BlogLists paginated/>
                             </div>
                         </div> 
