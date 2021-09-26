@@ -31,7 +31,7 @@ const HeroBlock = () => {
     return (
         <div className="hero-block">
             <div className="row">
-                <div className="col-md-8">
+                <div className="col-lg-8">
                     <h1 className="hero-heading">Job Casting is finally affordable & flexible</h1>
 
                     <p className="hero-sub-heading">More than 10,000 trusted jobs are available on the website for candidates to send to their applications and exactly find their expected jobs</p>

@@ -13,7 +13,7 @@ const ContactUsPage = () => {
         <BaseMarkup className="bg-grey background-image-left">
             <div className="desktop-layout contact-us-page">
                 <Center>
-                    <div className="row justify-content-center">
+                    <div className="row justify-content-center full-column">
                         <LeftColumn>
                             <ContactUsFormBlock />
                             <p className="contact-us-page-text">For general, send will submit message to desktop@jobincast.com

@@ -21,7 +21,7 @@ const FilterElement = ({ options, extra }) => {
             <div className="filter-section row">
                 {options.map((option, index) =>
                     <div key={index} className="col-md-2 filter-dropdown">
-                        <Dropdown options={option.data} label={option.label} img={option.icon} />
+                        <Dropdown options={option.data} label={option.label?.toLowerCase()} img={option.icon} />
                     </div>
                 )}
 
@@ -34,7 +34,7 @@ const FilterElement = ({ options, extra }) => {
                 <div className="filter-pills">
                     <FilterPills />
                 </div>
-                {pills.length > 0 && <button type="default" onClick={() => dispatch(clearFilterPillAC(history))} className="filter-element-button text-right"><RedoOutlined /> RESET</button>}
+                {pills.length > 0 && <button type="default" onClick={() => dispatch(clearFilterPillAC(history))} className="filter-element-button text-right"><RedoOutlined /> Reset</button>}
             </div>
         </div>
     )

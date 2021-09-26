@@ -7,8 +7,11 @@
 
   .job-page-company-name {
     font-family: "Montserrat";
-    font-size: 30px;
+    font-size: 28px;
     padding-top: 25px;
+  }
+  .slogan{
+    margin-bottom: 30px;
   }
   .job-details {
     padding: 80px 60px;
@@ -16,6 +19,18 @@
     background: $WHITE;
     box-shadow: $STANDARD_BOX_SHADOW;
     border-radius: $STANDARD_BORDER_RADIUS;
+
+    .jType{
+      text-transform: capitalize;
+    }
+
+    h4{
+      font-size: 20px;
+      margin-bottom: 0px;
+    }
+    p,span{
+      font-size: 16px;
+    }
   }
   .job-details-title {
     font-family: "Montserrat";
@@ -23,11 +38,28 @@
     line-height: 20px;
     padding: 20px 0 0;
     font-weight: 600;
+    margin: 10px 0px;
   }
   .job-details-content {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 25px;
     text-align: justify;
+  }
+  .addFull{
+    text-transform: capitalize;
+    margin-bottom: 2px;
+    font-size: 15px !important;
+  }
+  .exLevel{
+    text-transform: capitalize;
+    margin-bottom: 2px;
+    font-size: 15px !important;
+  }
+  .salaryOffer, .deadline{
+    text-transform: capitalize;
+    margin-bottom: 2px;
+    font-size: 15px !important;
+    // color: rgb(179, 179, 179);
   }
   .job-details-button {
     background: $LIGHT_BLUE;
@@ -50,12 +82,106 @@
   }
 
   .job-details-a-button {
-    padding: 10px 13px;
-    background: $GREEN;
+    padding: 10px 23px 12px 23px;
+    background: $LIGHT_BLUE;
     color: $WHITE;
-    border-radius: $STANDARD_BORDER_RADIUS;
+    border-radius: 30px;
   }
   // .ant-skeleton {
   //   width: 60% !important;
   // }
+}
+
+@media screen and (min-width: 991px){
+  .job-page {
+    // background: url("../../assets/images/bubble2.png") no-repeat;
+    padding-top: 90px;
+    padding-bottom: 50px;
+  
+    .job-page-company-name {
+      font-family: "Montserrat";
+      font-size: 28px;
+      padding-top: 25px;
+    }
+    .slogan{
+      margin-bottom: 30px;
+    }
+    .job-details {
+      padding: 80px 60px;
+      margin-top: 20px;
+      background: $WHITE;
+      box-shadow: $STANDARD_BOX_SHADOW;
+      border-radius: $STANDARD_BORDER_RADIUS;
+  
+      .jType{
+        text-transform: capitalize;
+      }
+  
+      h4{
+        font-size: 20px;
+        margin-bottom: 0px;
+      }
+      p,span{
+        font-size: 16px;
+      }
+    }
+    .job-details-title {
+      font-family: "Montserrat";
+      font-size: 18px;
+      line-height: 20px;
+      padding: 20px 0 0;
+      font-weight: 600;
+      margin: 10px 0px;
+    }
+    .job-details-content {
+      font-size: 16px;
+      line-height: 25px;
+      text-align: justify;
+    }
+    .addFull{
+      text-transform: capitalize;
+      margin-bottom: 2px;
+      font-size: 15px !important;
+    }
+    .exLevel{
+      text-transform: capitalize;
+      margin-bottom: 2px;
+      font-size: 15px !important;
+    }
+    .salaryOffer, .deadline{
+      text-transform: capitalize;
+      margin-bottom: 2px;
+      font-size: 15px !important;
+      // color: rgb(179, 179, 179);
+    }
+    .job-details-button {
+      background: $LIGHT_BLUE;
+      color: $WHITE;
+      border-radius: $STANDARD_BORDER_RADIUS;
+    }
+    .job-success-notification {
+      padding-top: 10px;
+      span {
+        color: $GREEN;
+        padding-right: 5px;
+      }
+    }
+    .job-error-notification {
+      padding-top: 10px;
+      span {
+        color: #FF0000;
+        padding-right: 5px;
+      }
+    }
+  
+    .job-details-a-button {
+      padding: 10px 23px 12px 23px;
+      background: $LIGHT_BLUE;
+      color: $WHITE;
+      border-radius: 30px;
+    }
+    // .ant-skeleton {
+    //   width: 60% !important;
+    // }
+  }
 }

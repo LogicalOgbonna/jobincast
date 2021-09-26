@@ -132,15 +132,15 @@ const JobsPage = () => {
                 <div className="jobs-page">
                     <div className="container">
                         <div className="row justify-content-center">
-                            <div className="col-md-10">
+                            <div className="col-lg-11">
                                 <FilterElement options={options} />
                             </div>
-                            <div className="col-md-10">
+                            <div className="col-lg-11">
                                 <p className="text-right text-muted font13">Showing {jobs?.numberOfElements}–{jobs?.size} of {jobs?.totalElements} jobs</p>
                             </div>
                         </div>
                         <div className="row justify-content-center">
-                            <div className="col-md-9">
+                            <div className="col-lg-10">
                                 <Skeleton
                                     avatar={{
                                         size: 110

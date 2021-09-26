@@ -1,6 +1,6 @@
 @import "../../theme/index.scss";
 .dropdown {
-  width: 120px;
+  width: 150px;
   border-radius: 10px;
   background-color: #fbfbfb;
 }
@@ -35,7 +35,8 @@
   display: block;
   position: absolute;
   background-color: #fbfbfb;
-  max-height: 100px;
+  max-height: 150px;
+  min-height: 150px;
   overflow-y: scroll;
   overflow-x: hidden;
   left: -30px;
