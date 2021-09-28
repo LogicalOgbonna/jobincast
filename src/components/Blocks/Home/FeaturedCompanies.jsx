@@ -13,7 +13,7 @@ const FeaturedCompanies = () => {
     return (
         <div className="featured-companies-block">
             <div className="row justify-content-center">
-                <div className="col-md-10">
+                <div className="col-lg-10">
                     <BlockHeader
                         featured
                         heading="Featured Companies"
@@ -36,9 +36,14 @@ const FeaturedCompanies = () => {
                             <Skeleton paragraph={{ rows: 2 }} avatar={{ shape: "square", size: 90 }} shape="square" active />
                         </div>
                     </div>
+                    <div className="col-md-3">
+                        <div className="featured-companies-card">
+                            <Skeleton paragraph={{ rows: 2 }} avatar={{ shape: "square", size: 90 }} shape="square" active />
+                        </div>
+                    </div>
                 </>}
 
-                <div className="featured-companies-cards col-md-10">
+                <div className="featured-companies-cards col-md-12">
                     {
                         !featuredCompaniesLoading && featuredCompanies?.map(company =>
                             <Link to={`/company/${company.companyId}`} className="featured-companies-card">
