@@ -9,7 +9,7 @@ const RecentJob = ({ img, position, company, address, amount, category, id, crea
         <div className="recent-jobs-card">
             <NavLink to={`/job/${id}`}>
                 <div className="mobile">
-                    <div class='row' style={{margin:'0px'}}>
+                    <div class='row recentJobRow'>
                         <div className="col-lg-2 recentJobImg">
                             <img src={img} alt={`${company}-logo`} />
                         </div>
