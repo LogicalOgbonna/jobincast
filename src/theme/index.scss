@@ -93,15 +93,15 @@ h6 {
   outline: none !important;
 }
 
-@media screen and (max-width: 991px) {
-  .desktop-layout {
-    display: none;
-  }
+// @media screen and (max-width: 991px) {
+//   .desktop-layout {
+//     display: none;
+//   }
 
-  .mobile-layout {
-    display: unset;
-  }
-}
+//   .mobile-layout {
+//     display: unset;
+//   }
+// }
 
 .ant-table-pagination-right {
   padding: 20px !important;

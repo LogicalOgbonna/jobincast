@@ -20,6 +20,7 @@ import stepper_non_active from "./stepper_non_active.svg";
 import active from "./active.svg";
 import PDF from "./PDF.svg";
 import DOC from "./DOC.svg";
+import hamburger from "./hamburger.svg";
 
 export {
     addressBook,
@@ -44,4 +45,5 @@ export {
     active,
     PDF,
     DOC,
+    hamburger,
 }

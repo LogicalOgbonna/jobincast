@@ -115,10 +115,10 @@ const EmployerJobsPage = () => {
                 <div className="container">
                     <div className="row justify-content-center">
                         <UserHeading message="Manage Jobs" subMessage={`Points Balance: ${profile?.availableUnits}pts`} />
-                        <div className="col-md-11 px-0 py-2 text-right">
+                        <div className="col-lg-11 px-0 py-2 text-right">
                             <Button onClick={onModalToggle} className="post-job-button">Post Job</Button>
                         </div>
-                        <div className="col-md-11 employer-job-contents p-1">
+                        <div className="col-lg-11 employer-job-contents p-1">
                             <Table loading={recruiterJobsLoading} className="w-100" columns={columns} dataSource={recruiterJobs.content} />
                         </div>
                     </div>

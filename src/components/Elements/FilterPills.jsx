@@ -6,7 +6,7 @@ import FilterPill from './FilterPill';
 const FilterPills = () => {
     const pills = useSelector(({ filterSlice: { pills } }) => pills)
     return (
-        pills.map(({ label, id, type }) => <FilterPill label={label} type={type} id={id} key={id} />)
+        pills.map(({ label, id, type }) => <FilterPill label={label?.toLowerCase()} type={type} id={id} key={id} />)
     )
 }
 

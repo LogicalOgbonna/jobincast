@@ -20,7 +20,7 @@ const Dropdown = ({ label, options, img, className }) => {
     return (
         <div className={'dropdown ' + className}>
             <div className='dropdown-header' onClick={toggleDropdown}>
-                {label}
+                {label?.toLowerCase()}
                 <img src={img} alt="drop-down" />
             </div>
             <div className={`dropdown-body ${isOpen && 'open'}`}>

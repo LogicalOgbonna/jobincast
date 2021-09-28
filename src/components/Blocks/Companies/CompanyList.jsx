@@ -10,7 +10,7 @@ const CompanyList = ({ paginated, data: { content, totalElements, number }, onPa
     return (
         <div className="company-list-block">
             <div className="row justify-content-center">
-                <div className="col-md-12">
+                <div className="col-lg-12">
                     {content.map(company =>
                         <NavLink to={`/company/${company.companyId}`}>
                             <Company
@@ -18,8 +18,8 @@ const CompanyList = ({ paginated, data: { content, totalElements, number }, onPa
                                 available={company.numberOfPositions + " jobs available"}
                                 company={company.name}
                                 companySize={company.companySize}
-                                location={company.location}
-                                technology={company.industry}
+                                location={company.location?.toLowerCase()}
+                                technology={company.industry?.toLowerCase()}
                             />
 
                         </NavLink>

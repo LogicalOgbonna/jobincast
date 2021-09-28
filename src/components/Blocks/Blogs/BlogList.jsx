@@ -11,7 +11,7 @@ const BlogList = ({ paginated }) => {
     return (
         <div className="blogs-list-block">
             <div className="row justify-content-center">
-                <div className="col-md-12">
+                <div className="col-lg-12">
                     <NavLink to="/blog/qwerty">
                         <Blog
                             img={career_tip_3}

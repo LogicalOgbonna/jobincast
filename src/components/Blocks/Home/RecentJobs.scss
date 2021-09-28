@@ -1,11 +1,11 @@
 @import "../../../theme/index.scss";
 
 .recent-jobs-block {
+  margin-top: -50px;
   .recent-jobs-card {
     min-height: 150px;
     box-shadow: $STANDARD_BOX_SHADOW;
     border-radius: $STANDARD_BORDER_RADIUS;
-    padding: 20px 30px 0px 30px;
 
     a {
       text-decoration: none;
@@ -45,7 +45,7 @@
 
       .recent-jobs-card-icon {
         font-size: 15px;
-        color: $GREEN;
+        color: $GREEN !important;
       }
 
       .recent-jobs-card-icon-text {
@@ -72,6 +72,54 @@
       color: $LIGHT_BLUE;
       padding: 2px;
       margin-left: 1rem !important;
+    }
+  }
+}
+
+.mobile{
+  padding-bottom: 1px;
+  .recentJobRow{
+    padding: 20px 30px 0px 30px;
+    margin: 0px !important;
+  }
+  .ant-divider-horizontal{
+    margin: 15px 0px !important;
+  }
+}
+
+
+@media screen and (max-width: 780px){
+  .recent-jobs-block{
+
+    .recent-jobs-card{
+      
+      .mobile{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-bottom: 1px;
+        .recentJobRow{
+          display: grid;
+          gap: 20px;
+          margin: 20px 17px 0px !important;
+          grid-template-columns: 1fr 3fr 1fr;
+          padding: 0px !important;
+  
+          .recentJobImg{
+            padding: 0px;
+            img{
+              width: 100%;
+            }
+          }
+          .recent-jobs-card-text-section{
+            padding: 0px;
+          }
+          .recentJobTime{
+            padding: 0px;
+            display: flex !important;
+            align-items: flex-start;
+          }
+        }
+      }
     }
   }
 }

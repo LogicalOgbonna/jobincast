@@ -12,13 +12,14 @@ const CareerTips = () => {
     return (
         <div className="career-tips-block">
             <div className="row justify-content-center">
-                <div className="col-md-10">
+                <div className="col-lg-10">
                     <BlockHeader
                         heading="Quick Career Tips"
                         subheading="Found by employers communicate directly with hiring managers and recruiters."
                     />
                 </div>
-                <div className="col-md-3">
+                <div className="blogContent">
+                    <div className="col-lg-3">
                     <div className="career-tips-card">
                         <div className="career-tips-card-image" style={{ background: `url(${career_tip_1})` }} />
                         <div className="career-tips-card-text">
@@ -32,45 +33,46 @@ const CareerTips = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-3">
-                    <div className="career-tips-card">
-                        <div className="career-tips-card-image" style={{ background: `url(${career_tip_2})` }} />
-                        <div className="career-tips-card-text">
+                    <div className="col-lg-3">
+                        <div className="career-tips-card">
+                            <div className="career-tips-card-image" style={{ background: `url(${career_tip_2})` }} />
+                            <div className="career-tips-card-text">
 
-                            <h6>Over 1000+ Employers</h6>
+                                <h6>Over 1000+ Employers</h6>
 
-                            <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
+                                <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
 
-                            <NavLink to="/">Read More <ArrowRightOutlined className="mx-2 career-tips-card-text-button-icon" /> </NavLink>
+                                <NavLink to="/">Read More <ArrowRightOutlined className="mx-2 career-tips-card-text-button-icon" /> </NavLink>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-md-3">
-                    <div className="career-tips-card">
-                        <div className="career-tips-card-image" style={{ background: `url(${career_tip_3})` }} />
-                        <div className="career-tips-card-text">
+                    <div className="col-lg-3">
+                        <div className="career-tips-card">
+                            <div className="career-tips-card-image" style={{ background: `url(${career_tip_3})` }} />
+                            <div className="career-tips-card-text">
 
-                            <h6>Over 1000+ Employers</h6>
+                                <h6>Over 1000+ Employers</h6>
 
-                            <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
+                                <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
 
-                            <NavLink to="/">Read More <ArrowRightOutlined className="mx-2 career-tips-card-text-button-icon" /> </NavLink>
+                                <NavLink to="/">Read More <ArrowRightOutlined className="mx-2 career-tips-card-text-button-icon" /> </NavLink>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-md-3">
-                    <div className="career-tips-card">
-                        <div className="career-tips-card-image" style={{ background: `url(${career_tip_4})` }} />
-                        <div className="career-tips-card-text">
+                    <div className="col-lg-3">
+                        <div className="career-tips-card">
+                            <div className="career-tips-card-image" style={{ background: `url(${career_tip_4})` }} />
+                            <div className="career-tips-card-text">
 
-                            <h6>Over 1000+ Employers</h6>
+                                <h6>Over 1000+ Employers</h6>
 
-                            <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
+                                <p className="text-muted py-2">We have a thousand plus employers registered and actively look...</p>
 
-                            <NavLink to="/">Read More <ArrowRightOutlined className="mx-2 career-tips-card-text-button-icon" /> </NavLink>
+                                <NavLink to="/">Read More <ArrowRightOutlined className="mx-2 career-tips-card-text-button-icon" /> </NavLink>
 
+                            </div>
                         </div>
                     </div>
                 </div>

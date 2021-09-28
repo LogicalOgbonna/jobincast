@@ -15,7 +15,7 @@ const RecentJobs = () => {
     return (
         <div className="recent-jobs-block">
             <div className="row justify-content-center">
-                <div className="col-md-10">
+                <div className="col-lg-10">
 
                     <BlockHeader
                         heading="Recent Jobs"

@@ -42,3 +42,17 @@
         }
     }
 }
+
+@media screen and (max-width: 480px){
+    .blogs-page{
+        .big-blog{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+
+            .big-blog-area{
+                max-width: 100% !important;
+            }
+        }
+    }
+}

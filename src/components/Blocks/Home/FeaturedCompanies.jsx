@@ -1,4 +1,5 @@
 import { Skeleton } from 'antd'
+import { toLower } from 'lodash'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -12,7 +13,7 @@ const FeaturedCompanies = () => {
     return (
         <div className="featured-companies-block">
             <div className="row justify-content-center">
-                <div className="col-md-10">
+                <div className="col-lg-10">
                     <BlockHeader
                         featured
                         heading="Featured Companies"
@@ -35,29 +36,34 @@ const FeaturedCompanies = () => {
                             <Skeleton paragraph={{ rows: 2 }} avatar={{ shape: "square", size: 90 }} shape="square" active />
                         </div>
                     </div>
+                    <div className="col-md-3">
+                        <div className="featured-companies-card">
+                            <Skeleton paragraph={{ rows: 2 }} avatar={{ shape: "square", size: 90 }} shape="square" active />
+                        </div>
+                    </div>
                 </>}
 
-                <div className="featured-companies-cards col-md-10">
+                <div className="featured-companies-cards col-md-12">
                     {
                         !featuredCompaniesLoading && featuredCompanies?.map(company =>
                             <Link to={`/company/${company.companyId}`} className="featured-companies-card">
                                 <div className="featured-companies-first-row row pr-3">
-                                    <div className="col-md-6">
+                                    <div className="col-6">
                                         <img src={company.imageURL} alt="company-logo" className="featured-companies-logo" width="100" />
                                     </div>
-                                    <div className="col-md-6 featured-companies-positions">
+                                    <div className="col-6 featured-companies-positions">
                                         {company.numberOfPositions} job positions
                                     </div>
                                 </div>
-                                <h6 className="featured-companies-second-row">{company.name}</h6>
+                                <h6 className="featured-companies-second-row">{company.name?.toLowerCase()}</h6>
                                 <div className="featured-companies-third-row">
                                     <div className="featured-companies-third-row-content">
                                         <img src={service_location} alt="service_location" />
-                                        <span className="px-3">{company.location}</span>
+                                        <span className="px-3">{company.location?.toLowerCase()}</span>
                                     </div>
                                     <div className="featured-companies-third-row-content">
                                         <img src={service_type} alt="service_type" />
-                                        <span className="px-3">{company.industry}</span>
+                                        <span className="px-3">{company.industry?.toLowerCase()}</span>
                                     </div>
                                 </div>
                             </Link>

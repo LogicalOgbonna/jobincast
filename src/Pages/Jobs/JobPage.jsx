@@ -23,22 +23,24 @@ const JobPage = () => {
             <div className="desktop-layout job-page">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-md-10 text-center">
-                            {jobLoading ?
-                                <Skeleton.Avatar title size={120} loading={jobLoading} active />
-                                :
-                                <>
-                                    <Avatar src={job?.companyInfo?.companyImageURL} size={100} />
-                                    <h2 className="job-page-company-name">{job?.companyInfo?.companyName}</h2>
-                                    <p className="slogan">{job?.companyInfo?.companyShortBio}</p>
-                                </>}
-                        </div>
-                        <div className="col-md-10 job-details">
+                        
+                        <div className="col-lg-12 job-details">
+                            <div className="col-lg-11 text-center">
+                                {jobLoading ?
+                                    <Skeleton.Avatar title size={120} loading={jobLoading} active />
+                                    :
+                                    <>
+                                        <Avatar src={job?.companyInfo?.companyImageURL} size={100} />
+                                        <h2 className="job-page-company-name">{job?.companyInfo?.companyName}</h2>
+                                        <p className="slogan">{job?.companyInfo?.companyShortBio}</p>
+                                    </>}
+                            </div>
+                            <br />
                             <Skeleton
                                 paragraph={{ rows: 10 }} loading={jobLoading} active
                             >
                                 <h4>{job?.jobTitle}</h4>
-                                <span className="lh50 text-muted">Job Type: {job?.jobType}</span> <span className="lh50 mx-2">|</span>
+                                <span className="lh50 text-muted jType">Job Type: {job?.jobType?.toLowerCase()}</span> <span className="lh50 mx-2">|</span>
                                 <span className="lh50 text-muted text-capitalize">Job Category: {job?.jobCategory?.replace(/_/g, " ").toLowerCase()}</span>
                                 <p className="deadline font13">Application Deadline: {moment(job?.expiresIn).format("YYYY-MM-DD")}</p>
 
@@ -49,9 +51,9 @@ const JobPage = () => {
                                 </p>
 
                                 <p className="job-details-title">More Information</p>
-                                <p>Address : {`${job?.jobLocation},`} {job?.jobCountry}</p>
-                                <p>Salary Offer :  {`$ ${job?.minAmount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + " - " + `$ ${job?.maxAmount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
-                                <p>Experience Level : {job?.experienceLevel}</p>
+                                <p className="addFull">Address : {`${job?.jobLocation?.toLowerCase()},`} {job?.jobCountry?.toLowerCase()}</p>
+                                <p className="salaryOffer">Salary Offer :  {`$ ${job?.minAmount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + " - " + `$ ${job?.maxAmount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+                                <p className="exLevel">Experience Level : {job?.experienceLevel?.toLowerCase()}</p>
 
                                 <br></br>
                                 <br></br>

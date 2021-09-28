@@ -107,18 +107,18 @@ const CompaniesPage = () => {
                 <div className="companies-page">
                     <div className="container">
                         <div className="row justify-content-center">
-                            <div className="col-md-10">
+                            <div className="col-md-11">
                                 <FilterElement
                                     options={options}
                                     extra={<div><Checkbox className="pr-2" />Show hiring companies only</div>}
                                 />
                             </div>
-                            <div className="col-md-10">
+                            <div className="col-md-11">
                                 <p className="text-right text-muted font13">Showing {companies?.numberOfElements}–{companies?.size} of {companies?.totalElements} companies</p>
                             </div>
                         </div>
                         <div className="row justify-content-center">
-                            <div className="col-md-9">
+                            <div className="col-md-10">
                                 <Skeleton
                                     avatar={{
                                         size: 110,

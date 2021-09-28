@@ -8,3 +8,31 @@
       padding-top: 70px;
   }
 }
+@media screen and (max-width: 780px){
+  .container{
+    max-width: 100% !important;
+
+    .full-column{
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+    }
+  }
+}
+@media screen and (max-width: 480px){
+  .contact-us-page{
+    padding-top: 50px;
+
+    .container{
+      max-width: 100% !important;
+  
+      .full-column{
+        display: grid;
+        grid-template-columns: 1fr;
+
+        .contact-us-page-text {
+          padding-top: 50px;
+        }
+      }
+    }
+  }
+}

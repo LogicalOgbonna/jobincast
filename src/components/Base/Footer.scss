@@ -1,6 +1,7 @@
 @import "../../theme/index.scss";
 
 .footer-block {
+  display: block;
   background: rgba(46, 49, 146, 0.8);
   p {
     font-size: 14px;
@@ -79,5 +80,40 @@
     font-weight: 500;
     padding: 15px;
 
+  }
+}
+
+@media screen and (max-width: 780px){
+  
+  .footer-block {
+  
+    .footer-block-first-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      
+      .w-25 {
+        width: 34%;
+      }
+      .w-65 {
+        width: 65%;
+      }
+      .icons{
+        padding: 0px;
+      }
+    }
+    .footer-block-second-row {
+      
+      .information-section{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px){
+  .footer-block{
+    display: none;
   }
 }

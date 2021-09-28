@@ -1,0 +1,35 @@
+.comLocation{
+    font-size: 13px !important;
+    text-transform: capitalize;
+}
+.comSize{
+    font-size: 13px !important;
+}
+.comField{
+    font-size: 13px !important;
+    text-transform: capitalize;
+}
+
+.comImage{
+    padding: 0px !important;
+}
+
+
+@media screen and (min-width: 991px){
+    .comLocation{
+        font-size: 13px !important;
+        text-transform: capitalize;
+    }
+    .comSize{
+        font-size: 13px !important;
+    }
+    .comField{
+        font-size: 13px !important;
+        text-transform: capitalize;
+    }
+    
+    .comImage{
+        padding: 0px 15px !important;
+    }
+    
+}
